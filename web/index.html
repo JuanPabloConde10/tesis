@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Playground</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>LLM Playground</h1>
+        <p>Probá distintos modelos desde una interfaz unificada.</p>
+      </header>
+      <main>
+        <form id="chat-form">
+          <div class="field">
+            <label for="provider">Proveedor</label>
+            <select id="provider" name="provider"></select>
+          </div>
+          <div class="field">
+            <label for="system">Mensaje de sistema (opcional)</label>
+            <textarea id="system" name="system" rows="2" placeholder="Actuá como..."></textarea>
+          </div>
+          <div class="field">
+            <label for="prompt">Prompt</label>
+            <textarea
+              id="prompt"
+              name="prompt"
+              rows="5"
+              placeholder="Escribí tu consulta..."
+              required
+            ></textarea>
+          </div>
+          <div class="field-group">
+            <div class="field">
+              <label for="temperature">Temperatura</label>
+              <input
+                id="temperature"
+                name="temperature"
+                type="number"
+                step="0.1"
+                min="0"
+                max="2"
+                placeholder="ej. 0.7"
+              />
+            </div>
+            <div class="field">
+              <label for="maxTokens">Max tokens</label>
+              <input
+                id="maxTokens"
+                name="maxTokens"
+                type="number"
+                min="1"
+                placeholder="ej. 512"
+              />
+            </div>
+          </div>
+          <button type="submit">Enviar</button>
+        </form>
+        <section class="output">
+          <h2>Respuesta</h2>
+          <div id="response" class="response-box"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
