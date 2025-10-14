@@ -92,7 +92,7 @@ const ChatForm: React.FC<ChatFormProps> = ({ providers, defaultProvider, onSubmi
               : "bg-gray-100 text-gray-300 hover:bg-gray-800"
           }
         >
-          {loading ? "Enviando..." : "Enviar"}
+          {loading ? "Procesando..." : "Enviar"}
         </Button>
         <Button 
           type="button" 
