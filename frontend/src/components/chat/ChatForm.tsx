@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import ProviderSelect from "./ProviderSelect";
-import { Button, Label, TextArea, Input } from "./ui";
+import ProviderSelect from "../provider-select/ProviderSelect";
+import { Button, Label, TextArea, Input } from "./../ui";
 
 export interface ChatPayload {
   provider: string;

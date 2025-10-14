@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Button, Label, TextArea, Input } from "./ui";
-import ProviderSelect from "./ProviderSelect";
-import { fetchProviders, sendChatWithMessages } from "../services/api";
+import { Button, Label, TextArea, Input } from "./../ui";
+import ProviderSelect from "../provider-select/ProviderSelect";
+import { fetchProviders, sendChatWithMessages } from "../../services/api";
 
 interface Message {
   id: string;
