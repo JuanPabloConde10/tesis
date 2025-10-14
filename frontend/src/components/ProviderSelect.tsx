@@ -1,4 +1,5 @@
 import React from "react";
+import { Label } from "./ui";
 
 interface ProviderSelectProps {
   providers: string[];
@@ -9,19 +10,23 @@ interface ProviderSelectProps {
 
 const ProviderSelect: React.FC<ProviderSelectProps> = ({ providers, value, onChange, disabled }) => {
   return (
-    <div className="flex flex-col gap-1">
-      <label htmlFor="provider" className="font-medium">Provider</label>
+      <div className="flex flex-col gap-1">
+        <Label htmlFor="provider">Provider</Label>
       <select
         id="provider"
         name="provider"
         value={value}
         onChange={e => onChange(e.target.value)}
-        disabled={disabled}
+        disabled={disabled || providers.length === 0}
         className="border rounded px-2 py-1"
       >
-        {providers.map(p => (
-          <option key={p} value={p}>{p.charAt(0).toUpperCase() + p.slice(1)}</option>
-        ))}
+        {providers.length === 0 ? (
+          <option value="">Cargando providers...</option>
+        ) : (
+          providers.map(p => (
+            <option key={p} value={p}>{p.charAt(0).toUpperCase() + p.slice(1)}</option>
+          ))
+        )}
       </select>
     </div>
   );
