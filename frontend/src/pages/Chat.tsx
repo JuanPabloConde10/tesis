@@ -1,6 +1,6 @@
 import React from "react";
 import { Icons } from "../components/ui";
-import ChatInterface from "../components/ChatInterface";
+import ChatInterface from "../components/chat/ChatInterface";
 
 const Chat: React.FC = () => {
   return (

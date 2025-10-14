@@ -1,5 +1,5 @@
 import React from "react";
-import { Label } from "./ui";
+import { Label } from "./../ui";
 
 interface ProviderSelectProps {
   providers: string[];
