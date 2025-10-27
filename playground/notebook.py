@@ -22,13 +22,17 @@ model1 = ChatOpenAI(
     model_kwargs={"seed": 42}
 )
 # model = lms.llm("deepseek-r1-distill-qwen-7b")
-model2 = lms.llm("qwq-32b@q4_k_m")
+#model2 = lms.llm("qwq-32b@q4_k_m")
 
 # %%
-axis_of_interest = [donor_aoi, conflict_aoi]
+axis_of_interest_lista = [donor_aoi, conflict_aoi]
 
 # %%
-prompt_generate_plot_schema = prompt_generate_plot_schema.format(axis_of_interest=axis_of_interest)
+prompt_generate_plot_schema = prompt_generate_plot_schema.replace(
+    "{axis_of_interest}",
+    json.dumps([a.model_dump() for a in axis_of_interest_lista], indent=2)
+)
+
 result1 = model1.invoke(prompt_generate_plot_schema)
 # %%
 result2 = model2.respond(
