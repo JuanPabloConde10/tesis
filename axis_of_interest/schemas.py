@@ -59,3 +59,4 @@ list_of_aoi = [
     task_aoi,
     unrelenting_guardian_aoi,
 ]
+indice_aoi = {a.name: i for i, a in enumerate(list_of_aoi)}
