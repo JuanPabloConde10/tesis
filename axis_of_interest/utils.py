@@ -1,7 +1,14 @@
-from axis_of_interest.schemas import AxisOfInterest
+from axis_of_interest.schemas import AxisOfInterest, PlotSchema
+import json
 
-def render_aoi_md(aoi: AxisOfInterest) -> str:
-    aoi_dict = aoi.model_dump()
+def render_aoi_md(aoi: AxisOfInterest | dict | str) -> str:
+    if isinstance(aoi, str):
+        aoi_dict = json.loads(aoi)
+    elif isinstance(aoi, AxisOfInterest):
+        aoi_dict = aoi.model_dump()
+    else:
+        aoi_dict = aoi
+
     def sep():
         return "\n" + ("─" * 64) + "\n"
 
@@ -40,59 +47,51 @@ def render_aoi_md(aoi: AxisOfInterest) -> str:
 from typing import Mapping
 
 # --- utilidades pequeñas para convivir con Pydantic v1/v2 o dicts ---
-def _asdict(x):
-    if x is None:
-        return None
-    if isinstance(x, Mapping):
-        return dict(x)
-    if hasattr(x, "model_dump"):   # Pydantic v2
-        return x.model_dump()
-    if hasattr(x, "dict"):         # Pydantic v1
-        return x.dict()
-    return getattr(x, "__dict__", x)
 
 def _fmt_kv(d: dict | None) -> str:
     if not d:
         return ""
     return ",".join(f"{k}={v}" for k, v in d.items())
 
-def render_plot_schema_md(plot_schema) -> str:
+def render_plot_schema_md(plot_schema: PlotSchema | dict | str) -> str:
+    if isinstance(plot_schema, str):
+        plot_schema_dict = json.loads(plot_schema)
+    elif isinstance(plot_schema, PlotSchema):
+        plot_schema_dict = plot_schema.model_dump()
+    else:
+        plot_schema_dict = plot_schema
+
     """Render lindo (Markdown/text) para un PlotSchema."""
-    S = _asdict(plot_schema)
 
     def sep():
         return "\n" + ("─" * 64) + "\n"
 
     # Encabezado del PlotSchema
     header = []
-    header.append(f"PLOT-SCHEMA =  {S.get('name','')}")
-    if S.get("id"):
-        header.append(f"ID =  {S['id']}")
-    if S.get("description"):
-        header.append(f"DESCRIPTION:\n{S['description']}")
+    header.append(f"PLOT-SCHEMA =  {plot_schema_dict.get('name','')}")
+    if plot_schema_dict.get("description"):
+        header.append(f"DESCRIPTION:\n{plot_schema_dict['description']}")
     out = "\n".join(header) + sep()
 
     # Soporta 'plots_span' (tu esquema) y también 'plot_spans' por si acaso
-    spans = S.get("plots_span") or S.get("plot_spans") or []
+    spans = plot_schema_dict.get("plots_span") or plot_schema_dict.get("plot_spans") or []
     for span in spans:
-        SP = _asdict(span)
-        out += f"AXISofINTEREST =  {SP.get('axis_of_interest','')}\n"
-        out += f"PLOT-SPAN-NAME =  {SP.get('name','')}\n"
-        if SP.get("description"):
-            out += f"DESCRIPTION:\n{SP['description']}\n\n"
+        out += f"AXISofINTEREST =  {span.get('axis_of_interest','')}\n"
+        out += f"PLOT-SPAN-NAME =  {span.get('name','')}\n"
+        if span.get("description"):
+            out += f"DESCRIPTION:\n{span['description']}\n\n"
 
-        atoms = SP.get("plots_atoms") or SP.get("plot_atoms") or []
+        atoms = span.get("plots_atoms") or span.get("plot_atoms") or []
         rows = []
         for atom in atoms:
-            A = _asdict(atom)
             right_parts = []
-            ch = _asdict(A.get("characters"))
+            ch = atom.get("characters")
             if ch:
                 right_parts.append(f"characters({_fmt_kv(ch)})")
-            ob = _asdict(A.get("objects"))
+            ob = atom.get("objects")
             if ob:
                 right_parts.append(f"objects({_fmt_kv(ob)})")
-            rows.append((A.get("name",""), "  ".join(right_parts), A.get("description","")))
+            rows.append((atom.get("name",""), "  ".join(right_parts), atom.get("description","")))
 
         leftw = (max((len(name) for name, _, _ in rows), default=0) + 2)
         for name, right, desc in rows:

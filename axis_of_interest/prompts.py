@@ -104,6 +104,5 @@ Genera un cuento a partir del siguiente Plot Schema: {plot_schema}
 prompt_generar_axis_of_interest = (prompt_contexto_axis_of_interest + """ 
 Dado el siguiente cuento: {cuento}, devuelve una lista de Axis of Interest que abarquen la historia. 
 
-A contiuación tienes una ejemplo
 """)
 
