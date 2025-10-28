@@ -82,7 +82,7 @@ plot_schema_donor_fight = PlotSchema(
  """
 
 
-prompt_generate_plot_schema = (prompt_contexto_axis_of_interest + """
+template_prompt_generate_plot_schema = (prompt_contexto_axis_of_interest + """
 Dado los siguientes Axis of Interest: {axis_of_interest}
 
 Genera un Plot Schema a partir de ellos.
@@ -96,12 +96,12 @@ El Plot Schema debe tener los siguientes campos:
 - plots_span: list[PlotSpan]
 """)
 
-prompt_generate_cuento = (prompt_contexto_axis_of_interest + """
+template_prompt_generate_cuento = (prompt_contexto_axis_of_interest + """
 Genera un cuento a partir del siguiente Plot Schema: {plot_schema}
 """)
 
 
-prompt_generar_axis_of_interest = (prompt_contexto_axis_of_interest + """ 
+tenplate_prompt_generar_axis_of_interest = (prompt_contexto_axis_of_interest + """ 
 Dado el siguiente cuento: {cuento}, devuelve una lista de Axis of Interest que abarquen la historia. 
 
 """)
