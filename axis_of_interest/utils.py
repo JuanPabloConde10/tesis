@@ -1,29 +1,12 @@
-def render_aoi_md(aoi: dict) -> str:
-    """
-    Espera un dict con esta forma mínima:
-    {
-      "axis": "DONOR",
-      "protagonist": "tested",
-      "roles": ["tested","tester","user","gift"],
-      "plot_spans": [
-        {"name":"Tested","events":[
-          {"label":"Tested", "characters":{"tested":"X","tester":"Y"}},
-          {"label":"Character’sReaction", "characters":{"tested":"X","tester":"Y"}},
-          {"label":"ProvisionOfAMagicalAgent",
-           "characters":{"tested":"X","tester":"Y"},
-           "objects":{"gift":"Z"}}
-        ]},
-        {"name":"UseOfAMagicalAgent","events":[
-          {"label":"UseOfAMagicalAgent","characters":{"user":"X"},"objects":{"gift":"Z"}}
-        ]}
-      ]
-    }
-    """
+from axis_of_interest.schemas import AxisOfInterest
+
+def render_aoi_md(aoi: AxisOfInterest) -> str:
+    aoi_dict = aoi.model_dump()
     def sep():
         return "\n" + ("─" * 64) + "\n"
 
-    def fmt_block(characters=None, objects=None) -> str:
-        parts = []
+    def fmt_block(name: str, characters=None, objects=None) -> str:
+        parts = [name]
         if characters:
             inner = ",".join(f"{k}={v}" for k, v in characters.items())
             parts.append(f"characters({inner})")
@@ -34,18 +17,18 @@ def render_aoi_md(aoi: dict) -> str:
 
     # encabezado
     lines = []
-    lines.append(f"AXISofINTEREST =  {aoi.get('axis','')}")
-    lines.append(f"AXISofINTEREST PROTAGONIST =  {aoi.get('protagonist','')}")
-    roles = " ".join(aoi.get("roles", []))
-    lines.append(f"AXISofINTEREST ROLES =  {roles}")
+    lines.append(f"AXISofINTEREST =  {aoi_dict.get('name','')}")
+    lines.append(f"PROTAGONIST =  {aoi_dict.get('protagonist_role','')}")
+    roles = " ".join(aoi_dict.get("roles", []))
+    lines.append(f"ROLES =  {roles}")
     out = "\n".join(lines) + sep()
 
     # spans
-    for ps in aoi.get("plot_spans", []):
+    for ps in aoi_dict.get("plot_spans", []):
         out += f"PLOT-SPAN-NAME =  {ps.get('name','')}\n\n"
         rows = []
-        for ev in ps.get("events", []):
-            right = fmt_block(ev.get("characters"), ev.get("objects"))
+        for ev in ps.get("plots_atoms", []):
+            right = fmt_block(name=ev.get("name",""), characters=ev.get("characters"), objects=ev.get("objects"))
             rows.append((ev.get("label",""), right))
 
         leftw = (max((len(l) for l, _ in rows), default=0) + 2)
