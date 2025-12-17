@@ -1,13 +1,16 @@
+import os
 from pathlib import Path
 from typing import Optional
-import os
-from dotenv import load_dotenv
 
+from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field
 from openai import OpenAI
+
+from experiments.data import get_experiments
+from story_models import StoryRequest
+from story_prompts import build_story_prompt, run_mode1_story
 
 load_dotenv()
 
@@ -16,48 +19,41 @@ WEB_DIR = BASE_PATH / "web"
 
 api = FastAPI(title="Taller de cuentos")
 
-ARC_LABELS = {
-    "viaje_del_heroe": "Viaje del héroe",
-    "maduracion": "Historia de maduración",
-    "busqueda": "Búsqueda",
-    "venganza": "Venganza",
-    "comedia_de_enredos": "Comedia de enredos",
-    "tragedia": "Tragedia",
-}
+AVAILABLE_MODELS = ["gpt-4o-mini", "gpt-4o", "gpt-3.5-turbo"]
+DEFAULT_MODEL = AVAILABLE_MODELS[0]
+
+MODES = [
+    {"id": "0", "name": "Modo 0", "description": "Generación a pelo."},
+    {"id": "1", "name": "Modo 1", "description": "Utilizando el Plot Schema en el prompt"},
+    {"id": "2", "name": "Modo 2", "description": "Creamos el Plot Schema y chunks para cada escena. Luego le pedimos al LLM que hile estas escenas en un unico cuento"},
+]
+DEFAULT_MODE = MODES[0]["id"]
 
 
-class StoryRequest(BaseModel):
-    trama: str = Field(..., min_length=5)
-    genero: Optional[str] = None
-    arco: Optional[str] = None
-    personajes: list[str] = Field(default_factory=list)
-    temperature: Optional[float] = Field(default=None, ge=0, le=2)
-    max_tokens: Optional[int] = Field(default=None, gt=0)
+def resolve_model(model_name: Optional[str]) -> str:
+    if model_name:
+        if model_name not in AVAILABLE_MODELS:
+            raise HTTPException(status_code=400, detail=f"Modelo no habilitado: {model_name}")
+        return model_name
+    return DEFAULT_MODEL
 
 
-def build_story_prompt(data: StoryRequest) -> str:
-    personajes = ", ".join(data.personajes) if data.personajes else "No especificados"
-    genero = data.genero or "Libre"
-    arco = ARC_LABELS.get(data.arco, data.arco) if data.arco else "Libre"
-    return (
-        "Escribe un cuento breve en español usando los datos proporcionados.\n"
-        f"- Descripción de la trama: {data.trama}\n"
-        f"- Personajes principales: {personajes}\n"
-        f"- Género: {genero}\n"
-        f"- Arco narrativo: {arco}\n\n"
-        "Extensión: 3 a 5 párrafos. Mantén un tono acorde al género y cierra con un desenlace claro. "
-        "Responde solo con el cuento."
-    )
+def resolve_mode(mode_name: Optional[str]) -> dict:
+    mode_id = mode_name or DEFAULT_MODE
+    for mode in MODES:
+        if mode["id"] == mode_id:
+            return mode
+    raise HTTPException(status_code=400, detail=f"Modo de creación desconocido: {mode_id}")
 
 
-def generate_with_openai(prompt: str, temperature: Optional[float], max_tokens: Optional[int]) -> str:
+def generate_with_openai(
+    prompt: str, temperature: Optional[float], max_tokens: Optional[int], model: str
+) -> str:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError("Falta la variable de entorno OPENAI_API_KEY.")
 
-    model = os.getenv("OPENAI_MODEL", "gpt-5-mini-2025-08-07")
     client = OpenAI(api_key=api_key)
-
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -80,20 +76,43 @@ def serve_index() -> FileResponse:
 
 @api.post("/api/story")
 def generate_story(request: StoryRequest) -> dict:
-    prompt = build_story_prompt(request)
+    mode = resolve_mode(request.mode)
+    model = resolve_model(request.model)
 
     try:
-        story = generate_with_openai(
-            prompt=prompt,
-            temperature=request.temperature,
-            max_tokens=request.max_tokens,
-        )
+        if mode["id"] == "1":
+            story = run_mode1_story(
+                request, model=model, temperature=request.temperature, max_tokens=request.max_tokens
+            )
+        else:
+            prompt = build_story_prompt(request, mode["id"])
+            story = generate_with_openai(
+                prompt=prompt,
+                temperature=request.temperature,
+                max_tokens=request.max_tokens,
+                model=model,
+            )
     except RuntimeError as missing_key:
         raise HTTPException(status_code=400, detail=str(missing_key)) from missing_key
     except Exception as err:
         raise HTTPException(status_code=500, detail=f"No se pudo generar el cuento: {err}") from err
 
-    return {"story": story}
+    return {"story": story, "mode": mode["id"], "model": model}
+
+
+@api.get("/api/options")
+def list_options() -> dict:
+    return {
+        "models": AVAILABLE_MODELS,
+        "defaultModel": DEFAULT_MODEL,
+        "defaultMode": DEFAULT_MODE,
+        "modes": MODES,
+    }
+
+
+@api.get("/api/experiments")
+def list_experiment_payloads() -> dict:
+    return {"experiments": get_experiments()}
 
 
 api.mount("/static", StaticFiles(directory=WEB_DIR / "static"), name="static")

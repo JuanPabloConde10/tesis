@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const state = {
+    config: { modes: [], models: [], defaultMode: "", defaultModel: "" },
+    entry: null,
+    experiments: [],
+    experimentIndex: 0,
+    currentExperiment: null,
+  };
+
   const tabs = document.querySelectorAll(".tab");
   const panels = document.querySelectorAll(".panel");
+  const tabsContainer = document.querySelector(".tabs");
+  const landingPanel = document.getElementById("landing-panel");
   const form = document.getElementById("story-form");
   const characterList = document.getElementById("characters-list");
   const addCharacterButton = document.getElementById("add-character");
@@ -9,6 +19,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const questionsContainer = document.getElementById("questions");
   const scoreValue = document.getElementById("score-value");
   const scoreFill = document.getElementById("score-fill");
+  const startCustom = document.getElementById("start-custom");
+  const startExperiments = document.getElementById("start-experiments");
+  const resetFlowButton = document.getElementById("reset-flow");
+  const modePill = document.getElementById("mode-pill");
+  const modelSelect = document.getElementById("model");
+  const modeSelect = document.getElementById("mode");
+  const modeDescription = document.getElementById("mode-description");
+  const modeHint = document.getElementById("mode-hint");
+  const experimentBanner = document.getElementById("experiment-banner");
+  const experimentTitle = document.getElementById("experiment-title");
+  const nextExperimentButton = document.getElementById("next-experiment");
 
   const evaluationQuestions = [
     { key: "coherence", label: "Coherencia de la trama" },
@@ -18,11 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
     { key: "surprise", label: "Originalidad y giros" },
   ];
 
+  function setActivePanel(targetId) {
+    panels.forEach((panel) => panel.classList.toggle("active", panel.id === targetId));
+    tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.target === targetId));
+  }
+
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
+      if (tabsContainer.classList.contains("is-hidden")) return;
       const target = tab.dataset.target;
-      tabs.forEach((btn) => btn.classList.toggle("active", btn === tab));
-      panels.forEach((panel) => panel.classList.toggle("active", panel.id === target));
+      setActivePanel(target);
     });
   });
 
@@ -78,6 +104,185 @@ document.addEventListener("DOMContentLoaded", () => {
     return data.story;
   }
 
+  function updateModeDescription() {
+    const modeId = modeSelect.value;
+    const mode = state.config.modes.find((item) => item.id === modeId);
+    if (mode) {
+      modeDescription.textContent = mode.description || "Modo sin descripción detallada.";
+      modeHint.textContent = mode.defaultModel
+        ? `Sugerencia: usa ${mode.defaultModel} o cambia aquí mismo.`
+        : "Los modos se definen en el backend.";
+    } else {
+      modeDescription.textContent = "Seleccioná un modo para ver su detalle.";
+      modeHint.textContent = "Los modos se definen en el backend.";
+    }
+  }
+
+  function hydrateModeOptions() {
+    modeSelect.innerHTML = '<option value="">Elegí un modo</option>';
+    state.config.modes.forEach((mode) => {
+      const option = document.createElement("option");
+      option.value = mode.id;
+      option.textContent = mode.name;
+      modeSelect.append(option);
+    });
+  }
+
+  function hydrateModelOptions() {
+    modelSelect.innerHTML = '<option value="">Usar modelo por defecto</option>';
+    state.config.models.forEach((model) => {
+      const option = document.createElement("option");
+      option.value = model;
+      option.textContent = model;
+      modelSelect.append(option);
+    });
+  }
+
+  function applyDefaults() {
+    if (state.config.defaultMode) {
+      modeSelect.value = state.config.defaultMode;
+    }
+    if (state.config.defaultModel) {
+      modelSelect.value = state.config.defaultModel;
+    }
+    updateModeDescription();
+  }
+
+  let optionsPromise;
+
+  function ensureOptions() {
+    if (!optionsPromise) {
+      optionsPromise = loadOptions();
+    }
+    return optionsPromise;
+  }
+
+  async function loadOptions() {
+    try {
+      const res = await fetch("/api/options");
+      const data = await res.json();
+      state.config = {
+        modes: data.modes || [],
+        models: data.models || [],
+        defaultMode: data.defaultMode || "",
+        defaultModel: data.defaultModel || "",
+      };
+      hydrateModeOptions();
+      hydrateModelOptions();
+      applyDefaults();
+    } catch (error) {
+      modeDescription.textContent = `No se pudieron cargar las opciones: ${error.message}`;
+    }
+    modeSelect.addEventListener("change", updateModeDescription);
+  }
+
+  function updatePill(text) {
+    modePill.textContent = text;
+  }
+
+  function resetForm(clearStory = false) {
+    form.reset();
+    characterList.innerHTML = "";
+    state.currentExperiment = null;
+    state.experimentIndex = 0;
+    experimentBanner.classList.add("is-hidden");
+    nextExperimentButton.disabled = true;
+    applyDefaults();
+    if (clearStory) {
+      storyPreview.textContent = "El cuento aparecerá aquí una vez generado.";
+      storyPreview.classList.remove("error");
+    }
+  }
+
+  function enterWorkspace() {
+    landingPanel.classList.remove("active");
+    tabsContainer.classList.remove("is-hidden");
+    setActivePanel("request-panel");
+  }
+
+  function resetFlow() {
+    state.entry = null;
+    updatePill("Elegí un flujo para comenzar");
+    tabsContainer.classList.add("is-hidden");
+    setActivePanel("landing-panel");
+    tabs.forEach((tab) => tab.classList.remove("active"));
+    resetForm(true);
+  }
+
+  async function ensureExperimentsLoaded() {
+    if (state.experiments.length) return state.experiments;
+    try {
+      const res = await fetch("/api/experiments");
+      const data = await res.json();
+      state.experiments = data.experiments || [];
+    } catch (error) {
+      state.experiments = [];
+      experimentTitle.textContent = `No se pudieron cargar los experimentos (${error.message}).`;
+    }
+    return state.experiments;
+  }
+
+  function applyExperiment(experiment) {
+    if (!experiment) {
+      experimentBanner.classList.remove("is-hidden");
+      experimentTitle.textContent = "No hay experimentos configurados en el backend.";
+      nextExperimentButton.disabled = true;
+      return;
+    }
+
+    state.currentExperiment = experiment;
+    form.plot.value = experiment.trama || "";
+    form.genre.value = experiment.genero || "";
+    form.arc.value = experiment.arco || "";
+
+    characterList.innerHTML = "";
+    (experiment.personajes || []).forEach((character) => addCharacterField(character));
+
+    updateModeDescription();
+    experimentBanner.classList.remove("is-hidden");
+    const counter = `${state.experimentIndex + 1}/${state.experiments.length}`;
+    experimentTitle.textContent = `${experiment.title || "Experimento"} · ${counter}`;
+    nextExperimentButton.disabled = state.experiments.length <= 1;
+  }
+
+  function handleExperimentAdvance() {
+    if (!state.experiments.length) return;
+    state.experimentIndex = (state.experimentIndex + 1) % state.experiments.length;
+    applyExperiment(state.experiments[state.experimentIndex]);
+  }
+
+  function enterCustomFlow() {
+    state.entry = "custom";
+    updatePill("Flujo: creación libre");
+    enterWorkspace();
+    resetForm(true);
+  }
+
+  async function enterExperimentsFlow() {
+    await ensureOptions();
+    state.entry = "experiments";
+    updatePill("Flujo: experimentos");
+    enterWorkspace();
+    const experiments = await ensureExperimentsLoaded();
+    if (!experiments.length) {
+      experimentBanner.classList.remove("is-hidden");
+      experimentTitle.textContent = "No se encontraron experimentos en el backend.";
+      nextExperimentButton.disabled = true;
+      return;
+    }
+    state.experimentIndex = 0;
+    applyExperiment(experiments[0]);
+  }
+
+  startCustom.addEventListener("click", async () => {
+    await ensureOptions();
+    enterCustomFlow();
+  });
+
+  startExperiments.addEventListener("click", enterExperimentsFlow);
+  resetFlowButton.addEventListener("click", resetFlow);
+  nextExperimentButton.addEventListener("click", handleExperimentAdvance);
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     const trama = form.plot.value.trim();
@@ -85,7 +290,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const arco = form.arc.value;
     const personajes = getCharacters();
 
-    const payload = { trama, genero, arco, personajes };
+    const payload = {
+      trama,
+      genero,
+      arco,
+      personajes,
+      model: modelSelect.value || null,
+      mode: modeSelect.value || null,
+      experiment_id: state.currentExperiment?.id || null,
+    };
 
     storyPreview.classList.remove("error");
     storyPreview.textContent = "Generando cuento...";
@@ -94,6 +307,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const story = await requestStory(payload);
       storyPreview.textContent = story?.trim() || "(Respuesta vacía)";
+      setActivePanel("review-panel");
     } catch (error) {
       storyPreview.textContent = `Error: ${error.message}`;
       storyPreview.classList.add("error");
@@ -149,4 +363,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderQuestions();
   updateScore();
+  resetFlow();
+  ensureOptions();
 });

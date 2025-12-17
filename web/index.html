@@ -12,23 +12,86 @@
         <div class="hero__copy">
           <p class="eyebrow">Taller narrativo</p>
           <h1>Generá y evaluá cuentos en un mismo lugar</h1>
-          <p class="lede">
-            Completá el requerimiento y calificá la calidad de la historia.
-          </p>
+          <p class="lede">Elegí cómo empezar: carga propia o experimentos prearmados.</p>
         </div>
-        <nav class="tabs" aria-label="Vistas">
-          <button class="tab active" data-target="request-panel">Requerimiento</button>
-          <button class="tab" data-target="review-panel">Evaluación</button>
-        </nav>
+        <div class="hero__actions">
+          <div id="mode-pill" class="pill">Elegí un flujo para comenzar</div>
+          <button id="reset-flow" class="ghost ghost--inline" type="button">Cambiar flujo</button>
+          <nav class="tabs is-hidden" aria-label="Vistas">
+            <button class="tab" data-target="request-panel">Requerimiento</button>
+            <button class="tab" data-target="review-panel">Evaluación</button>
+          </nav>
+        </div>
       </header>
 
       <main class="content">
-        <section id="request-panel" class="panel active">
+        <section id="landing-panel" class="panel active">
+          <div class="card card--stack">
+            <div class="card__header">
+              <h2>Elegí cómo querés armar el cuento</h2>
+              <p>Arrancá desde cero o cargá casos de prueba definidos en el backend.</p>
+            </div>
+            <div class="landing-grid">
+              <div class="landing-card">
+                <div>
+                  <p class="eyebrow eyebrow--muted">Flujo manual</p>
+                  <h3>Crear tu propia historia</h3>
+                  <p>Completá la trama y los personajes. Ideal para redactar y probar rápidamente.</p>
+                </div>
+                <div class="landing-card__actions">
+                  <button class="primary" id="start-custom" type="button">Crear tu propia historia</button>
+                </div>
+              </div>
+              <div class="landing-card">
+                <div>
+                  <p class="eyebrow eyebrow--muted">Flujo guiado</p>
+                  <h3>Correr experimentos</h3>
+                  <p>Carga los datos desde el backend para reproducir experimentos y compararlos.</p>
+                  <p class="hint">Se llenan automáticamente los campos del formulario.</p>
+                </div>
+                <div class="landing-card__actions">
+                  <button class="secondary" id="start-experiments" type="button">Cargar experimentos</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="request-panel" class="panel">
           <form id="story-form" class="card">
             <div class="card__header">
               <h2>Armá el pedido</h2>
               <p>Define la trama, suma personajes y elegí el arco narrativo.</p>
             </div>
+
+            <div id="experiment-banner" class="banner is-hidden">
+              <div>
+                <p class="banner__title">Ejecutando experimento</p>
+                <p id="experiment-title" class="banner__text"></p>
+              </div>
+              <div class="banner__actions">
+                <button type="button" class="ghost" id="next-experiment">Siguiente experimento</button>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="mode">Modo de creación</label>
+                <select id="mode" name="mode">
+                  <option value="">Elegí un modo</option>
+                </select>
+                <p id="mode-hint" class="hint">Los modos se definen en el backend.</p>
+              </div>
+              <div class="field">
+                <label for="model">Modelo LLM</label>
+                <select id="model" name="model">
+                  <option value="">Usar modelo por defecto</option>
+                </select>
+                <p class="hint">Controlamos esta lista desde el backend.</p>
+              </div>
+            </div>
+
+            <div id="mode-description" class="note">Seleccioná un modo para ver su detalle.</div>
 
             <div class="field">
               <label for="plot">Descripción de la trama</label>
