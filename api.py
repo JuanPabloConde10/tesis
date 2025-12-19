@@ -9,8 +9,9 @@ from fastapi.staticfiles import StaticFiles
 from openai import OpenAI
 
 from experiments.data import get_experiments
-from story_models import StoryRequest
-from story_prompts import build_story_prompt, run_mode1_story
+from llm_client.models import get_models
+from story_creator.modes import get_modes, generate_the_story
+from global_schemas import StoryRequest
 
 load_dotenv()
 
@@ -19,16 +20,11 @@ WEB_DIR = BASE_PATH / "web"
 
 api = FastAPI(title="Taller de cuentos")
 
-AVAILABLE_MODELS = ["gpt-4o-mini", "gpt-4o", "gpt-3.5-turbo"]
+AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
 
-MODES = [
-    {"id": "0", "name": "Modo 0", "description": "Generación a pelo."},
-    {"id": "1", "name": "Modo 1", "description": "Utilizando el Plot Schema en el prompt"},
-    {"id": "2", "name": "Modo 2", "description": "Creamos el Plot Schema y chunks para cada escena. Luego le pedimos al LLM que hile estas escenas en un unico cuento"},
-]
+MODES = get_modes()
 DEFAULT_MODE = MODES[0]["id"]
-
 
 def resolve_model(model_name: Optional[str]) -> str:
     if model_name:
@@ -46,26 +42,6 @@ def resolve_mode(mode_name: Optional[str]) -> dict:
     raise HTTPException(status_code=400, detail=f"Modo de creación desconocido: {mode_id}")
 
 
-def generate_with_openai(
-    prompt: str, temperature: Optional[float], max_tokens: Optional[int], model: str
-) -> str:
-    api_key = os.getenv("OPENAI_API_KEY")
-    if not api_key:
-        raise RuntimeError("Falta la variable de entorno OPENAI_API_KEY.")
-
-    client = OpenAI(api_key=api_key)
-    response = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": "Eres un escritor creativo de cuentos cortos."},
-            {"role": "user", "content": prompt},
-        ],
-        temperature=temperature,
-        max_tokens=max_tokens,
-    )
-    return response.choices[0].message.content
-
-
 @api.get("/", include_in_schema=False)
 def serve_index() -> FileResponse:
     index_path = WEB_DIR / "index.html"
@@ -78,20 +54,8 @@ def serve_index() -> FileResponse:
 def generate_story(request: StoryRequest) -> dict:
     mode = resolve_mode(request.mode)
     model = resolve_model(request.model)
-
     try:
-        if mode["id"] == "1":
-            story = run_mode1_story(
-                request, model=model, temperature=request.temperature, max_tokens=request.max_tokens
-            )
-        else:
-            prompt = build_story_prompt(request, mode["id"])
-            story = generate_with_openai(
-                prompt=prompt,
-                temperature=request.temperature,
-                max_tokens=request.max_tokens,
-                model=model,
-            )
+        story = generate_the_story(request)
     except RuntimeError as missing_key:
         raise HTTPException(status_code=400, detail=str(missing_key)) from missing_key
     except Exception as err:
