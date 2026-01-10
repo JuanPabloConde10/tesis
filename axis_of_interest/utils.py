@@ -44,7 +44,6 @@ def render_aoi_md(aoi: AxisOfInterest | dict | str) -> str:
         out += sep()
     return out
 
-from typing import Mapping
 
 # --- utilidades pequeñas para convivir con Pydantic v1/v2 o dicts ---
 

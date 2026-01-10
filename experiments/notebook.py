@@ -1,7 +1,5 @@
 # %%
-import os
 import json
-import lmstudio as lms
 import sys
 import re
 from langchain_openai import ChatOpenAI
@@ -14,7 +12,7 @@ if str(repo_root) not in sys.path:
 
 from axis_of_interest.schemas import donor_aoi, conflict_aoi
 from axis_of_interest.prompts import prompt_generate_plot_schema
-from axis_of_interest.utils import render_aoi_md, render_plot_schema_md
+from axis_of_interest.utils import render_plot_schema_md
 
 model1 = ChatOpenAI(
     model="gpt-5",
