@@ -37,5 +37,6 @@ def _discover_all_aoi() -> List[AxisOfInterest]:
 
     return aoi_list
 
+
 list_of_aoi = _discover_all_aoi()
 indice_aoi = {a.name: i for i, a in enumerate(list_of_aoi)}

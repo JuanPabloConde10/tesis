@@ -55,6 +55,4 @@ def test_all_spans():
 
         print()
 
-
-if __name__ == "__main__":
-    test_all_spans()
+test_all_spans()

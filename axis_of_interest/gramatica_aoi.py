@@ -234,6 +234,4 @@ def main():
     print("  ", interactivon_oracion("TASK", "TaskSet", "DifficultTask", ["El héroe", "El compañero", "El mentor"]))
     print("  ", interactivon_oracion("JOURNEY", "Back", "Return", ["Sofía", "JP", "Luis"]))
 
-
-if __name__ == "__main__":
-    main()
+main()

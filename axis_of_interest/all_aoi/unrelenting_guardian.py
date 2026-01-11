@@ -28,7 +28,11 @@ unrelenting_guardian_aoi = AxisOfInterest(
                 PlotAtom(
                     name="UnrelentingGuardian",
                     description="Personajes: lover=Hero, beloved=Love Interest, guardian=Obstacle. Objetos: ninguno. Ubicaciones: no registradas.",
-                    characters={"lover": "Hero", "beloved": "Love Interest", "guardian": "Obstacle"},
+                    characters={
+                        "lover": "Hero",
+                        "beloved": "Love Interest",
+                        "guardian": "Obstacle",
+                    },
                     objects={},
                 ),
             ],
@@ -41,7 +45,11 @@ unrelenting_guardian_aoi = AxisOfInterest(
                 PlotAtom(
                     name="HighStatusRevealed",
                     description="Personajes: lover=Hero, beloved=Love Interest, guardian=Obstacle. Objetos: ninguno. Ubicaciones: no registradas.",
-                    characters={"lover": "Hero", "beloved": "Love Interest", "guardian": "Obstacle"},
+                    characters={
+                        "lover": "Hero",
+                        "beloved": "Love Interest",
+                        "guardian": "Obstacle",
+                    },
                     objects={},
                 ),
             ],
