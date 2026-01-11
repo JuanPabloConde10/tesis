@@ -6,8 +6,8 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from config import settings
-from llm_clients import build_client
-from llm_clients.factory import MissingCredentialsError, SUPPORTED_PROVIDERS
+from infrastructure.llm_clients import build_client
+from infrastructure.llm_clients.factory import MissingCredentialsError, SUPPORTED_PROVIDERS
 
 app = FastAPI(title="LLM Playground")
 
@@ -56,8 +56,6 @@ def create_chat(request: ChatRequest) -> dict:
         if request.messages:
             # Convertir mensajes a prompt y system
             system_messages = [msg for msg in request.messages if msg.get("role") == "system"]
-            user_messages = [msg for msg in request.messages if msg.get("role") == "user"]
-            assistant_messages = [msg for msg in request.messages if msg.get("role") == "assistant"]
             
             # Construir prompt con contexto
             prompt_parts = []

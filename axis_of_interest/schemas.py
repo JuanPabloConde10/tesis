@@ -1,19 +1,6 @@
 from pydantic import BaseModel
-from axis_of_interest.all_aoi.call_to_action_reward import call_to_action_reward_aoi
-from axis_of_interest.all_aoi.conflict import conflict_aoi
-from axis_of_interest.all_aoi.donor import donor_aoi
-from axis_of_interest.all_aoi.interdiction_violated import interdiction_violated_aoi
-from axis_of_interest.all_aoi.journey import journey_aoi
-from axis_of_interest.all_aoi.kidnapping import kidnapping_aoi
-from axis_of_interest.all_aoi.kidnapping_punishment import kidnapping_punishment_aoi
-from axis_of_interest.all_aoi.pursuit import pursuit_aoi
-from axis_of_interest.all_aoi.rags2_riches import rags2_riches_aoi
-from axis_of_interest.all_aoi.relenting_guardian import relenting_guardian_aoi
-from axis_of_interest.all_aoi.repentance import repentance_aoi
-from axis_of_interest.all_aoi.rivalry import rivalry_aoi
-from axis_of_interest.all_aoi.shifting_love import shifting_love_aoi
-from axis_of_interest.all_aoi.task import task_aoi
-from axis_of_interest.all_aoi.unrelenting_guardian import unrelenting_guardian_aoi
+import importlib
+import pkgutil
 
 
 class PlotAtom(BaseModel):
@@ -46,23 +33,28 @@ class AxisOfInterest(BaseModel):
     plot_spans: list[PlotSpan]
 
 
-list_of_aoi = [
-    call_to_action_reward_aoi,
-    conflict_aoi,
-    donor_aoi,
-    interdiction_violated_aoi,
-    journey_aoi,
-    kidnapping_aoi,
-    kidnapping_punishment_aoi,
-    pursuit_aoi,
-    rags2_riches_aoi,
-    relenting_guardian_aoi,
-    repentance_aoi,
-    rivalry_aoi,
-    shifting_love_aoi,
-    task_aoi,
-    unrelenting_guardian_aoi,
-]
+list_of_aoi = []
+
+# Primero, añadir cualquier AOI definido localmente en este módulo
+for local in ("donor_aoi", "conflict_aoi"):
+    if local in globals():
+        list_of_aoi.append(globals()[local])
+
+try:
+    import axis_of_interest.all_aoi as _all_aoi_pkg
+
+    for _finder, _name, _ispkg in pkgutil.iter_modules(_all_aoi_pkg.__path__):
+        mod = importlib.import_module(f"axis_of_interest.all_aoi.{_name}")
+        # recoger atributos que terminen en `_aoi`
+        for attr in dir(mod):
+            if attr.endswith("_aoi"):
+                obj = getattr(mod, attr)
+                if obj not in list_of_aoi:
+                    list_of_aoi.append(obj)
+except Exception:
+    # Si ocurre algún error, list_of_aoi seguirá con los AOIs locales (mínimo)
+    pass
+
 indice_aoi = {a.name: i for i, a in enumerate(list_of_aoi)}
 donor_aoi = AxisOfInterest(
     id="aoi_donor",

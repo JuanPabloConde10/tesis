@@ -8,7 +8,7 @@ manteniendo consistencia dentro de cada AOI pero permitiendo variación entre AO
 import random
 from typing import List, Dict, Optional
 from copy import deepcopy
-from axis_of_interest.schemas import PlotSchema, PlotSpan, PlotAtom, list_of_aoi
+from axis_of_interest.schemas import PlotSchema, list_of_aoi
 
 
 class CharacterNameAssigner:

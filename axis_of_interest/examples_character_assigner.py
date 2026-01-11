@@ -89,8 +89,8 @@ def ejemplo_3_mapeo_personalizado():
     schema_con_nombres = assigner.assign_names_with_mapping(schema, nombres, mapeo_custom)
     
     print("\n✨ Schema con mapeo personalizado:")
-    print(f"   - JOURNEY: Hero forzado a 'Alex'")
-    print(f"   - CONFLICT: X forzado a 'Blake'")
+    print("   - JOURNEY: Hero forzado a 'Alex'")
+    print("   - CONFLICT: X forzado a 'Blake'")
     print("─"*80)
     print(render_plot_schema_md(schema_con_nombres))
     print("\n")
