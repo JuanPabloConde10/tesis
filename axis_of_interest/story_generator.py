@@ -333,10 +333,8 @@ class StoryGenerator:
 
 
 def main():
-    """Función principal."""
     generator = StoryGenerator()
     generator.run_interactive()
 
 
-if __name__ == "__main__":
-    main()
+main()
