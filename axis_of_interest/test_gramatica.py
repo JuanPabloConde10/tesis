@@ -4,7 +4,7 @@ Test de la gramática: genera una oración por cada plot span de cada AOI.
 
 import sys
 from pathlib import Path
-from axis_of_interest.schemas import list_of_aoi
+from axis_of_interest.registry import list_of_aoi
 from axis_of_interest.gramatica_aoi import (
     oracionUnicoSujeto,
     oracionDosSujetos,

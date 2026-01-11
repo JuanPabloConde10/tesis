@@ -5,7 +5,8 @@ Permite combinar e intercalar plot spans de diferentes AOIs para crear narrativa
 
 import random
 from typing import List, Optional
-from axis_of_interest.schemas import AxisOfInterest, PlotSchema, PlotSpan, list_of_aoi
+from axis_of_interest.schemas import AxisOfInterest, PlotSchema, PlotSpan
+from axis_of_interest.registry import list_of_aoi
 
 
 class PlotSchemaGenerator:

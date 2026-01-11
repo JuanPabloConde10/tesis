@@ -82,7 +82,9 @@ plot_schema_donor_fight = PlotSchema(
  """
 
 
-template_prompt_generate_plot_schema = (prompt_contexto_axis_of_interest + """
+template_prompt_generate_plot_schema = (
+    prompt_contexto_axis_of_interest
+    + """
 Dado los siguientes Axis of Interest: {axis_of_interest}
 
 Genera un Plot Schema a partir de ellos.
@@ -94,9 +96,12 @@ El Plot Schema debe tener los siguientes campos:
 - name: str
 - description: str
 - plots_span: list[PlotSpan]
-""")
+"""
+)
 
-template_prompt_generate_cuento = (prompt_contexto_axis_of_interest + """
+template_prompt_generate_cuento = (
+    prompt_contexto_axis_of_interest
+    + """
 Genera un cuento a partir del siguiente Plot Schema.
 
 IMPORTANTE: El cuento debe tener un MÁXIMO de 500 palabras.
@@ -107,7 +112,8 @@ Generá el cuento completo (máximo 500 palabras):
 IMPORTANTE: 
 - El cuento debe tener un MÁXIMO de 500 palabras
 - NO incluyas las frases originales tal cual están                                   
-""")
+"""
+)
 
 template_prompt_generate_cuento_gramatica = """
 Sos un escritor experto. Te voy a dar un esqueleto de historia compuesto por frases cortas y simples.
@@ -131,8 +137,10 @@ Frases del esqueleto:
 Generá el cuento completo (máximo 500 palabras), transformando creativamente cada frase del esqueleto:
 """
 
-tenplate_prompt_generar_axis_of_interest = (prompt_contexto_axis_of_interest + """ 
+tenplate_prompt_generar_axis_of_interest = (
+    prompt_contexto_axis_of_interest
+    + """ 
 Dado el siguiente cuento: {cuento}, devuelve una lista de Axis of Interest que abarquen la historia. 
 
-""")
-
+"""
+)

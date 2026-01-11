@@ -8,7 +8,7 @@ import json
 import sys
 from pathlib import Path
 from typing import List, Optional
-from axis_of_interest.schemas import list_of_aoi
+from axis_of_interest.registry import list_of_aoi
 from axis_of_interest.schema_generator import PlotSchemaGenerator
 from axis_of_interest.character_assigner import assign_character_names
 from axis_of_interest.utils import render_plot_schema_md, build_client_by_provider
