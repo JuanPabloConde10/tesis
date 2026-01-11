@@ -46,7 +46,14 @@ Parámetros útiles:
 ### 5. Probar el frontend web
 
 ```bash
-uvicorn app:app --reload
+uvicorn infrastructure.api:api --reload
+```
+
+### 6. Usar docker
+
+```bash
+docker compose up
+docker compose up --build # en caso de instalar requirements o instalar nuevas dependencias.
 ```
 
 Abrí <http://localhost:8000> para acceder a una interfaz web simple donde podés:

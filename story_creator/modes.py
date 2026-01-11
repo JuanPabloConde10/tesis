@@ -1,17 +1,27 @@
 from typing import Optional
 
-from global_schemas import StoryRequest
-from llm_client.models import get_client, get_models
+from infrastructure.api.global_schemas import StoryRequest
+from infrastructure.llm_client import get_client, get_models
 
 AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
 
+
 def get_modes() -> list:
     return [
         {"id": "0", "name": "Modo 0", "description": "Generación a pelo."},
-        {"id": "1", "name": "Modo 1", "description": "Utilizando el Plot Schema en el prompt"},
-        {"id": "2", "name": "Modo 2", "description": "Creamos el Plot Schema y chunks para cada escena. Luego le pedimos al LLM que hile estas escenas en un unico cuento"}
-     ]
+        {
+            "id": "1",
+            "name": "Modo 1",
+            "description": "Utilizando el Plot Schema en el prompt",
+        },
+        {
+            "id": "2",
+            "name": "Modo 2",
+            "description": "Creamos el Plot Schema y chunks para cada escena. Luego le pedimos al LLM que hile estas escenas en un unico cuento",
+        },
+    ]
+
 
 def _resolve_model(model_name: Optional[str]) -> str:
     if model_name:

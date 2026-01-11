@@ -7,14 +7,15 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from experiments.data import get_experiments
-from llm_client.models import get_models
+from infrastructure.llm_client import get_models
+from infrastructure.llm_client.exceptions import LLMQuotaExceededError
 from story_creator.modes import get_modes, generate_the_story
-from global_schemas import StoryRequest
+from .global_schemas import StoryRequest
 
 load_dotenv()
 
 BASE_PATH = Path(__file__).parent
-WEB_DIR = BASE_PATH / "web"
+WEB_DIR = BASE_PATH.parent.parent / "web"
 
 api = FastAPI(title="Taller de cuentos")
 
@@ -24,10 +25,13 @@ DEFAULT_MODEL = AVAILABLE_MODELS[0]
 MODES = get_modes()
 DEFAULT_MODE = MODES[0]["id"]
 
+
 def resolve_model(model_name: Optional[str]) -> str:
     if model_name:
         if model_name not in AVAILABLE_MODELS:
-            raise HTTPException(status_code=400, detail=f"Modelo no habilitado: {model_name}")
+            raise HTTPException(
+                status_code=400, detail=f"Modelo no habilitado: {model_name}"
+            )
         return model_name
     return DEFAULT_MODEL
 
@@ -37,7 +41,9 @@ def resolve_mode(mode_name: Optional[str]) -> dict:
     for mode in MODES:
         if mode["id"] == mode_id:
             return mode
-    raise HTTPException(status_code=400, detail=f"Modo de creación desconocido: {mode_id}")
+    raise HTTPException(
+        status_code=400, detail=f"Modo de creación desconocido: {mode_id}"
+    )
 
 
 @api.get("/", include_in_schema=False)
@@ -56,8 +62,12 @@ def generate_story(request: StoryRequest) -> dict:
         story = generate_the_story(request)
     except RuntimeError as missing_key:
         raise HTTPException(status_code=400, detail=str(missing_key)) from missing_key
+    except LLMQuotaExceededError as quota_err:
+        raise HTTPException(status_code=429, detail=str(quota_err)) from quota_err
     except Exception as err:
-        raise HTTPException(status_code=500, detail=f"No se pudo generar el cuento: {err}") from err
+        raise HTTPException(
+            status_code=500, detail=f"No se pudo generar el cuento: {err}"
+        ) from err
 
     return {"story": story, "mode": mode["id"], "model": model}
 
