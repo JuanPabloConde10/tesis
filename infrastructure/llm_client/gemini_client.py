@@ -1,10 +1,8 @@
-
-from typing import Optional
+from typing import Dict, Optional
 
 from google import genai
 
 from .base import BaseLLMProvider, ChatMessage
-
 
 
 class GeminiProvider(BaseLLMProvider):
@@ -25,7 +23,7 @@ class GeminiProvider(BaseLLMProvider):
             (m["content"] for m in messages if m["role"] == "system"), None
         )
 
-        config = {"temperature": temperature}
+        config: Dict[str, str | float] = {"temperature": temperature}
         if max_tokens is not None:
             config["max_output_tokens"] = max_tokens
 

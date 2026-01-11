@@ -14,8 +14,6 @@ class ClientLLM:
     """Facade cliente para distintos proveedores de LLM.
 
     La implementación concreta de cada proveedor está separada en módulos
-    (`openai_client.py`, `gemini_client.py`). Esto mantiene `client.py` corto
-    y fácil de mantener.
     """
 
     def __init__(

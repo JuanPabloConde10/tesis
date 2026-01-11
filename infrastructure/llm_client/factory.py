@@ -1,12 +1,15 @@
-"""Factory to resolve and instantiate LLM clients/providers.
+"""Factory para crear clientes LLM.
 
-This is a thin wrapper that uses the existing `ClientLLM` facade
-implemented in `client.py` to preserve current behaviour while
-providing a central place to construct clients.
+Esta fábrica centraliza la creación de clientes LLM.
+Cada cliente se configura según la entrada del modelo
 """
 
 import os
-from typing import Optional, cast
+from typing import Optional, cast, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    # Import for type checking only to avoid circular runtime import
+    from .models import ModelEntry
 
 from .client import ClientLLM, ProviderName
 
@@ -35,7 +38,7 @@ def resolve_client(
     return ClientLLM(provider=normalized, model=model, api_key=key, base_url=base_url)
 
 
-def get_client_for_entry(entry: dict) -> ClientLLM:
+def get_client_for_entry(entry: "ModelEntry") -> ClientLLM:
     return resolve_client(
         entry["provider"],
         entry["model"],
