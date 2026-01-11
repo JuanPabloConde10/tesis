@@ -46,7 +46,7 @@ def render_aoi_md(aoi: AxisOfInterest | dict | str) -> str:
             )
             rows.append((ev.get("label", ""), right))
 
-        leftw = max((len(l) for l, _ in rows), default=0) + 2
+        leftw = max((len(label) for label, _ in rows), default=0) + 2
         for lbl, right in rows:
             out += f"{lbl.ljust(leftw)}{right}\n"
         out += sep()
