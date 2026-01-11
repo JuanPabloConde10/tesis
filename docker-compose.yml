@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    container_name: tesis_web
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+    command: uvicorn infrastructure.api:api --host 0.0.0.0 --port 8000 --reload
+    restart: unless-stopped

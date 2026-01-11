@@ -3,64 +3,179 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LLM Playground</title>
+    <title>Taller de cuentos</title>
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1>LLM Playground</h1>
-        <p>Probá distintos modelos desde una interfaz unificada.</p>
+    <div class="page">
+      <header class="hero">
+        <div class="hero__copy">
+          <p class="eyebrow">Taller narrativo</p>
+          <h1>Generá y evaluá cuentos en un mismo lugar</h1>
+          <p class="lede">Elegí cómo empezar: carga propia o experimentos prearmados.</p>
+        </div>
+        <div class="hero__actions">
+          <div id="mode-pill" class="pill">Elegí un flujo para comenzar</div>
+          <button id="reset-flow" class="ghost ghost--inline" type="button">Cambiar flujo</button>
+          <nav class="tabs is-hidden" aria-label="Vistas">
+            <button class="tab" data-target="request-panel">Requerimiento</button>
+            <button class="tab" data-target="review-panel">Evaluación</button>
+          </nav>
+        </div>
       </header>
-      <main>
-        <form id="chat-form">
-          <div class="field">
-            <label for="provider">Proveedor</label>
-            <select id="provider" name="provider"></select>
-          </div>
-          <div class="field">
-            <label for="system">Mensaje de sistema (opcional)</label>
-            <textarea id="system" name="system" rows="2" placeholder="Actuá como..."></textarea>
-          </div>
-          <div class="field">
-            <label for="prompt">Prompt</label>
-            <textarea
-              id="prompt"
-              name="prompt"
-              rows="5"
-              placeholder="Escribí tu consulta..."
-              required
-            ></textarea>
-          </div>
-          <div class="field-group">
-            <div class="field">
-              <label for="temperature">Temperatura</label>
-              <input
-                id="temperature"
-                name="temperature"
-                type="number"
-                step="0.1"
-                min="0"
-                max="2"
-                placeholder="ej. 0.7"
-              />
+
+      <main class="content">
+        <section id="landing-panel" class="panel active">
+          <div class="card card--stack">
+            <div class="card__header">
+              <h2>Elegí cómo querés armar el cuento</h2>
+              <p>Arrancá desde cero o cargá casos de prueba definidos en el backend.</p>
             </div>
-            <div class="field">
-              <label for="maxTokens">Max tokens</label>
-              <input
-                id="maxTokens"
-                name="maxTokens"
-                type="number"
-                min="1"
-                placeholder="ej. 512"
-              />
+            <div class="landing-grid">
+              <div class="landing-card">
+                <div>
+                  <p class="eyebrow eyebrow--muted">Flujo manual</p>
+                  <h3>Crear tu propia historia</h3>
+                  <p>Completá la trama y los personajes. Ideal para redactar y probar rápidamente.</p>
+                </div>
+                <div class="landing-card__actions">
+                  <button class="primary" id="start-custom" type="button">Crear tu propia historia</button>
+                </div>
+              </div>
+              <div class="landing-card">
+                <div>
+                  <p class="eyebrow eyebrow--muted">Flujo guiado</p>
+                  <h3>Correr experimentos</h3>
+                  <p>Carga los datos desde el backend para reproducir experimentos y compararlos.</p>
+                  <p class="hint">Se llenan automáticamente los campos del formulario.</p>
+                </div>
+                <div class="landing-card__actions">
+                  <button class="secondary" id="start-experiments" type="button">Cargar experimentos</button>
+                </div>
+              </div>
             </div>
           </div>
-          <button type="submit">Enviar</button>
-        </form>
-        <section class="output">
-          <h2>Respuesta</h2>
-          <div id="response" class="response-box"></div>
+        </section>
+
+        <section id="request-panel" class="panel">
+          <form id="story-form" class="card">
+            <div class="card__header">
+              <h2>Armá el pedido</h2>
+              <p>Define la trama, suma personajes y elegí el arco narrativo.</p>
+            </div>
+
+            <div id="experiment-banner" class="banner is-hidden">
+              <div>
+                <p class="banner__title">Ejecutando experimento</p>
+                <p id="experiment-title" class="banner__text"></p>
+              </div>
+              <div class="banner__actions">
+                <button type="button" class="ghost" id="next-experiment">Siguiente experimento</button>
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="mode">Modo de creación</label>
+                <select id="mode" name="mode">
+                  <option value="">Elegí un modo</option>
+                </select>
+                <p id="mode-hint" class="hint">Los modos se definen en el backend.</p>
+              </div>
+              <div class="field">
+                <label for="model">Modelo LLM</label>
+                <select id="model" name="model">
+                  <option value="">Usar modelo por defecto</option>
+                </select>
+                <p class="hint">Controlamos esta lista desde el backend.</p>
+              </div>
+            </div>
+
+            <div id="mode-description" class="note">Seleccioná un modo para ver su detalle.</div>
+
+            <div class="field">
+              <label for="plot">Descripción de la trama</label>
+              <textarea
+                id="plot"
+                name="plot"
+                rows="4"
+                placeholder="Ej: En un pueblo costero, una científica descubre un faro que habla..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <div class="field__label-row">
+                <label for="characters-list">Personajes</label>
+                <span class="hint">Un campo por personaje</span>
+              </div>
+              <div id="characters-list" class="character-list" aria-live="polite"></div>
+              <button type="button" class="ghost" id="add-character">+ Agregar personaje</button>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="genre">Género de la historia</label>
+                <input
+                  id="genre"
+                  name="genre"
+                  type="text"
+                  placeholder="Fantasía, policial, ciencia ficción..."
+                />
+              </div>
+              <div class="field">
+                <label for="arc">Arco de historia</label>
+                <select id="arc" name="arc">
+                  <option value="">Elegí un arco</option>
+                  <option value="viaje_del_heroe">Viaje del héroe</option>
+                  <option value="maduracion">Historia de maduración</option>
+                  <option value="busqueda">Búsqueda</option>
+                  <option value="venganza">Venganza</option>
+                  <option value="comedia_de_enredos">Comedia de enredos</option>
+                  <option value="tragedia">Tragedia</option>
+                </select>
+              </div>
+            </div>
+
+            <button class="primary" type="submit">Generar cuento</button>
+          </form>
+        </section>
+
+        <section id="review-panel" class="panel">
+          <div class="card split">
+            <div class="story-column">
+              <div class="card__header">
+                <h2>Cuento generado</h2>
+                <p>Por ahora se muestra un texto de ejemplo.</p>
+              </div>
+              <div id="story-preview" class="story-box">
+                En una aldea rodeada de montañas, un aprendiz de botánica descubre que las
+                flores del valle reaccionan a la música. Con la ayuda de su hermana menor,
+                organiza un concierto secreto que despierta a un ser antiguo que protege el
+                bosque. Los dos hermanos deben decidir entre mantener el secreto o compartir
+                el hallazgo con el pueblo antes de que las flores se marchiten.
+              </div>
+            </div>
+
+            <div class="evaluation-column">
+              <div class="card__header">
+                <h2>Evaluá la historia</h2>
+                <p>Asigná un valor de 0 a 5 para cada criterio.</p>
+              </div>
+              <div id="questions" class="questions"></div>
+
+              <div class="score">
+                <div>
+                  <p class="score__label">Score final</p>
+                  <p class="score__hint">Promedio simple de los criterios</p>
+                </div>
+                <div class="score__value" id="score-value">0.0</div>
+              </div>
+              <div class="score-meter" aria-hidden="true">
+                <div id="score-fill" class="score-meter__fill"></div>
+              </div>
+            </div>
+          </div>
         </section>
       </main>
     </div>
