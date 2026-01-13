@@ -1,7 +1,7 @@
-DEFAULT_LOCAL_BASE_URL = "http://localhost:1234/v1"
 import os
 from typing import Optional
 
+DEFAULT_LOCAL_BASE_URL = "http://localhost:1234/v1"
 
 def get_env_key(*names: str) -> Optional[str]:
     """Return the first non-empty environment variable from names."""

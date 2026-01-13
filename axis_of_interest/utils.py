@@ -1,6 +1,10 @@
 from axis_of_interest.schemas import AxisOfInterest, PlotSchema
 import json
 
+from config import Settings
+from infrastructure.llm_client.models import MODELS, get_client as get_client_by_model
+
+
 def render_aoi_md(aoi: AxisOfInterest | dict | str) -> str:
     if isinstance(aoi, str):
         aoi_dict = json.loads(aoi)
@@ -24,33 +28,39 @@ def render_aoi_md(aoi: AxisOfInterest | dict | str) -> str:
 
     # encabezado
     lines = []
-    lines.append(f"AXISofINTEREST =  {aoi_dict.get('name','')}")
-    lines.append(f"PROTAGONIST =  {aoi_dict.get('protagonist_role','')}")
+    lines.append(f"AXISofINTEREST =  {aoi_dict.get('name', '')}")
+    lines.append(f"PROTAGONIST =  {aoi_dict.get('protagonist_role', '')}")
     roles = " ".join(aoi_dict.get("roles", []))
     lines.append(f"ROLES =  {roles}")
     out = "\n".join(lines) + sep()
 
     # spans
     for ps in aoi_dict.get("plot_spans", []):
-        out += f"PLOT-SPAN-NAME =  {ps.get('name','')}\n\n"
+        out += f"PLOT-SPAN-NAME =  {ps.get('name', '')}\n\n"
         rows = []
         for ev in ps.get("plots_atoms", []):
-            right = fmt_block(name=ev.get("name",""), characters=ev.get("characters"), objects=ev.get("objects"))
-            rows.append((ev.get("label",""), right))
+            right = fmt_block(
+                name=ev.get("name", ""),
+                characters=ev.get("characters"),
+                objects=ev.get("objects"),
+            )
+            rows.append((ev.get("label", ""), right))
 
-        leftw = (max((len(lbl) for lbl, _ in rows), default=0) + 2)
+        leftw = max((len(label) for label, _ in rows), default=0) + 2
         for lbl, right in rows:
             out += f"{lbl.ljust(leftw)}{right}\n"
         out += sep()
     return out
 
 
-# --- utilidades pequeñas para convivir con Pydantic v1/v2 o dicts ---
+
+
 
 def _fmt_kv(d: dict | None) -> str:
     if not d:
         return ""
     return ",".join(f"{k}={v}" for k, v in d.items())
+
 
 def render_plot_schema_md(plot_schema: PlotSchema | dict | str) -> str:
     if isinstance(plot_schema, str):
@@ -67,16 +77,18 @@ def render_plot_schema_md(plot_schema: PlotSchema | dict | str) -> str:
 
     # Encabezado del PlotSchema
     header = []
-    header.append(f"PLOT-SCHEMA =  {plot_schema_dict.get('name','')}")
+    header.append(f"PLOT-SCHEMA =  {plot_schema_dict.get('name', '')}")
     if plot_schema_dict.get("description"):
         header.append(f"DESCRIPTION:\n{plot_schema_dict['description']}")
     out = "\n".join(header) + sep()
 
     # Soporta 'plots_span' (tu esquema) y también 'plot_spans' por si acaso
-    spans = plot_schema_dict.get("plots_span") or plot_schema_dict.get("plot_spans") or []
+    spans = (
+        plot_schema_dict.get("plots_span") or plot_schema_dict.get("plot_spans") or []
+    )
     for span in spans:
-        out += f"AXISofINTEREST =  {span.get('axis_of_interest','')}\n"
-        out += f"PLOT-SPAN-NAME =  {span.get('name','')}\n"
+        out += f"AXISofINTEREST =  {span.get('axis_of_interest', '')}\n"
+        out += f"PLOT-SPAN-NAME =  {span.get('name', '')}\n"
         if span.get("description"):
             out += f"DESCRIPTION:\n{span['description']}\n\n"
 
@@ -90,9 +102,15 @@ def render_plot_schema_md(plot_schema: PlotSchema | dict | str) -> str:
             ob = atom.get("objects")
             if ob:
                 right_parts.append(f"objects({_fmt_kv(ob)})")
-            rows.append((atom.get("name",""), "  ".join(right_parts), atom.get("description","")))
+            rows.append(
+                (
+                    atom.get("name", ""),
+                    "  ".join(right_parts),
+                    atom.get("description", ""),
+                )
+            )
 
-        leftw = (max((len(name) for name, _, _ in rows), default=0) + 2)
+        leftw = max((len(name) for name, _, _ in rows), default=0) + 2
         for name, right, desc in rows:
             out += f"{name.ljust(leftw)}{right}\n"
             if desc:
@@ -101,3 +119,30 @@ def render_plot_schema_md(plot_schema: PlotSchema | dict | str) -> str:
         out += sep()
 
     return out
+
+
+def build_client_by_provider(provider: str | None, settings: Settings):
+    """Construye un `ClientLLM` a partir del nombre del proveedor.
+
+    Busca el primer `MODELS` entry cuyo campo `provider` coincida con `provider`.
+    Si `provider` es None, usa `settings.default_provider`.
+    """
+    chosen = (provider or getattr(settings, "default_provider", None) or "").lower()
+
+    # Intentar coincidencia directa
+    for entry in MODELS:
+        if entry.get("provider", "").lower() == chosen:
+            return get_client_by_model(entry["model"])
+
+    # Mapas de compatibilidad
+    alias_map = {
+        "google": "gemini",
+        "g": "gemini",
+    }
+    mapped = alias_map.get(chosen)
+    if mapped:
+        for entry in MODELS:
+            if entry.get("provider", "").lower() == mapped:
+                return get_client_by_model(entry["model"])
+
+    raise ValueError(f"Proveedor no soportado o no configurado: {provider}")
