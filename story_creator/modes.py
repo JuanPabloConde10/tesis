@@ -10,6 +10,8 @@ from axis_of_interest.character_attributes import Character, CharacterAttributes
 from axis_of_interest.utils import render_plot_schema_md
 from axis_of_interest.prompts import template_prompt_generate_cuento
 from axis_of_interest.text_gen import generate_text
+from story_creator.mode0 import create_prompt_mode0
+from story_creator.mode1 import create_prompt_mode1
 
 AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
@@ -69,6 +71,11 @@ def _build_prompts(data: StoryRequest) -> tuple[str, str]:
         user_parts.append(f"Identificador de experimento: {data.experiment_id}")
     user_prompt = "\n".join(user_parts)
     return system_prompt, user_prompt
+    """Construye un prompt dependiendo del modo"""
+    if data.mode == "0":
+       return create_prompt_mode0(data)
+    if data.mode == "1":
+        return create_prompt_mode1(data)
 
 
 def _build_characters_section(

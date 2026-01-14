@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional, Dict
+from typing import Optional, Dict, List
 
 class CharacterAttributesSchema(BaseModel):
     """Atributos de personalidad de un personaje (1-5)."""
@@ -15,6 +15,7 @@ class CharacterWithAttributesSchema(BaseModel):
     attributes: CharacterAttributesSchema
     description: Optional[str] = None
 
+
 class StoryRequest(BaseModel):
     trama: str = Field(..., min_length=5)
     genero: Optional[str] = None
@@ -28,3 +29,5 @@ class StoryRequest(BaseModel):
     aois: Optional[list[str]] = Field(default=None, description="Lista de Axis of Interest (para Modo 3 y 4)")
     interleaving_strategy: Optional[str] = Field(default=None, description="Estrategia de interleaving: sequential, round_robin, parallel, random, llm (para Modo 3 y 4)")
     character_attributes: Optional[list[CharacterWithAttributesSchema]] = Field(default=None, description="Lista de personajes con atributos (para Modo 4)")
+    aoi_names: Optional[List[str]] = None
+    strategy: Optional[str] = None
