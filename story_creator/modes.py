@@ -2,6 +2,8 @@ from typing import Optional
 
 from infrastructure.api.global_schemas import StoryRequest
 from infrastructure.llm_client import get_client, get_models
+from story_creator.mode0 import create_prompt_mode0
+from story_creator.mode1 import create_prompt_mode1
 
 AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
@@ -32,19 +34,11 @@ def _resolve_model(model_name: Optional[str]) -> str:
 
 
 def _build_prompts(data: StoryRequest) -> tuple[str, str]:
-    """Construye un prompt simple con los datos del usuario."""
-    system_prompt = "Eres un escritor que crea cuentos breves en español, con tono claro y atractivo."
-    user_parts = [f"Trama: {data.trama}"]
-    if data.genero:
-        user_parts.append(f"Género: {data.genero}")
-    if data.arco:
-        user_parts.append(f"Arco narrativo: {data.arco}")
-    if data.personajes:
-        user_parts.append("Personajes: " + ", ".join(data.personajes))
-    if data.experiment_id:
-        user_parts.append(f"Identificador de experimento: {data.experiment_id}")
-    user_prompt = "\n".join(user_parts)
-    return system_prompt, user_prompt
+    """Construye un prompt dependiendo del modo"""
+    if data.mode == "0":
+       return create_prompt_mode0(data)
+    if data.mode == "1":
+        return create_prompt_mode1(data)
 
 
 def generate_the_story(data: StoryRequest) -> str:

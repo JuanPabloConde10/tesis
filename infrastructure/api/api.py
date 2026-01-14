@@ -10,6 +10,7 @@ from experiments.data import get_experiments
 from infrastructure.llm_client import get_models
 from infrastructure.llm_client.exceptions import LLMQuotaExceededError
 from story_creator.modes import get_modes, generate_the_story
+from axis_of_interest.registry import list_of_aoi
 from .global_schemas import StoryRequest
 
 load_dotenv()
@@ -24,6 +25,7 @@ DEFAULT_MODEL = AVAILABLE_MODELS[0]
 
 MODES = get_modes()
 DEFAULT_MODE = MODES[0]["id"]
+AOI_NAMES = sorted({aoi.name for aoi in list_of_aoi})
 
 
 def resolve_model(model_name: Optional[str]) -> str:
@@ -79,6 +81,7 @@ def list_options() -> dict:
         "defaultModel": DEFAULT_MODEL,
         "defaultMode": DEFAULT_MODE,
         "modes": MODES,
+        "aoiNames": AOI_NAMES,
     }
 
 

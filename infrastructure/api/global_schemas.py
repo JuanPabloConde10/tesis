@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List
 
 class StoryRequest(BaseModel):
     trama: str = Field(..., min_length=5)
@@ -11,3 +11,5 @@ class StoryRequest(BaseModel):
     model: Optional[str] = Field(default=None, description="Modelo LLM a usar")
     mode: Optional[str] = Field(default=None, description="Modo de creación backend")
     experiment_id: Optional[str] = Field(default=None, description="Identificador de experimento opcional")
+    aoi_names: Optional[List[str]] = None
+    strategy: Optional[str] = None

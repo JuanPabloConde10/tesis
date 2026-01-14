@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const state = {
-    config: { modes: [], models: [], defaultMode: "", defaultModel: "" },
+    config: { modes: [], models: [], defaultMode: "", defaultModel: "", aoiNames: [] },
     entry: null,
     experiments: [],
     experimentIndex: 0,
@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modeSelect = document.getElementById("mode");
   const modeDescription = document.getElementById("mode-description");
   const modeHint = document.getElementById("mode-hint");
+  const aoiOptions = document.getElementById("aoi-options");
   const experimentBanner = document.getElementById("experiment-banner");
   const experimentTitle = document.getElementById("experiment-title");
   const nextExperimentButton = document.getElementById("next-experiment");
@@ -78,6 +79,14 @@ document.addEventListener("DOMContentLoaded", () => {
     return Array.from(inputs)
       .map((input) => input.value.trim())
       .filter(Boolean);
+  }
+
+  function getSelectedAois() {
+    if (!aoiOptions) return [];
+    const inputs = aoiOptions.querySelectorAll("input[type='checkbox']");
+    return Array.from(inputs)
+      .filter((input) => input.checked)
+      .map((input) => input.value);
   }
 
   addCharacterButton.addEventListener("click", () => addCharacterField());
@@ -138,6 +147,33 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function hydrateAoiOptions() {
+    if (!aoiOptions) return;
+    aoiOptions.innerHTML = "";
+    const aoiNames = state.config.aoiNames || [];
+    if (!aoiNames.length) {
+      aoiOptions.textContent = "No hay AOIs disponibles.";
+      aoiOptions.classList.add("is-empty");
+      return;
+    }
+    aoiOptions.classList.remove("is-empty");
+    aoiNames.forEach((name) => {
+      const label = document.createElement("label");
+      label.className = "aoi-option";
+
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.name = "aoi_names";
+      input.value = name;
+
+      const text = document.createElement("span");
+      text.textContent = name;
+
+      label.append(input, text);
+      aoiOptions.append(label);
+    });
+  }
+
   function applyDefaults() {
     if (state.config.defaultMode) {
       modeSelect.value = state.config.defaultMode;
@@ -166,9 +202,11 @@ document.addEventListener("DOMContentLoaded", () => {
         models: data.models || [],
         defaultMode: data.defaultMode || "",
         defaultModel: data.defaultModel || "",
+        aoiNames: data.aoiNames || [],
       };
       hydrateModeOptions();
       hydrateModelOptions();
+      hydrateAoiOptions();
       applyDefaults();
     } catch (error) {
       modeDescription.textContent = `No se pudieron cargar las opciones: ${error.message}`;
@@ -234,6 +272,13 @@ document.addEventListener("DOMContentLoaded", () => {
     form.plot.value = experiment.trama || "";
     form.genre.value = experiment.genero || "";
     form.arc.value = experiment.arco || "";
+    if (aoiOptions) {
+      const selected = new Set(experiment.aoi_names || []);
+      const inputs = aoiOptions.querySelectorAll("input[type='checkbox']");
+      inputs.forEach((input) => {
+        input.checked = selected.has(input.value);
+      });
+    }
 
     characterList.innerHTML = "";
     (experiment.personajes || []).forEach((character) => addCharacterField(character));
@@ -289,12 +334,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const genero = form.genre.value.trim();
     const arco = form.arc.value;
     const personajes = getCharacters();
+    const aoi_names = getSelectedAois();
+    const strategy = state.currentExperiment?.strategy || "sequential";
 
     const payload = {
       trama,
       genero,
       arco,
       personajes,
+      aoi_names,
+      strategy,
       model: modelSelect.value || null,
       mode: modeSelect.value || null,
       experiment_id: state.currentExperiment?.id || null,
