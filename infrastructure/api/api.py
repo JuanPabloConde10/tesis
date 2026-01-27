@@ -1,3 +1,5 @@
+import logging
+import traceback
 from pathlib import Path
 from typing import Optional
 
@@ -14,6 +16,8 @@ from axis_of_interest.registry import list_of_aoi
 from .global_schemas import StoryRequest
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 BASE_PATH = Path(__file__).parent
 WEB_DIR = BASE_PATH.parent.parent / "web"
@@ -61,17 +65,48 @@ def generate_story(request: StoryRequest) -> dict:
     mode = resolve_mode(request.mode)
     model = resolve_model(request.model)
     try:
-        story = generate_the_story(request)
+        story = generate_the_story(request, mode_id=mode["id"])
     except RuntimeError as missing_key:
         raise HTTPException(status_code=400, detail=str(missing_key)) from missing_key
     except LLMQuotaExceededError as quota_err:
         raise HTTPException(status_code=429, detail=str(quota_err)) from quota_err
     except Exception as err:
+        err_msg = str(err)
+        if "401" in err_msg or "invalid_api_key" in err_msg or "Incorrect API key" in err_msg:
+            logger.warning("API key inválida o rechazada: %s", err_msg[:200])
+            raise HTTPException(
+                status_code=401,
+                detail="Clave de API de OpenAI inválida o revocada. Revisá OPENAI_API_KEY en .env y generá una nueva en https://platform.openai.com/account/api-keys",
+            ) from err
+        logger.exception(
+            "Error generando cuento: %s\n%s", err, traceback.format_exc()
+        )
         raise HTTPException(
             status_code=500, detail=f"No se pudo generar el cuento: {err}"
         ) from err
 
     return {"story": story, "mode": mode["id"], "model": model}
+
+
+STRATEGIES = [
+    {"id": "sequential", "name": "Secuencial", "description": "Concatena todos los spans de cada AOI en orden"},
+    {"id": "round_robin", "name": "Round Robin", "description": "Alterna entre AOIs circularmente"},
+    {"id": "parallel", "name": "Paralelo", "description": "Agrupa spans por posición"},
+    {"id": "random", "name": "Aleatorio", "description": "Selección aleatoria respetando orden interno"},
+]
+
+GENERATION_METHODS = [
+    {
+        "id": "gramatica",
+        "name": "Gramática",
+        "description": "Genera texto simple con gramática y luego el LLM lo transforma en cuento completo",
+    },
+    {
+        "id": "aoi_directo",
+        "name": "AOI Directo",
+        "description": "Envía el Plot Schema completo (JSON) directamente al LLM para generar el cuento",
+    },
+]
 
 
 @api.get("/api/options")
@@ -82,6 +117,8 @@ def list_options() -> dict:
         "defaultMode": DEFAULT_MODE,
         "modes": MODES,
         "aoiNames": AOI_NAMES,
+        "strategies": STRATEGIES,
+        "generationMethods": GENERATION_METHODS,
     }
 
 

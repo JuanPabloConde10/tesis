@@ -145,6 +145,16 @@
               </p>
             </div>
 
+            <div id="generation-method-field" class="field">
+              <label for="generation-method">Método de generación (Modo 2)</label>
+              <select id="generation-method" name="generation-method">
+                <option value="">Elegí un método</option>
+                <option value="gramatica">Gramática</option>
+                <option value="aoi_directo">AOI directo</option>
+              </select>
+              <p class="hint">Gramática: texto simple → LLM. AOI directo: schema JSON → LLM. Solo aplica en Modo 2.</p>
+            </div>
+
             <button class="primary" type="submit">Generar cuento</button>
           </form>
         </section>

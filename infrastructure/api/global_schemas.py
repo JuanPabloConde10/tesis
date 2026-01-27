@@ -13,3 +13,4 @@ class StoryRequest(BaseModel):
     experiment_id: Optional[str] = Field(default=None, description="Identificador de experimento opcional")
     aoi_names: Optional[List[str]] = None
     strategy: Optional[str] = None
+    generation_method: Optional[str] = Field(default=None, description="Método de generación para Modo 2: 'gramatica' o 'aoi_directo'")
