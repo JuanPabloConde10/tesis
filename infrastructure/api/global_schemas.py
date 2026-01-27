@@ -31,3 +31,4 @@ class StoryRequest(BaseModel):
     character_attributes: Optional[list[CharacterWithAttributesSchema]] = Field(default=None, description="Lista de personajes con atributos (para Modo 4)")
     aoi_names: Optional[List[str]] = None
     strategy: Optional[str] = None
+    generation_method: Optional[str] = Field(default=None, description="Método de generación para Modo 2: 'gramatica' o 'aoi_directo'")

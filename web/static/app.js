@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("=== SCRIPT CARGADO ===");
   const state = {
     aois: { list: [], strategies: [] },
-    config: { modes: [], models: [], defaultMode: "", defaultModel: "", aoiNames: [] },
+    config: { modes: [], models: [], defaultMode: "", defaultModel: "", aoiNames: [], strategies: [], generationMethods: [] },
     entry: null,
     experiments: [],
     experimentIndex: 0,
@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modeDescription = document.getElementById("mode-description");
   const modeHint = document.getElementById("mode-hint");
   const aoiOptions = document.getElementById("aoi-options");
+  const generationMethodSelect = document.getElementById("generation-method");
   const experimentBanner = document.getElementById("experiment-banner");
   const experimentTitle = document.getElementById("experiment-title");
   const nextExperimentButton = document.getElementById("next-experiment");
@@ -279,6 +280,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function hydrateGenerationMethodOptions() {
+    if (!generationMethodSelect) return;
+    generationMethodSelect.innerHTML = '<option value="">Elegí un método</option>';
+    (state.config.generationMethods || []).forEach((m) => {
+      const opt = document.createElement("option");
+      opt.value = m.id;
+      opt.textContent = m.name;
+      opt.title = m.description;
+      generationMethodSelect.append(opt);
+    });
+  }
+
   function applyDefaults() {
     if (state.config.defaultMode) {
       modeSelect.value = state.config.defaultMode;
@@ -286,6 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (state.config.defaultModel) {
       modelSelect.value = state.config.defaultModel;
     }
+    if (generationMethodSelect) generationMethodSelect.value = "";
     updateModeDescription();
   }
 
@@ -308,10 +322,13 @@ document.addEventListener("DOMContentLoaded", () => {
         defaultMode: data.defaultMode || "",
         defaultModel: data.defaultModel || "",
         aoiNames: data.aoiNames || [],
+        strategies: data.strategies || [],
+        generationMethods: data.generationMethods || [],
       };
       hydrateModeOptions();
       hydrateModelOptions();
       hydrateAoiOptions();
+      hydrateGenerationMethodOptions();
       applyDefaults();
     } catch (error) {
       modeDescription.textContent = `No se pudieron cargar las opciones: ${error.message}`;
@@ -551,6 +568,9 @@ document.addEventListener("DOMContentLoaded", () => {
         input.checked = selected.has(input.value);
       });
     }
+    if (generationMethodSelect && experiment.generation_method) {
+      generationMethodSelect.value = experiment.generation_method;
+    }
 
     characterList.innerHTML = "";
     (experiment.personajes || []).forEach((character) => addCharacterField(character));
@@ -615,7 +635,7 @@ document.addEventListener("DOMContentLoaded", () => {
       personajes = getCharacters();
     }
     const aoi_names = getSelectedAois();
-    const strategy = state.currentExperiment?.strategy || "sequential";
+    const generation_method = (generationMethodSelect && generationMethodSelect.value) || state.currentExperiment?.generation_method || null;
 
     const payload = {
       trama,
@@ -623,7 +643,8 @@ document.addEventListener("DOMContentLoaded", () => {
       arco,
       personajes,
       aoi_names,
-      strategy,
+      strategy: state.currentExperiment?.strategy || "sequential",
+      generation_method: generation_method || null,
       model: modelSelect.value || null,
       mode: modeId,
       experiment_id: state.currentExperiment?.id || null,

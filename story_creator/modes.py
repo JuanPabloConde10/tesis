@@ -12,6 +12,7 @@ from axis_of_interest.prompts import template_prompt_generate_cuento
 from axis_of_interest.text_gen import generate_text
 from story_creator.mode0 import create_prompt_mode0
 from story_creator.mode1 import create_prompt_mode1
+from story_creator.mode2 import generate_story_mode2
 
 AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
@@ -76,6 +77,7 @@ def _build_prompts(data: StoryRequest) -> tuple[str, str]:
        return create_prompt_mode0(data)
     if data.mode == "1":
         return create_prompt_mode1(data)
+    raise RuntimeError(f"Modo de creación no implementado: {mode_id}")
 
 
 def _build_characters_section(
@@ -100,15 +102,26 @@ def _build_characters_section(
     return "No especificado"
 
 
-def _generate_mode_0(data: StoryRequest) -> str:
+def _generate_mode_0(data: StoryRequest, mode_id: str) -> str:
     """Modo 0: Generación directa sin Plot Schema."""
     model_name = _resolve_model(data.model)
     client = get_client(model_name)
-    system_prompt, user_prompt = _build_prompts(data)
+    temperature = data.temperature if data.temperature is not None else 0.7
+
+    if mode_id == "2":
+        return generate_story_mode2(
+            data,
+            client,
+            temperature=temperature,
+            max_tokens=data.max_tokens,
+            seed=42,
+        )
+
+    system_prompt, user_prompt = _build_prompts(data, mode_id)
     return client.generate(
         user_prompt,
         system_prompt=system_prompt,
-        temperature=data.temperature if data.temperature is not None else 0.7,
+        temperature=temperature,
         max_tokens=data.max_tokens,
     )
 
