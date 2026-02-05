@@ -50,7 +50,7 @@ uvicorn infrastructure.api:api --reload
 ```
 
 ### 6. Usar docker
-
+Recomendando siempre usar docker
 ```bash
 docker compose up
 docker compose up --build # en caso de instalar requirements o instalar nuevas dependencias.

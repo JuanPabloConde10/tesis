@@ -1,3 +1,5 @@
+import logging
+import traceback
 from pathlib import Path
 from typing import Optional
 
@@ -10,9 +12,13 @@ from experiments.data import get_experiments
 from infrastructure.llm_client import get_models
 from infrastructure.llm_client.exceptions import LLMQuotaExceededError
 from story_creator.modes import get_modes, generate_the_story
+from axis_of_interest.registry import list_of_aoi
 from .global_schemas import StoryRequest
+from .constants import STRATEGIES, GENERATION_METHODS
 
 load_dotenv()
+
+logger = logging.getLogger(__name__)
 
 BASE_PATH = Path(__file__).parent
 WEB_DIR = BASE_PATH.parent.parent / "web"
@@ -24,6 +30,7 @@ DEFAULT_MODEL = AVAILABLE_MODELS[0]
 
 MODES = get_modes()
 DEFAULT_MODE = MODES[0]["id"]
+AOI_NAMES = sorted({aoi.name for aoi in list_of_aoi})
 
 
 def resolve_model(model_name: Optional[str]) -> str:
@@ -59,12 +66,22 @@ def generate_story(request: StoryRequest) -> dict:
     mode = resolve_mode(request.mode)
     model = resolve_model(request.model)
     try:
-        story = generate_the_story(request)
+        story = generate_the_story(request, mode_id=mode["id"])
     except RuntimeError as missing_key:
         raise HTTPException(status_code=400, detail=str(missing_key)) from missing_key
     except LLMQuotaExceededError as quota_err:
         raise HTTPException(status_code=429, detail=str(quota_err)) from quota_err
     except Exception as err:
+        err_msg = str(err)
+        if "401" in err_msg or "invalid_api_key" in err_msg or "Incorrect API key" in err_msg:
+            logger.warning("API key inválida o rechazada: %s", err_msg[:200])
+            raise HTTPException(
+                status_code=401,
+                detail="Clave de API de OpenAI inválida o revocada. Revisá OPENAI_API_KEY en .env y generá una nueva en https://platform.openai.com/account/api-keys",
+            ) from err
+        logger.exception(
+            "Error generando cuento: %s\n%s", err, traceback.format_exc()
+        )
         raise HTTPException(
             status_code=500, detail=f"No se pudo generar el cuento: {err}"
         ) from err
@@ -79,6 +96,9 @@ def list_options() -> dict:
         "defaultModel": DEFAULT_MODEL,
         "defaultMode": DEFAULT_MODE,
         "modes": MODES,
+        "aoiNames": AOI_NAMES,
+        "strategies": STRATEGIES,
+        "generationMethods": GENERATION_METHODS,
     }
 
 
