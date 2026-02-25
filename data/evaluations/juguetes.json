@@ -1,0 +1,53 @@
+{
+  "story_id": "juguetes",
+  "title": "Los juguetes",
+  "author": "Juan José Morosoli",
+  "word_count_original": 410,
+  "word_count_generated": 336,
+  "metrics": {
+    "coherencia_narrativa": {
+      "original": 9,
+      "generado": 9
+    },
+    "desarrollo_personajes": {
+      "original": 8,
+      "generado": 7
+    },
+    "consistencia_tematica": {
+      "original": 10,
+      "generado": 9
+    },
+    "calidad_estilo": {
+      "original": 10,
+      "generado": 7
+    },
+    "preservacion_esencia": {
+      "original": 10,
+      "generado": 7
+    },
+    "calidad_global": {
+      "original": 9,
+      "generado": 7
+    },
+    "fortalezas_original": [
+      "Maestría en la creación de atmósferas contrastantes a través de detalles sensoriales.",
+      "Profundidad temática sobre la verdadera naturaleza de la felicidad y el juego infantil, transmitida con sutileza.",
+      "Estilo poético y evocador que eleva la narrativa más allá de la simple trama."
+    ],
+    "fortalezas_generado": [
+      "Claridad narrativa y fluidez en la exposición de la trama, fácil de seguir.",
+      "Mantiene la estructura básica y los puntos clave del original, replicando la esencia del conflicto.",
+      "El mensaje central es explícito y directo, asegurando su comprensión."
+    ],
+    "diferencias_clave": [
+      "Estilo y tono: El original es sutil, poético y evocador; el generado es más directo, explicativo y con un tono más didáctico.",
+      "Construcción de la atmósfera: El original utiliza detalles sensoriales y acciones para crear ambientes; el generado emplea descripciones más generales y adjetivos explícitos.",
+      "Perspectiva y voz: El original usa una primera persona íntima y sin nombre, mientras que el generado opta por una tercera persona con un protagonista nombrado (Leo)."
+    ],
+    "observaciones": "El cuento original de Morosoli es una obra de arte literaria que brilla por su sutileza, su riqueza sensorial y la profundidad de su mensaje, transmitido a través de un contraste magistral de ambientes. El cuento generado, si bien logra replicar la estructura narrativa y el tema central, pierde gran parte de la magia y la voz autoral. Su estilo es más funcional y explícito, careciendo de la resonancia poética y la capacidad de Morosoli para evocar emociones complejas con detalles sencillos. Es una versión competente, pero sin el alma del original."
+  },
+  "averages": {
+    "promedio_original": 9.33,
+    "promedio_generado": 7.67
+  }
+}

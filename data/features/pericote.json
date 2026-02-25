@@ -1,0 +1,27 @@
+{
+  "story_id": "pericote",
+  "title": "Breve historia veraz de un pericote",
+  "author": "Abraham Valdelomar",
+  "genre": "fabula",
+  "setting": "Una casa burguesa en la noche del 3 de abril de 1918, principalmente en el baño y el escritorio del narrador.",
+  "characters": [
+    "narrador/protagonista: un hombre reflexivo y empático, que se identifica con la angustia existencial del ratón.",
+    "el pericote/ratón: un animal indefenso que simboliza la fragilidad de la vida y la condición humana.",
+    "la criada: un personaje secundario que representa una amenaza mundana para el ratón."
+  ],
+  "themes": [
+    "Angustia existencial",
+    "Empatía y comprensión inter-especie",
+    "La fragilidad de la vida",
+    "La soledad y el tedio",
+    "La salvación y la gratitud"
+  ],
+  "tone": "Filosófico, melancólico e introspectivo, con momentos de tensión dramática.",
+  "narrative_style": "Narrador en primera persona, a través de una carta dirigida al ratón.",
+  "plot_summary": "El narrador escribe una carta a un ratón, recordándole cómo lo salvó de morir ahogado en una tina vacía. Tras una momentánea tentación de ahogarlo, el narrador siente una profunda empatía por el animal, comprendiendo su angustia y su deseo de vivir. Finalmente, lo rescata y lo libera, lo que le provoca una profunda satisfacción y una reflexión existencial sobre su propia vida, comparándose con el ratón atrapado en el tedio y la angustia.",
+  "aoi_names": [
+    "CONFLICT",
+    "REPENTANCE",
+    "RELENTING GUARDIAN"
+  ]
+}

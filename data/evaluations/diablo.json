@@ -1,0 +1,53 @@
+{
+  "story_id": "diablo",
+  "title": "El diablo y sus añicos",
+  "author": "Hans Christian Andersen",
+  "word_count_original": 442,
+  "word_count_generated": 358,
+  "metrics": {
+    "coherencia_narrativa": {
+      "original": 9,
+      "generado": 8
+    },
+    "desarrollo_personajes": {
+      "original": 7,
+      "generado": 6
+    },
+    "consistencia_tematica": {
+      "original": 9,
+      "generado": 9
+    },
+    "calidad_estilo": {
+      "original": 8,
+      "generado": 7
+    },
+    "preservacion_esencia": {
+      "original": 10,
+      "generado": 7
+    },
+    "calidad_global": {
+      "original": 9,
+      "generado": 7
+    },
+    "fortalezas_original": [
+      "Narrativa vívida y detallada, con imágenes memorables.",
+      "Tono distintivo de fábula/cuento de hadas, con humor e ironía.",
+      "Desarrollo claro y efectivo de la premisa y sus consecuencias."
+    ],
+    "fortalezas_generado": [
+      "Mantiene la estructura narrativa principal y la progresión de la trama.",
+      "Utiliza un lenguaje más elevado y formal, buscando un tono más serio.",
+      "Refuerza el tema central de la corrupción de la percepción y la felicidad."
+    ],
+    "diferencias_clave": [
+      "El tono y estilo: el original es más ligero, irónico y con detalles concretos; el generado es más formal, abstracto y sombrío.",
+      "El detalle descriptivo: el original usa descripciones específicas y humorísticas (espinacas, pecas); el generado opta por generalizaciones y metáforas.",
+      "La caracterización del diablo: en el original es más juguetón y orgulloso; en el generado es más una fuerza abstracta del mal ('el Antagonista')."
+    ],
+    "observaciones": "El cuento original de Andersen brilla por su encanto, su humor sutil y la concreción de sus imágenes, lo que lo hace memorable y accesible. El cuento generado, si bien es coherente y mantiene la esencia temática, adopta un tono más grave y un estilo más abstracto. Pierde la chispa y la personalidad del original, transformando una fábula con moraleja en una reflexión más oscura sobre el mal. La IA logra replicar la trama, pero no el alma narrativa ni el estilo distintivo del autor."
+  },
+  "averages": {
+    "promedio_original": 8.67,
+    "promedio_generado": 7.33
+  }
+}

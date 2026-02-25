@@ -1,0 +1,53 @@
+{
+  "story_id": "visita",
+  "title": "Una visita infernal",
+  "author": "Juana Manuela Gorriti",
+  "word_count_original": 404,
+  "word_count_generated": 396,
+  "metrics": {
+    "coherencia_narrativa": {
+      "original": 9,
+      "generado": 8
+    },
+    "desarrollo_personajes": {
+      "original": 7,
+      "generado": 6
+    },
+    "consistencia_tematica": {
+      "original": 9,
+      "generado": 7
+    },
+    "calidad_estilo": {
+      "original": 9,
+      "generado": 7
+    },
+    "preservacion_esencia": {
+      "original": 10,
+      "generado": 6
+    },
+    "calidad_global": {
+      "original": 9,
+      "generado": 7
+    },
+    "fortalezas_original": [
+      "Atmósfera de misterio y suspense gótico bien construida.",
+      "Giro final ingenioso que transforma lo sobrenatural en psicológico.",
+      "Prosa elegante y evocadora, característica de la literatura del siglo XIX."
+    ],
+    "fortalezas_generado": [
+      "Ritmo narrativo ágil y moderno que mantiene el interés.",
+      "Imágenes viscerales y perturbadoras que crean un impacto inmediato.",
+      "Mantiene la estructura básica del original, incluyendo el giro final."
+    ],
+    "diferencias_clave": [
+      "La naturaleza del 'demonio': un hombre en el original, una criatura tentacular en el generado.",
+      "El estilo y tono: el original es sutil y gótico, el generado es más directo y grotesco.",
+      "El escenario del encuentro: un retrete en el original, un baño de hotel con un tentáculo en el generado."
+    ],
+    "observaciones": "El cuento original destaca por su sutileza gótica y la ambigüedad inicial que potencia el giro final, donde el 'demonio' es un hombre. La prosa de Gorriti es clave para construir una atmósfera inquietante. El cuento generado, si bien replica la estructura narrativa, opta por un estilo más explícito y visceral, introduciendo elementos fantásticos (el tentáculo) que desvirtúan la esencia del 'demonio' humano del original. Esto lo hace más moderno y directo, pero sacrifica la elegancia y la profundidad psicológica que caracterizan a la obra de Gorriti."
+  },
+  "averages": {
+    "promedio_original": 8.83,
+    "promedio_generado": 6.83
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "total_stories_evaluated": 5,
+  "global_avg_original": 9.1,
+  "global_avg_generated": 7.33,
+  "global_diferencia": -1.77,
+  "per_story": [
+    {
+      "story_id": "diablo",
+      "title": "El diablo y sus añicos",
+      "author": "Hans Christian Andersen",
+      "promedio_original": 8.67,
+      "promedio_generado": 7.33,
+      "diferencia": -1.34
+    },
+    {
+      "story_id": "juguetes",
+      "title": "Los juguetes",
+      "author": "Juan José Morosoli",
+      "promedio_original": 9.33,
+      "promedio_generado": 7.67,
+      "diferencia": -1.66
+    },
+    {
+      "story_id": "pericote",
+      "title": "Breve historia veraz de un pericote",
+      "author": "Abraham Valdelomar",
+      "promedio_original": 9.5,
+      "promedio_generado": 7.33,
+      "diferencia": -2.17
+    },
+    {
+      "story_id": "prestamista",
+      "title": "La leyenda del prestamista",
+      "author": "Carlos Gagini",
+      "promedio_original": 9.17,
+      "promedio_generado": 7.5,
+      "diferencia": -1.67
+    },
+    {
+      "story_id": "visita",
+      "title": "Una visita infernal",
+      "author": "Juana Manuela Gorriti",
+      "promedio_original": 8.83,
+      "promedio_generado": 6.83,
+      "diferencia": -2.0
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "story_id": "pericote",
+  "title": "Breve historia veraz de un pericote",
+  "author": "Abraham Valdelomar",
+  "word_count_original": 454,
+  "word_count_generated": 328,
+  "metrics": {
+    "coherencia_narrativa": {
+      "original": 9,
+      "generado": 8
+    },
+    "desarrollo_personajes": {
+      "original": 9,
+      "generado": 7
+    },
+    "consistencia_tematica": {
+      "original": 10,
+      "generado": 8
+    },
+    "calidad_estilo": {
+      "original": 10,
+      "generado": 7
+    },
+    "preservacion_esencia": {
+      "original": 10,
+      "generado": 7
+    },
+    "calidad_global": {
+      "original": 9,
+      "generado": 7
+    },
+    "fortalezas_original": [
+      "Profundidad filosófica y existencial, culminando en una poderosa metáfora final.",
+      "Riqueza estilística, uso magistral de metáforas y un tono poético y reflexivo.",
+      "Desarrollo complejo y sutil del personaje narrador a través de su introspección."
+    ],
+    "fortalezas_generado": [
+      "Claridad y fluidez narrativa, con una estructura fácil de seguir.",
+      "Mensaje de empatía y auto-reflexión bien articulado y accesible.",
+      "Captura la premisa central del encuentro y la transformación del narrador."
+    ],
+    "diferencias_clave": [
+      "El original utiliza un formato epistolar formal y fechado, mientras que el generado es una narración en primera persona más genérica.",
+      "El estilo del original es más poético, denso y filosófico, con metáforas complejas; el generado es más directo, contemporáneo y didáctico.",
+      "La profundidad temática del original explora la angustia existencial con mayor complejidad, mientras que el generado se enfoca más en la empatía y la superación personal."
+    ],
+    "observaciones": "El cuento original de Valdelomar es una obra maestra en miniatura, que trasciende la anécdota para ofrecer una profunda meditación sobre la condición humana y la empatía, envuelta en una prosa exquisita. El cuento generado, si bien logra capturar la premisa y el mensaje central de la empatía y la auto-reflexión, lo hace de una manera más simplificada y directa. Pierde la complejidad estilística, la sutileza psicológica y la resonancia filosófica que hacen del original una pieza literaria de gran calado, ofreciendo una versión más accesible pero menos rica."
+  },
+  "averages": {
+    "promedio_original": 9.5,
+    "promedio_generado": 7.33
+  }
+}

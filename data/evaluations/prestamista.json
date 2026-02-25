@@ -1,0 +1,53 @@
+{
+  "story_id": "prestamista",
+  "title": "La leyenda del prestamista",
+  "author": "Carlos Gagini",
+  "word_count_original": 416,
+  "word_count_generated": 328,
+  "metrics": {
+    "coherencia_narrativa": {
+      "original": 9,
+      "generado": 8
+    },
+    "desarrollo_personajes": {
+      "original": 7,
+      "generado": 6
+    },
+    "consistencia_tematica": {
+      "original": 10,
+      "generado": 9
+    },
+    "calidad_estilo": {
+      "original": 10,
+      "generado": 7
+    },
+    "preservacion_esencia": {
+      "original": 10,
+      "generado": 8
+    },
+    "calidad_global": {
+      "original": 9,
+      "generado": 7
+    },
+    "fortalezas_original": [
+      "Prosa rica y evocadora, con un vocabulario sofisticado y metáforas potentes.",
+      "La personificación de los objetos y la covacha crea una atmósfera gótica y simbólica.",
+      "El final es una poderosa alegoría de justicia poética, profundamente impactante."
+    ],
+    "fortalezas_generado": [
+      "Claridad narrativa y estructura de la trama bien definida.",
+      "Mantiene la esencia de la justicia poética y el destino del prestamista.",
+      "Lenguaje accesible y directo, facilitando la comprensión de la historia."
+    ],
+    "diferencias_clave": [
+      "El estilo del original es más poético, gótico y simbólico, mientras que el generado es más directo y descriptivo.",
+      "El original dedica párrafos enteros a la historia y el sufrimiento detrás de cada objeto empeñado, el generado los menciona de forma más concisa.",
+      "El original logra una mayor resonancia emocional a través de su prosa y la descripción del sufrimiento, mientras que el generado lo aborda de manera más superficial."
+    ],
+    "observaciones": "El cuento original de Gagini es una obra maestra de la prosa corta, destacando por su riqueza estilística y su profunda carga simbólica. Cada objeto empeñado es un microcosmos de tragedia, y el final es una catarsis poética. El cuento generado, si bien reproduce fielmente la trama y el mensaje central, carece de la sofisticación literaria y la resonancia emocional del original. Es una versión competente, pero pierde la voz distintiva y la profundidad artística que hacen del original una pieza memorable."
+  },
+  "averages": {
+    "promedio_original": 9.17,
+    "promedio_generado": 7.5
+  }
+}
