@@ -8,9 +8,15 @@ import json
 import sys
 from pathlib import Path
 from typing import List, Optional
+
+# Agregar el directorio raíz al path
+root_dir = Path(__file__).parent.parent
+sys.path.insert(0, str(root_dir))
+
 from axis_of_interest.registry import list_of_aoi
 from axis_of_interest.schema_generator import PlotSchemaGenerator
-from axis_of_interest.character_assigner import assign_character_names
+from axis_of_interest.character_assigner import assign_character_names, assign_character_names_by_attributes
+from axis_of_interest.character_attributes import Character, CharacterAttributes
 from axis_of_interest.utils import render_plot_schema_md, build_client_by_provider
 from axis_of_interest.prompts import (
     template_prompt_generate_cuento,
@@ -19,9 +25,6 @@ from axis_of_interest.prompts import (
 from axis_of_interest.text_gen import generate_text
 from config import Settings
 
-# Agregar el directorio raíz al path
-root_dir = Path(__file__).parent.parent
-sys.path.insert(0, str(root_dir))
 
 
 class StoryGenerator:
@@ -75,21 +78,22 @@ class StoryGenerator:
         print("2. Round Robin - Alterna entre AOIs circularmente")
         print("3. Parallel    - Agrupa spans por posición")
         print("4. Random      - Selección aleatoria respetando orden interno")
+        print("5. LLM         - El LLM decide el orden completo")
 
-        strategies = ["sequential", "round_robin", "parallel", "random"]
+        strategies = ["sequential", "round_robin", "parallel", "random", "llm"]
 
         while True:
             try:
-                choice = input("\nSeleccioná estrategia (1-4): ").strip()
+                choice = input("\nSeleccioná estrategia (1-5): ").strip()
                 idx = int(choice) - 1
                 if 0 <= idx < len(strategies):
                     strategy = strategies[idx]
                     print(f"✅ Estrategia: {strategy}")
                     return strategy
                 else:
-                    print("❌ Número inválido. Elegí entre 1 y 4.")
+                    print("❌ Número inválido. Elegí entre 1 y 5.")
             except ValueError:
-                print("❌ Entrada inválida. Ingresá un número entre 1 y 4.")
+                print("❌ Entrada inválida. Ingresá un número entre 1 y 5.")
 
     def get_character_names(self) -> List[str]:
         """Permite ingresar nombres de personajes."""
@@ -111,6 +115,81 @@ class StoryGenerator:
                 return names
             else:
                 print("❌ No ingresaste nombres válidos.")
+    
+    def select_assignment_mode(self) -> int:
+        """Permite seleccionar el modo de asignación de personajes."""
+        print("\n" + "=" * 80)
+        print("🎯 MODO DE ASIGNACIÓN DE PERSONAJES:")
+        print("=" * 80)
+        print("1. Aleatorio   - Los nombres se asignan aleatoriamente a los roles")
+        print("2. Por atributos - Los personajes se asignan según sus características")
+        
+        while True:
+            try:
+                choice = input("\nSeleccioná modo (1-2): ").strip()
+                mode = int(choice)
+                if mode in [1, 2]:
+                    mode_name = "Aleatorio" if mode == 1 else "Por atributos"
+                    print(f"✅ Modo: {mode_name}")
+                    return mode
+                else:
+                    print("❌ Número inválido. Elegí 1 o 2.")
+            except ValueError:
+                print("❌ Entrada inválida. Ingresá 1 o 2.")
+    
+    def get_character_attributes(self, name: str) -> CharacterAttributes:
+        """Solicita los atributos de un personaje."""
+        print(f"\n📊 Atributos de {name} (escala 1-5):")
+        
+        while True:
+            try:
+                valentia = int(input("  Valentía (1-5): ").strip())
+                bondad = int(input("  Bondad (1-5): ").strip())
+                astucia = int(input("  Astucia (1-5): ").strip())
+                maldad = int(input("  Maldad (1-5): ").strip())
+                carisma = int(input("  Carisma (1-5): ").strip())
+                
+                if all(1 <= x <= 5 for x in [valentia, bondad, astucia, maldad, carisma]):
+                    return CharacterAttributes(
+                        valentia=valentia,
+                        bondad=bondad,
+                        astucia=astucia,
+                        maldad=maldad,
+                        carisma=carisma
+                    )
+                else:
+                    print("❌ Todos los valores deben estar entre 1 y 5.")
+            except ValueError:
+                print("❌ Por favor ingresá números válidos.")
+    
+    def get_characters_with_attributes(self) -> List[Character]:
+        """Obtiene nombres y atributos de personajes."""
+        print("\n" + "=" * 80)
+        print("👥 PERSONAJES CON ATRIBUTOS:")
+        print("=" * 80)
+        print("Ingresá los nombres de los personajes separados por coma")
+        print("Luego definirás sus atributos de personalidad")
+        print("Ejemplo: Alice, Bob, Charlie")
+        
+        while True:
+            names_input = input("\n> ").strip()
+            if not names_input:
+                print("❌ Debés ingresar al menos un nombre.")
+                continue
+            
+            names = [n.strip() for n in names_input.split(",") if n.strip()]
+            if names:
+                break
+            else:
+                print("❌ No ingresaste nombres válidos.")
+        
+        characters = []
+        for name in names:
+            attrs = self.get_character_attributes(name)
+            characters.append(Character(name=name, attributes=attrs))
+            print(f"✅ {name} configurado")
+        
+        return characters
 
     def select_llm_provider(self) -> str:
         """Permite seleccionar el proveedor de LLM."""
@@ -146,16 +225,25 @@ class StoryGenerator:
     def generate_story(
         self,
         aoi_names: List[str],
-        character_names: List[str],
+        character_names: Optional[List[str]] = None,
+        characters: Optional[List[Character]] = None,
         strategy: str = "random",
         provider: Optional[str] = None,
         seed: Optional[int] = None,
-    ) -> tuple[str, str]:
+    ) -> tuple[str, str, str]:
         """
         Genera un cuento completo.
+        
+        Args:
+            aoi_names: Nombres de los AOIs a usar
+            character_names: Nombres para asignación aleatoria (Modo 1)
+            characters: Personajes con atributos para asignación inteligente (Modo 2)
+            strategy: Estrategia de interleaving
+            provider: Proveedor de LLM
+            seed: Semilla para reproducibilidad
 
         Returns:
-            Tupla (plot_schema_markdown, cuento_generado)
+            Tupla (plot_schema_markdown, cuento_gramatica, cuento_aoi)
         """
         # 1. Generar el Plot Schema
         print("\n" + "=" * 80)
@@ -167,15 +255,31 @@ class StoryGenerator:
             schema_name=f"Story with {', '.join(aoi_names)}",
             aoi_names=aoi_names,
             interleaving_strategy=strategy,
+            llm_provider=provider,
             schema_description=f"Plot schema usando {strategy} strategy",
         )
 
-        # 2. Asignar nombres a personajes
-        print("\n✅ Schema generado. Asignando nombres de personajes...")
-
-        schema_with_names = assign_character_names(
-            schema, character_names, allow_reuse=True, seed=seed
-        )
+        # 2. Asignar nombres a personajes según el modo
+        print("\n✅ Schema generado. Asignando personajes...")
+        
+        if characters:
+            # Modo 2: Asignación por atributos
+            print("🎯 Usando asignación por atributos...")
+            schema_with_names = assign_character_names_by_attributes(
+                schema,
+                characters,
+                allow_reuse=True,
+                seed=seed
+            )
+        else:
+            # Modo 1: Asignación aleatoria
+            print("🎲 Usando asignación aleatoria...")
+            schema_with_names = assign_character_names(
+                schema,
+                character_names,
+                allow_reuse=True,
+                seed=seed
+            )
 
         # 3. Renderizar el schema
         schema_md = render_plot_schema_md(schema_with_names.model_dump())
@@ -243,6 +347,26 @@ class StoryGenerator:
             prompt = template_prompt_generate_cuento.replace(
                 "{plot_schema}", schema_json
             )
+            prompt = prompt.replace("{ambiente}", "No especificado")
+            prompt = prompt.replace("{genero_section}", "")
+            if characters:
+                lines = []
+                for char in characters:
+                    desc = f"Descripción: {char.description}. " if char.description else ""
+                    attrs = (
+                        f"Valentía {char.attributes.valentia}, "
+                        f"Bondad {char.attributes.bondad}, "
+                        f"Astucia {char.attributes.astucia}, "
+                        f"Maldad {char.attributes.maldad}, "
+                        f"Carisma {char.attributes.carisma}"
+                    )
+                    lines.append(f"- {char.name}. {desc}Atributos: {attrs}.")
+                characters_section = "\n".join(lines)
+            elif character_names:
+                characters_section = "\n".join(f"- {name}" for name in character_names)
+            else:
+                characters_section = "No especificado"
+            prompt = prompt.replace("{characters_section}", characters_section)
 
             print(f"🤖 Usando: {provider or self.settings.default_provider}")
 
@@ -273,8 +397,18 @@ class StoryGenerator:
         # Selección de estrategia
         strategy = self.select_strategy()
 
-        # Nombres de personajes
-        character_names = self.get_character_names()
+        # Selección de modo de asignación
+        assignment_mode = self.select_assignment_mode()
+        
+        # Obtener personajes según el modo
+        if assignment_mode == 1:
+            # Modo aleatorio
+            character_names = self.get_character_names()
+            characters = None
+        else:
+            # Modo por atributos
+            characters = self.get_characters_with_attributes()
+            character_names = None
 
         # Proveedor de LLM
         provider = self.select_llm_provider()
@@ -283,6 +417,7 @@ class StoryGenerator:
         schema_md, story_gramatica, story_aoi = self.generate_story(
             aoi_names=aoi_names,
             character_names=character_names,
+            characters=characters,
             strategy=strategy,
             provider=provider,
             seed=42,  # Para reproducibilidad

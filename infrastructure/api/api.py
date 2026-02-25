@@ -69,7 +69,12 @@ def generate_story(request: StoryRequest) -> dict:
             status_code=500, detail=f"No se pudo generar el cuento: {err}"
         ) from err
 
-    return {"story": story, "mode": mode["id"], "model": model}
+    response = {"story": story, "mode": mode["id"], "model": model}
+    if isinstance(story, tuple):
+        story_text, plot_schema = story
+        response["story"] = story_text
+        response["plot_schema"] = plot_schema
+    return response
 
 
 @api.get("/api/options")
@@ -85,6 +90,32 @@ def list_options() -> dict:
 @api.get("/api/experiments")
 def list_experiment_payloads() -> dict:
     return {"experiments": get_experiments()}
+
+
+@api.get("/api/aois")
+def list_aois() -> dict:
+    """Lista todos los Axis of Interest disponibles."""
+    from axis_of_interest.registry import list_of_aoi
+    
+    aois = [
+        {
+            "id": aoi.id,
+            "name": aoi.name,
+            "description": aoi.description,
+            "roles": aoi.roles,
+        }
+        for aoi in list_of_aoi
+    ]
+    
+    strategies = [
+        {"id": "sequential", "name": "Sequential", "description": "Concatena todos los spans en orden"},
+        {"id": "round_robin", "name": "Round Robin", "description": "Alterna entre AOIs circularmente"},
+        {"id": "parallel", "name": "Parallel", "description": "Agrupa spans por posición"},
+        {"id": "random", "name": "Random", "description": "Selección aleatoria respetando orden interno"},
+        {"id": "llm", "name": "LLM", "description": "El LLM decide el orden completo"},
+    ]
+    
+    return {"aois": aois, "strategies": strategies}
 
 
 api.mount("/static", StaticFiles(directory=WEB_DIR / "static"), name="static")

@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("=== SCRIPT CARGADO ===");
   const state = {
     config: { modes: [], models: [], defaultMode: "", defaultModel: "" },
+    aois: { list: [], strategies: [] },
     entry: null,
     experiments: [],
     experimentIndex: 0,
@@ -15,6 +17,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const characterList = document.getElementById("characters-list");
   const addCharacterButton = document.getElementById("add-character");
   const storyPreview = document.getElementById("story-preview");
+  const plotSchemaPanel = document.getElementById("plot-schema-panel");
+  const plotSchemaPreview = document.getElementById("plot-schema-preview");
   const generateButton = form.querySelector("button.primary");
   const questionsContainer = document.getElementById("questions");
   const scoreValue = document.getElementById("score-value");
@@ -30,6 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const experimentBanner = document.getElementById("experiment-banner");
   const experimentTitle = document.getElementById("experiment-title");
   const nextExperimentButton = document.getElementById("next-experiment");
+  const mode3Fields = document.getElementById("mode3-fields");
+  const aoisList = document.getElementById("aois-list");
+  const strategySelect = document.getElementById("strategy");
+  const mode4Fields = document.getElementById("mode4-fields");
+  const mode4AoisList = document.getElementById("mode4-aois-list");
+  const mode4StrategySelect = document.getElementById("mode4-strategy");
+  const mode4CharactersSection = document.getElementById("mode4-characters-section");
+  const mode4CharactersList = document.getElementById("mode4-characters-list");
+  const addMode4CharacterButton = document.getElementById("add-mode4-character");
+
 
   const evaluationQuestions = [
     { key: "coherence", label: "Coherencia de la trama" },
@@ -82,6 +96,97 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addCharacterButton.addEventListener("click", () => addCharacterField());
 
+  // Modo 4: Agregar personaje con atributos
+  function addMode4Character() {
+    const characterCard = document.createElement("div");
+    characterCard.className = "character-with-attributes";
+    
+    const characterIndex = mode4CharactersList.children.length;
+    
+    characterCard.innerHTML = `
+      <input 
+        type="text" 
+        name="mode4-character-name" 
+        placeholder="Nombre del personaje" 
+        required
+      />
+      <input
+        type="text"
+        name="mode4-character-description"
+        placeholder="Descripción (opcional)"
+      />
+      <div class="character-attributes-grid">
+        <div class="attribute-input">
+          <label>Valentía</label>
+          <input type="number" name="valentia" min="1" max="5" value="3" required />
+        </div>
+        <div class="attribute-input">
+          <label>Bondad</label>
+          <input type="number" name="bondad" min="1" max="5" value="3" required />
+        </div>
+        <div class="attribute-input">
+          <label>Astucia</label>
+          <input type="number" name="astucia" min="1" max="5" value="3" required />
+        </div>
+        <div class="attribute-input">
+          <label>Maldad</label>
+          <input type="number" name="maldad" min="1" max="5" value="3" required />
+        </div>
+        <div class="attribute-input">
+          <label>Carisma</label>
+          <input type="number" name="carisma" min="1" max="5" value="3" required />
+        </div>
+      </div>
+      <button type="button" class="remove-character-btn">Eliminar personaje</button>
+    `;
+    
+    // Add remove handler
+    const removeBtn = characterCard.querySelector(".remove-character-btn");
+    removeBtn.addEventListener("click", () => {
+      characterCard.remove();
+    });
+    
+    mode4CharactersList.appendChild(characterCard);
+  }
+
+  // Modo 4: Obtener personajes con atributos
+  function getMode4Characters() {
+    const characterCards = mode4CharactersList.querySelectorAll(".character-with-attributes");
+    const characters = [];
+    
+    characterCards.forEach(card => {
+      const nameInput = card.querySelector("input[name='mode4-character-name']");
+      const descriptionInput = card.querySelector("input[name='mode4-character-description']");
+      const valentia = card.querySelector("input[name='valentia']");
+      const bondad = card.querySelector("input[name='bondad']");
+      const astucia = card.querySelector("input[name='astucia']");
+      const maldad = card.querySelector("input[name='maldad']");
+      const carisma = card.querySelector("input[name='carisma']");
+      
+      const name = nameInput.value.trim();
+      const description = descriptionInput.value.trim();
+      if (name) {
+        characters.push({
+          name: name,
+          description: description || undefined,
+          attributes: {
+            valentia: parseInt(valentia.value),
+            bondad: parseInt(bondad.value),
+            astucia: parseInt(astucia.value),
+            maldad: parseInt(maldad.value),
+            carisma: parseInt(carisma.value)
+          }
+        });
+      }
+    });
+    
+    return characters;
+  }
+
+  if (addMode4CharacterButton) {
+    addMode4CharacterButton.addEventListener("click", addMode4Character);
+  }
+
   function setLoading(isLoading) {
     generateButton.disabled = isLoading;
     generateButton.textContent = isLoading ? "Generando..." : "Generar cuento";
@@ -101,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const message = data.detail || "No se pudo generar el cuento.";
       throw new Error(message);
     }
-    return data.story;
+    return data;
   }
 
   function updateModeDescription() {
@@ -173,7 +278,168 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       modeDescription.textContent = `No se pudieron cargar las opciones: ${error.message}`;
     }
-    modeSelect.addEventListener("change", updateModeDescription);
+    modeSelect.addEventListener("change", handleModeChange);
+    handleModeChange(); // Aplicar estado inicial
+  }
+
+  async function loadAOIs() {
+    console.log("loadAOIs: Iniciando carga de AOIs");
+    try {
+      const res = await fetch("/api/aois");
+      console.log("loadAOIs: Response status", res.status);
+      const data = await res.json();
+      console.log("loadAOIs: Data recibida", data);
+      state.aois = {
+        list: data.aois || [],
+        strategies: data.strategies || [],
+      };
+      console.log("loadAOIs: State actualizado", state.aois);
+      hydrateAOIs();
+      hydrateStrategies();
+      hydrateMode4AOIs();
+      hydrateMode4Strategies();
+    } catch (error) {
+      console.error("loadAOIs: Error", error);
+      aoisList.innerHTML = `<p class="hint">Error al cargar AOIs: ${error.message}</p>`;
+    }
+  }
+
+  function hydrateAOIs() {
+    console.log("hydrateAOIs: Iniciando hydration, AOIs count:", state.aois.list.length);
+    console.log("hydrateAOIs: aoisList element:", aoisList);
+    if (!state.aois.list.length) {
+      aoisList.innerHTML = '<p class="hint">No hay AOIs disponibles.</p>';
+      return;
+    }
+    aoisList.innerHTML = "";
+    state.aois.list.forEach((aoi) => {
+      const div = document.createElement("div");
+      div.className = "checkbox-item";
+      
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = `aoi-${aoi.id}`;
+      checkbox.name = "aoi";
+      checkbox.value = aoi.name;
+      
+      const label = document.createElement("label");
+      label.htmlFor = `aoi-${aoi.id}`;
+      
+      const title = document.createElement("div");
+      title.textContent = aoi.name;
+      
+      const desc = document.createElement("div");
+      desc.className = "aoi-description";
+      desc.textContent = aoi.description;
+      
+      label.append(title, desc);
+      div.append(checkbox, label);
+      aoisList.append(div);
+    });
+  }
+
+  function hydrateStrategies() {
+    console.log("hydrateStrategies: Iniciando, strategies count:", state.aois.strategies.length);
+    console.log("hydrateStrategies: strategySelect element:", strategySelect);
+    strategySelect.innerHTML = '<option value="">Elegí una estrategia</option>';
+    state.aois.strategies.forEach((strategy) => {
+      const option = document.createElement("option");
+      option.value = strategy.id;
+      option.textContent = `${strategy.name} - ${strategy.description}`;
+      strategySelect.append(option);
+    });
+  }
+
+  // Modo 4: Hydrate strategies
+  function hydrateMode4Strategies() {
+    if (!mode4StrategySelect || !state.aois || !state.aois.strategies) return;
+    mode4StrategySelect.innerHTML = '<option value="">Elegí una estrategia</option>';
+    state.aois.strategies.forEach((strategy) => {
+      const option = document.createElement("option");
+      option.value = strategy.id;
+      option.textContent = `${strategy.name} - ${strategy.description}`;
+      mode4StrategySelect.append(option);
+    });
+  }
+
+  // Modo 4: Hydrate AOIs
+  function hydrateMode4AOIs() {
+    if (!mode4AoisList || !state.aois || !state.aois.list) return;
+    console.log("hydrateMode4AOIs: Iniciando, AOIs count:", state.aois.list.length);
+    if (!state.aois.list.length) {
+      mode4AoisList.innerHTML = '<p class="hint">No hay AOIs disponibles.</p>';
+      return;
+    }
+    mode4AoisList.innerHTML = "";
+    state.aois.list.forEach((aoi) => {
+      const div = document.createElement("div");
+      div.className = "checkbox-item";
+      
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.id = `mode4-aoi-${aoi.id}`;
+      checkbox.name = "mode4-aoi";
+      checkbox.value = aoi.name;
+      
+      const label = document.createElement("label");
+      label.htmlFor = `mode4-aoi-${aoi.id}`;
+      
+      const title = document.createElement("div");
+      title.textContent = aoi.name;
+      
+      const desc = document.createElement("div");
+      desc.className = "aoi-description";
+      desc.textContent = aoi.description;
+      
+      label.append(title, desc);
+      div.append(checkbox, label);
+      mode4AoisList.append(div);
+    });
+  }
+
+  function handleModeChange() {
+    console.log("handleModeChange called, mode:", modeSelect.value);
+    updateModeDescription();
+    const modeId = modeSelect.value;
+    
+    // Modo 3
+    if (mode3Fields) {
+      if (modeId === "3") {
+        mode3Fields.classList.remove("is-hidden");
+        characterList.parentElement.classList.remove("is-hidden");
+        if (mode4CharactersSection) mode4CharactersSection.classList.add("is-hidden");
+      } else {
+        mode3Fields.classList.add("is-hidden");
+      }
+    }
+    
+    // Modo 4
+    if (mode4Fields) {
+      if (modeId === "4") {
+        mode4Fields.classList.remove("is-hidden");
+        if (mode4CharactersSection) mode4CharactersSection.classList.remove("is-hidden");
+        characterList.parentElement.classList.add("is-hidden");
+      } else {
+        mode4Fields.classList.add("is-hidden");
+        if (mode4CharactersSection) mode4CharactersSection.classList.add("is-hidden");
+      }
+    }
+    
+    // Mostrar lista normal de personajes si NO es modo 4
+    if (modeId !== "4") {
+      characterList.parentElement.classList.remove("is-hidden");
+    }
+  }
+
+  function getSelectedAOIs() {
+    const checkboxes = aoisList.querySelectorAll('input[name="aoi"]:checked');
+    return Array.from(checkboxes).map((cb) => cb.value);
+  }
+
+  // Modo 4: Get selected AOIs
+  function getMode4SelectedAOIs() {
+    const checkboxes = mode4AoisList.querySelectorAll('input[name="mode4-aoi"]:checked');
+    return Array.from(checkboxes).map((cb) => cb.value);
   }
 
   function updatePill(text) {
@@ -191,6 +457,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (clearStory) {
       storyPreview.textContent = "El cuento aparecerá aquí una vez generado.";
       storyPreview.classList.remove("error");
+      if (plotSchemaPreview) {
+        plotSchemaPreview.textContent = "";
+      }
+      if (plotSchemaPanel) {
+        plotSchemaPanel.classList.add("is-hidden");
+      }
     }
   }
 
@@ -288,7 +560,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const trama = form.plot.value.trim();
     const genero = form.genre.value.trim();
     const arco = form.arc.value;
-    const personajes = getCharacters();
+    const modeId = modeSelect.value || null;
+
+    let personajes;
+    if (modeId === "4") {
+      // Modo 4: No usar lista normal de personajes
+      personajes = [];
+    } else {
+      personajes = getCharacters();
+    }
 
     const payload = {
       trama,
@@ -296,17 +576,43 @@ document.addEventListener("DOMContentLoaded", () => {
       arco,
       personajes,
       model: modelSelect.value || null,
-      mode: modeSelect.value || null,
+      mode: modeId,
       experiment_id: state.currentExperiment?.id || null,
     };
 
+    if (modeId === "3") {
+      payload.aois = getSelectedAOIs();
+      payload.interleaving_strategy = strategySelect.value || "random";
+    }
+
+    if (modeId === "4") {
+      payload.aois = getMode4SelectedAOIs();
+      payload.interleaving_strategy = mode4StrategySelect.value || "random";
+      const charactersWithAttributes = getMode4Characters();
+      if (charactersWithAttributes.length === 0) {
+        storyPreview.textContent = "Error: Debes agregar al menos un personaje con sus atributos.";
+        storyPreview.classList.add("error");
+        return;
+      }
+      payload.character_attributes = charactersWithAttributes;
+    }
+
     storyPreview.classList.remove("error");
     storyPreview.textContent = "Generando cuento...";
+    if (plotSchemaPanel) {
+      plotSchemaPanel.classList.add("is-hidden");
+    }
     setLoading(true);
 
     try {
-      const story = await requestStory(payload);
-      storyPreview.textContent = story?.trim() || "(Respuesta vacía)";
+      const response = await requestStory(payload);
+      const story = response?.story?.trim() || "(Respuesta vacía)";
+      storyPreview.textContent = story;
+      if (response?.plot_schema && plotSchemaPreview && plotSchemaPanel) {
+        const schemaText = JSON.stringify(response.plot_schema, null, 2);
+        plotSchemaPreview.textContent = schemaText;
+        plotSchemaPanel.classList.remove("is-hidden");
+      }
       setActivePanel("review-panel");
     } catch (error) {
       storyPreview.textContent = `Error: ${error.message}`;
@@ -365,4 +671,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateScore();
   resetFlow();
   ensureOptions();
+  loadAOIs();
 });

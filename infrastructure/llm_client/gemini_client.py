@@ -29,6 +29,9 @@ class GeminiProvider(BaseLLMProvider):
 
         if system_instruction:
             config["system_instruction"] = system_instruction
+        
+        print(f"[Gemini] Config enviada: {config}")
+        print(f"[Gemini] Longitud del prompt: {len(prompt)} caracteres")
 
         if stream:
             response = self.client.models.generate_content_stream(

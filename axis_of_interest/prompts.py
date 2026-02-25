@@ -104,11 +104,25 @@ template_prompt_generate_cuento = (
     + """
 Genera un cuento a partir del siguiente Plot Schema.
 
-IMPORTANTE: El cuento debe tener un MÁXIMO de 500 palabras.
+El input del usuario debe usarse como una DESCRIPCIÓN GENERAL DEL AMBIENTE,
+el contexto y el tono de la historia (no como la trama central).
+
+IMPORTANTE: El cuento debe tener un MÁXIMO de 500 palabras y un MÍNIMO de 250 palabras.
+No respondas con una sola línea ni con frases incompletas.
+
+Ambiente (input del usuario): {ambiente}
+{genero_section}
+
+Personajes (si se proveen):
+{characters_section}
+
+Usá la descripción de los personajes solo como guía; NO la copies textual.
+
+Si hay género, instanciá los Axis of Interest con elementos, conflictos y escenas coherentes con ese género, manteniendo la coherencia narrativa y las relaciones de largo alcance entre los spans.
 
 Plot Schema: {plot_schema}
 
-Generá el cuento completo (máximo 500 palabras):
+Generá el cuento completo (entre 250 y 500 palabras):
 IMPORTANTE: 
 - El cuento debe tener un MÁXIMO de 500 palabras
 - NO incluyas las frases originales tal cual están                                   
@@ -136,6 +150,27 @@ Frases del esqueleto:
 
 Generá el cuento completo (máximo 500 palabras), transformando creativamente cada frase del esqueleto:
 """
+
+template_prompt_interleave_llm = (
+        prompt_contexto_axis_of_interest
+        + """
+Dado el siguiente listado de PLOT SPANS (con id único), devolvé el mejor orden narrativo posible
+para intercalarlos en un único Plot Schema. Debés incluir TODOS los ids exactamente una vez.
+
+Formato de salida: un JSON ARRAY estricto de strings con los ids en el orden elegido.
+No incluyas texto adicional.
+
+Listado de spans (JSON):
+<<SPANS_JSON>>
+
+Salida esperada (ejemplo):
+[
+    "JOURNEY::0",
+    "CONFLICT::0",
+    "JOURNEY::1"
+]
+"""
+)
 
 tenplate_prompt_generar_axis_of_interest = (
     prompt_contexto_axis_of_interest
