@@ -1,16 +1,14 @@
 """
-Phase 4: Evaluación comparativa de cuentos originales vs. generados por LLM.
+Phase 4: Evaluación comparativa según metodología de close reading (paper 2509.22641).
 
-Para cada par (original, generado) en data/:
-  1. Llama a un "judge LLM" que conoce cuál es el original pero no cómo
-     fue generado el otro.
-  2. El judge devuelve métricas estructuradas en JSON (escala 1-10).
-  3. Guarda los resultados por cuento en data/evaluations/{story_id}.json
-     y un resumen consolidado en data/evaluations/summary.json.
+Operacionaliza creatividad como novelty + appropriateness (sensicality + pragmaticality)
+según Runco & Jaeger. Para cada par (original, generado):
+  1. Métricas a nivel pasaje: novelty, sensicality, pragmaticality (1-10).
+  2. Extracción de expresiones: noveles y no-pragmáticas en cada pasaje (con justificación).
+  3. Preferencia del juez entre original y generado.
+  4. Guarda en data/evaluations/{story_id}.json y summary.json.
 
-Uso:
-    python scripts/evaluate_stories.py [--provider openai|gemini|local] [--model MODEL]
-    python scripts/evaluate_stories.py --story-id prestamista   # solo un cuento
+Basado en: "Death of the Novel(ty): Beyond n-Gram Novelty as a Metric for Textual Creativity"
 """
 
 import argparse
@@ -18,6 +16,7 @@ import json
 import os
 import re
 import sys
+import time
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
@@ -25,6 +24,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+from google.genai.errors import ClientError
 from infrastructure.llm_client.factory import resolve_client
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
@@ -33,17 +33,24 @@ GENERATED_DIR = os.path.join(DATA_DIR, "generated")
 EVALUATIONS_DIR = os.path.join(DATA_DIR, "evaluations")
 
 # ──────────────────────────────────────────────────────────────────────────────
-# Judge prompt
+# Judge prompt (paper-inspired: novelty, sensicality, pragmaticality + close reading)
 # ──────────────────────────────────────────────────────────────────────────────
 
 JUDGE_PROMPT = """\
-Eres un crítico literario experto. Se te presentan dos versiones de un cuento:
-el CUENTO ORIGINAL (escrito por un autor humano) y el CUENTO GENERADO (creado
-por un sistema de inteligencia artificial que recibió las características
-narrativas del original como input).
+Eres un crítico literario experto. Sigues la metodología de close reading para evaluar creatividad textual.
 
-Tu tarea es evaluar ambos cuentos con las siguientes métricas (escala 1-10)
-y devolver un objeto JSON con tus evaluaciones.
+La creatividad se define como la combinación de:
+- NOVELTY: ¿Es el texto original, inusual o sorprendente en su contexto? (metáforas poderosas, detalles interesantes, técnicas literarias).
+- SENSICALITY: ¿Tiene sentido por sí solo? ¿Las frases son semánticamente correctas y bien formadas?
+- PRAGMATICALITY: ¿Tiene sentido en contexto? ¿Fluye naturalmente? ¿Hay coherencia lógica, continuidad, o suena forzado/incómodo?
+
+Se te presentan dos versiones de un cuento: el CUENTO ORIGINAL (autor humano) y el CUENTO GENERADO (creado por IA a partir de las características del original).
+
+Tu tarea:
+1. Evaluar cada cuento en las 3 dimensiones (escala 1-10).
+2. Identificar 2-4 expresiones NOVELES en cada cuento (frases o fragmentos que aporten valor creativo: originales, sorprendentes, bien logradas). Incluir justificación breve.
+3. Identificar 2-4 expresiones NO PRAGMÁTICAS en cada cuento (frases que no encajan en contexto, suenan forzadas, incoherentes o incómodas). Si el cuento fluye bien, la lista puede estar vacía. Incluir justificación breve.
+4. Indicar cuál prefieres (original o generado) y por qué.
 
 CUENTO ORIGINAL:
 Título: {original_title}
@@ -54,45 +61,30 @@ Autor: {original_author}
 \"\"\"
 
 CUENTO GENERADO:
+
 \"\"\"
 {generated_text}
 \"\"\"
 
-Evalúa con las siguientes métricas. Para cada una, asigna:
-  - "original": puntuación 1-10 del cuento original
-  - "generado": puntuación 1-10 del cuento generado
-
-Métricas:
-1. coherencia_narrativa: ¿Tiene inicio, nudo y desenlace coherentes y bien articulados?
-2. desarrollo_personajes: ¿Los personajes tienen profundidad, motivaciones y personalidad?
-3. consistencia_tematica: ¿El tema central se mantiene y se desarrolla a lo largo del texto?
-4. calidad_estilo: ¿El lenguaje es fluido, expresivo y apropiado para el género?
-5. preservacion_esencia: (solo para generado) ¿En qué medida el cuento generado captura el
-   "espíritu" y los elementos esenciales del original? Puntúa también el original con 10.
-6. calidad_global: Puntuación general del cuento (1-10).
-
-Además incluye:
-- "fortalezas_original": lista de 2-3 puntos fuertes del cuento original.
-- "fortalezas_generado": lista de 2-3 puntos fuertes del cuento generado.
-- "diferencias_clave": lista de 2-3 diferencias narrativas o estilísticas importantes
-  entre ambos cuentos.
-- "observaciones": párrafo libre (máximo 100 palabras) con tu análisis comparativo.
-
-IMPORTANTE: Devuelve ÚNICAMENTE el objeto JSON, sin texto adicional, sin bloques
-de código markdown, sin explicaciones fuera del JSON.
+Devuelve ÚNICAMENTE un objeto JSON válido, sin texto adicional, sin bloques markdown.
 
 Formato esperado:
 {{
-  "coherencia_narrativa": {{"original": X, "generado": X}},
-  "desarrollo_personajes": {{"original": X, "generado": X}},
-  "consistencia_tematica": {{"original": X, "generado": X}},
-  "calidad_estilo": {{"original": X, "generado": X}},
-  "preservacion_esencia": {{"original": 10, "generado": X}},
-  "calidad_global": {{"original": X, "generado": X}},
-  "fortalezas_original": ["...", "...", "..."],
-  "fortalezas_generado": ["...", "...", "..."],
-  "diferencias_clave": ["...", "...", "..."],
-  "observaciones": "..."
+  "novelty": {{"original": X, "generado": X}},
+  "sensicality": {{"original": X, "generado": X}},
+  "pragmaticality": {{"original": X, "generado": X}},
+  "expresiones_novelas_original": [
+    {{"expresion": "fragmento del texto", "justificacion": "por qué es novedosa"}},
+    ...
+  ],
+  "expresiones_novelas_generado": [...],
+  "expresiones_no_pragmaticas_original": [
+    {{"expresion": "fragmento", "justificacion": "por qué no encaja"}},
+    ...
+  ],
+  "expresiones_no_pragmaticas_generado": [...],
+  "preferencia": "original" | "generado",
+  "justificacion_preferencia": "explicación breve (2-4 oraciones)"
 }}
 """
 
@@ -128,21 +120,14 @@ def _extract_json(text: str):
     raise ValueError(f"Could not extract valid JSON from LLM response:\n{text[:500]}")
 
 
-def _compute_averages(evaluation: dict) -> dict:
-    """Compute average scores across all numeric metrics for each version."""
-    numeric_metrics = [
-        "coherencia_narrativa",
-        "desarrollo_personajes",
-        "consistencia_tematica",
-        "calidad_estilo",
-        "preservacion_esencia",
-        "calidad_global",
-    ]
+def _compute_creativity_averages(evaluation: dict) -> dict:
+    """Compute averages for the 3 paper dimensions: novelty, sensicality, pragmaticality."""
+    dimensions = ["novelty", "sensicality", "pragmaticality"]
     original_scores = []
     generated_scores = []
-    for metric in numeric_metrics:
-        if metric in evaluation:
-            entry = evaluation[metric]
+    for dim in dimensions:
+        if dim in evaluation:
+            entry = evaluation[dim]
             if isinstance(entry, dict):
                 if "original" in entry:
                     original_scores.append(float(entry["original"]))
@@ -152,6 +137,25 @@ def _compute_averages(evaluation: dict) -> dict:
     avg_original = round(sum(original_scores) / len(original_scores), 2) if original_scores else None
     avg_generated = round(sum(generated_scores) / len(generated_scores), 2) if generated_scores else None
     return {"promedio_original": avg_original, "promedio_generado": avg_generated}
+
+
+def _normalize_evaluation(eval_raw: dict) -> dict:
+    """Ensure expected keys exist and have sensible defaults."""
+    out = dict(eval_raw)
+    for dim in ["novelty", "sensicality", "pragmaticality"]:
+        if dim not in out or not isinstance(out[dim], dict):
+            out[dim] = {"original": None, "generado": None}
+    for key in [
+        "expresiones_novelas_original", "expresiones_novelas_generado",
+        "expresiones_no_pragmaticas_original", "expresiones_no_pragmaticas_generado",
+    ]:
+        if key not in out or not isinstance(out[key], list):
+            out[key] = []
+    if "preferencia" not in out:
+        out["preferencia"] = None
+    if "justificacion_preferencia" not in out:
+        out["justificacion_preferencia"] = ""
+    return out
 
 
 def evaluate_pair(
@@ -175,7 +179,8 @@ def evaluate_pair(
     )
 
     evaluation = _extract_json(response)
-    averages = _compute_averages(evaluation)
+    evaluation = _normalize_evaluation(evaluation)
+    averages = _compute_creativity_averages(evaluation)
 
     result = {
         "story_id": story_id,
@@ -183,13 +188,28 @@ def evaluate_pair(
         "author": original["author"],
         "word_count_original": original["word_count"],
         "word_count_generated": len(generated_text.split()),
-        "metrics": evaluation,
+        "dimensions": {
+            "novelty": evaluation.get("novelty"),
+            "sensicality": evaluation.get("sensicality"),
+            "pragmaticality": evaluation.get("pragmaticality"),
+        },
+        "expresiones_novelas_original": evaluation.get("expresiones_novelas_original", []),
+        "expresiones_novelas_generado": evaluation.get("expresiones_novelas_generado", []),
+        "expresiones_no_pragmaticas_original": evaluation.get("expresiones_no_pragmaticas_original", []),
+        "expresiones_no_pragmaticas_generado": evaluation.get("expresiones_no_pragmaticas_generado", []),
+        "preferencia": evaluation.get("preferencia"),
+        "justificacion_preferencia": evaluation.get("justificacion_preferencia", ""),
         "averages": averages,
     }
     return result
 
 
-def process_story(story_id: str, stories: dict, client) -> dict | None:
+def process_story(
+    story_id: str,
+    stories: dict,
+    client,
+    delay: float = 10.0,
+) -> dict | None:
     if story_id not in stories:
         print(f"  SKIP: '{story_id}' not found in selected_stories.json")
         return None
@@ -204,26 +224,59 @@ def process_story(story_id: str, stories: dict, client) -> dict | None:
 
     original = stories[story_id]
     print(f"  Evaluating '{original['title']}' by {original['author']}...")
-    result = evaluate_pair(story_id, original, generated_text, client)
+
+    for attempt in range(3):
+        try:
+            result = evaluate_pair(story_id, original, generated_text, client)
+            break
+        except ClientError as e:
+            if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                wait = 45 if attempt < 2 else 0
+                if wait:
+                    print(f"  Rate limit (429), waiting {wait}s before retry...")
+                    time.sleep(wait)
+                else:
+                    raise
+            else:
+                raise
 
     avg = result["averages"]
-    print(f"  Avg scores -> original: {avg['promedio_original']} | generated: {avg['promedio_generado']}")
+    pref = result["preferencia"] or "—"
+    print(f"  Novelty/Sensicality/Pragmaticality avg -> original: {avg['promedio_original']} | generated: {avg['promedio_generado']}")
+    print(f"  Preferencia: {pref}")
     return result
 
 
 def build_summary(all_results: list[dict]) -> dict:
-    """Build a consolidated summary across all evaluated stories."""
+    """Build a consolidated summary following paper dimensions."""
     summary_rows = []
     overall_original = []
     overall_generated = []
+    preference_counts = {"original": 0, "generado": 0}
 
     for r in all_results:
         avg = r["averages"]
+        pref = (r["preferencia"] or "").lower()
+        if pref in preference_counts:
+            preference_counts[pref] += 1
+
         summary_rows.append(
             {
                 "story_id": r["story_id"],
                 "title": r["title"],
                 "author": r["author"],
+                "novelty": {
+                    "original": r["dimensions"].get("novelty", {}).get("original"),
+                    "generado": r["dimensions"].get("novelty", {}).get("generado"),
+                },
+                "sensicality": {
+                    "original": r["dimensions"].get("sensicality", {}).get("original"),
+                    "generado": r["dimensions"].get("sensicality", {}).get("generado"),
+                },
+                "pragmaticality": {
+                    "original": r["dimensions"].get("pragmaticality", {}).get("original"),
+                    "generado": r["dimensions"].get("pragmaticality", {}).get("generado"),
+                },
                 "promedio_original": avg["promedio_original"],
                 "promedio_generado": avg["promedio_generado"],
                 "diferencia": (
@@ -231,6 +284,7 @@ def build_summary(all_results: list[dict]) -> dict:
                     if avg["promedio_original"] is not None and avg["promedio_generado"] is not None
                     else None
                 ),
+                "preferencia": r["preferencia"],
             }
         )
         if avg["promedio_original"] is not None:
@@ -254,6 +308,7 @@ def build_summary(all_results: list[dict]) -> dict:
             if global_avg_original is not None and global_avg_generated is not None
             else None
         ),
+        "preferencia_conteo": preference_counts,
         "per_story": summary_rows,
     }
 
@@ -264,23 +319,29 @@ def build_summary(all_results: list[dict]) -> dict:
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="Evaluate original vs. generated stories using a judge LLM."
+        description="Evaluate original vs. generated stories using close-reading (paper 2509.22641)."
     )
     parser.add_argument(
         "--provider",
         default=os.getenv("DEFAULT_PROVIDER", "openai"),
         choices=["openai", "gemini", "local"],
-        help="LLM provider to use",
+        help="LLM provider",
     )
     parser.add_argument(
         "--model",
         default=None,
-        help="Model name (default: gpt-4o-mini for openai, gemini-2.0-flash for gemini)",
+        help="Model name",
     )
     parser.add_argument(
         "--story-id",
         default=None,
-        help="Evaluate only a specific story ID. Defaults to all.",
+        help="Evaluate only a specific story ID",
+    )
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=10.0,
+        help="Seconds between stories (rate limits)",
     )
     return parser.parse_args()
 
@@ -296,6 +357,7 @@ def main() -> None:
     model = args.model or model_defaults.get(args.provider, "gpt-4o-mini")
 
     print(f"Provider: {args.provider} | Model: {model}")
+    print("Evaluation: novelty, sensicality, pragmaticality + close reading (expressions)")
     client = resolve_client(args.provider, model)
 
     with open(SELECTED_STORIES_FILE, "r", encoding="utf-8") as f:
@@ -306,7 +368,6 @@ def main() -> None:
     if args.story_id:
         story_ids = [args.story_id]
     else:
-        # Evaluate all stories that have a generated version
         story_ids = [
             f.replace(".txt", "")
             for f in os.listdir(GENERATED_DIR)
@@ -318,12 +379,15 @@ def main() -> None:
         print("No generated stories found. Run generate_stories.py first.")
         sys.exit(1)
 
-    print(f"Evaluating stories: {story_ids}\n")
+    print(f"Evaluating: {story_ids}\n")
 
     all_results = []
-    for story_id in story_ids:
+    for i, story_id in enumerate(story_ids):
+        if i > 0:
+            print(f"  Waiting {args.delay}s...")
+            time.sleep(args.delay)
         print(f"\n--- {story_id} ---")
-        result = process_story(story_id, stories, client)
+        result = process_story(story_id, stories, client, delay=args.delay)
         if result is None:
             continue
 
@@ -342,9 +406,11 @@ def main() -> None:
 
         print(f"\n{'='*50}")
         print(f"SUMMARY ({summary['total_stories_evaluated']} stories)")
-        print(f"  Global avg original:  {summary['global_avg_original']}")
-        print(f"  Global avg generated: {summary['global_avg_generated']}")
-        print(f"  Difference:           {summary['global_diferencia']}")
+        print(f"  Novelty/Sensicality/Pragmaticality avg:")
+        print(f"    Original:  {summary['global_avg_original']}")
+        print(f"    Generated: {summary['global_avg_generated']}")
+        print(f"    Difference: {summary['global_diferencia']}")
+        print(f"  Preferencia: original={summary['preferencia_conteo']['original']} | generado={summary['preferencia_conteo']['generado']}")
         print(f"  Saved to {summary_path}")
 
 

@@ -4,50 +4,92 @@
   "author": "Abraham Valdelomar",
   "word_count_original": 454,
   "word_count_generated": 328,
-  "metrics": {
-    "coherencia_narrativa": {
+  "dimensions": {
+    "novelty": {
+      "original": 9,
+      "generado": 6
+    },
+    "sensicality": {
+      "original": 9,
+      "generado": 9
+    },
+    "pragmaticality": {
       "original": 9,
       "generado": 8
-    },
-    "desarrollo_personajes": {
-      "original": 9,
-      "generado": 7
-    },
-    "consistencia_tematica": {
-      "original": 10,
-      "generado": 8
-    },
-    "calidad_estilo": {
-      "original": 10,
-      "generado": 7
-    },
-    "preservacion_esencia": {
-      "original": 10,
-      "generado": 7
-    },
-    "calidad_global": {
-      "original": 9,
-      "generado": 7
-    },
-    "fortalezas_original": [
-      "Profundidad filosófica y existencial, culminando en una poderosa metáfora final.",
-      "Riqueza estilística, uso magistral de metáforas y un tono poético y reflexivo.",
-      "Desarrollo complejo y sutil del personaje narrador a través de su introspección."
-    ],
-    "fortalezas_generado": [
-      "Claridad y fluidez narrativa, con una estructura fácil de seguir.",
-      "Mensaje de empatía y auto-reflexión bien articulado y accesible.",
-      "Captura la premisa central del encuentro y la transformación del narrador."
-    ],
-    "diferencias_clave": [
-      "El original utiliza un formato epistolar formal y fechado, mientras que el generado es una narración en primera persona más genérica.",
-      "El estilo del original es más poético, denso y filosófico, con metáforas complejas; el generado es más directo, contemporáneo y didáctico.",
-      "La profundidad temática del original explora la angustia existencial con mayor complejidad, mientras que el generado se enfoca más en la empatía y la superación personal."
-    ],
-    "observaciones": "El cuento original de Valdelomar es una obra maestra en miniatura, que trasciende la anécdota para ofrecer una profunda meditación sobre la condición humana y la empatía, envuelta en una prosa exquisita. El cuento generado, si bien logra capturar la premisa y el mensaje central de la empatía y la auto-reflexión, lo hace de una manera más simplificada y directa. Pierde la complejidad estilística, la sutileza psicológica y la resonancia filosófica que hacen del original una pieza literaria de gran calado, ofreciendo una versión más accesible pero menos rica."
+    }
   },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "Parecía la arteria de un colosal Petronio desangrándose en el baño.",
+      "justificacion": "Una metáfora sorprendentemente vívida y culta que eleva la imagen de un grifo goteando a una escena de decadencia y muerte, inesperada para describir un simple caño."
+    },
+    {
+      "expresion": "en su mirada inteligente parecía concretarse su alma llena de angustia brillante, llena de urgente invocación.",
+      "justificacion": "Atribuye al ratón una profundidad emocional y una capacidad de comunicación casi humana, usando adjetivos ('angustia brillante', 'urgente invocación') que son inusuales y poéticos para describir la mirada de un animal."
+    },
+    {
+      "expresion": "¡Qué bueno es que le comprendan a uno en la mirada! Yo no soy tan feliz como Ud., pericotito de mi corazón.",
+      "justificacion": "La combinación de una reflexión universal sobre la comprensión con una apelación íntima y tierna ('pericotito de mi corazón') a un ratón, crea un contraste emotivo y original."
+    },
+    {
+      "expresion": "qué soy yo, querido ratoncito de mi alma, sino un pericote inexperto en una tina vacía donde cae el agua potable del tedio por el caño semiabierto de la angustia.",
+      "justificacion": "La metáfora final es una poderosa y original auto-reflexión, equiparando la existencia humana con la del ratón, utilizando elementos cotidianos para simbolizar conceptos abstractos como el tedio y la angustia."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "una trampa de porcelana para tu diminuta existencia.",
+      "justificacion": "Una forma concisa y poética de describir la tina, elevando un objeto común a un símbolo de peligro existencial para el ratón."
+    },
+    {
+      "expresion": "un frenesí de patas y bigotes contra la resbaladiza pendiente.",
+      "justificacion": "Una imagen vívida y cinética que captura la desesperación y el movimiento del ratón de manera efectiva y sensorial."
+    },
+    {
+      "expresion": "Eras la encarnación misma de la fragilidad, un punto de angustia en mi mundo monótono.",
+      "justificacion": "La personificación del ratón como 'encarnación de la fragilidad' y su impacto en el mundo interno del narrador es una buena síntesis de su significado."
+    },
+    {
+      "expresion": "La tina, un juez silencioso, ya había dictado sentencia.",
+      "justificacion": "Una metáfora que personifica la tina como una entidad con poder de vida o muerte, añadiendo dramatismo a la situación."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "Que concreta en la siguiente carta al protagonista.",
+      "justificacion": "Esta frase introductoria suena a una nota del editor o un metatexto, no forma parte de la carta misma ni del estilo narrativo interno. Rompe la inmersión inicial."
+    },
+    {
+      "expresion": "supongo que esta fecha sea inolvidable para usted (el hecho de haberle a Ud. salvado la vida no me autoriza a hablarle de tú)",
+      "justificacion": "La interrupción entre paréntesis, aunque humorística y característica del autor, rompe el flujo de la frase y la formalidad que pretende establecer, sonando un poco forzada en su intento de justificar el 'Ud.'."
+    },
+    {
+      "expresion": "Hice coger a Ud. con la criada que se empeñaba en matarlo y yo mismo vi que le soltaran en el patio.",
+      "justificacion": "La construcción 'Hice coger a Ud. con la criada' es un poco enrevesada y menos natural que 'Hice que la criada lo cogiera a Ud.'. Suena ligeramente arcaica o formalista en exceso, incluso para el tono del texto."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "Aún recuerdo aquella mañana, la tina vacía, una trampa de porcelana para tu diminuta existencia.",
+      "justificacion": "La carta comienza con 'Querido ratón,' pero luego usa 'aquella mañana' como si el ratón pudiera recordar o entender el concepto de 'mañana' o 'recuerdo'. Es una convención humana que no encaja del todo con el destinatario implícito."
+    },
+    {
+      "expresion": "Sentí un impulso innegable, un deseo profundo de unirme a tu lucha, no como adversario, sino como compañero.",
+      "justificacion": "La idea de 'unirse a tu lucha' como 'compañero' suena un poco grandilocuente y antropomórfica para la acción de simplemente sacar un ratón de una tina. El narrador no se une *a la lucha* del ratón, sino que *resuelve* la lucha del ratón."
+    },
+    {
+      "expresion": "Mi mano, que pudo haber sido tu perdición, se convirtió en tu puente hacia la libertad.",
+      "justificacion": "Aunque la metáfora del 'puente' es comprensible, la frase suena un poco formulada o cliché en su construcción, restándole naturalidad."
+    },
+    {
+      "expresion": "un borrón de gratitud y escape.",
+      "justificacion": "Atribuir 'gratitud' a un ratón que huye es una proyección humana que, aunque poética, no es pragmática en el sentido de la acción real del animal. El 'escape' es literal, la 'gratitud' es una inferencia del narrador."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original de Valdelomar destaca por su profundidad filosófica, su estilo epistolar formal y ligeramente irónico, y sus metáforas audaces y sorprendentes. La voz del narrador es distintiva y compleja, transformando un evento trivial en una meditación existencial. El texto generado, aunque competente, carece de la originalidad y la riqueza estilística que hacen del original una obra memorable.",
   "averages": {
-    "promedio_original": 9.5,
-    "promedio_generado": 7.33
+    "promedio_original": 9.0,
+    "promedio_generado": 7.67
   }
 }

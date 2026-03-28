@@ -4,50 +4,84 @@
   "author": "Carlos Gagini",
   "word_count_original": 416,
   "word_count_generated": 328,
-  "metrics": {
-    "coherencia_narrativa": {
-      "original": 9,
-      "generado": 8
-    },
-    "desarrollo_personajes": {
-      "original": 7,
+  "dimensions": {
+    "novelty": {
+      "original": 8,
       "generado": 6
     },
-    "consistencia_tematica": {
-      "original": 10,
+    "sensicality": {
+      "original": 9,
       "generado": 9
     },
-    "calidad_estilo": {
-      "original": 10,
-      "generado": 7
-    },
-    "preservacion_esencia": {
-      "original": 10,
-      "generado": 8
-    },
-    "calidad_global": {
+    "pragmaticality": {
       "original": 9,
       "generado": 7
-    },
-    "fortalezas_original": [
-      "Prosa rica y evocadora, con un vocabulario sofisticado y metáforas potentes.",
-      "La personificación de los objetos y la covacha crea una atmósfera gótica y simbólica.",
-      "El final es una poderosa alegoría de justicia poética, profundamente impactante."
-    ],
-    "fortalezas_generado": [
-      "Claridad narrativa y estructura de la trama bien definida.",
-      "Mantiene la esencia de la justicia poética y el destino del prestamista.",
-      "Lenguaje accesible y directo, facilitando la comprensión de la historia."
-    ],
-    "diferencias_clave": [
-      "El estilo del original es más poético, gótico y simbólico, mientras que el generado es más directo y descriptivo.",
-      "El original dedica párrafos enteros a la historia y el sufrimiento detrás de cada objeto empeñado, el generado los menciona de forma más concisa.",
-      "El original logra una mayor resonancia emocional a través de su prosa y la descripción del sufrimiento, mientras que el generado lo aborda de manera más superficial."
-    ],
-    "observaciones": "El cuento original de Gagini es una obra maestra de la prosa corta, destacando por su riqueza estilística y su profunda carga simbólica. Cada objeto empeñado es un microcosmos de tragedia, y el final es una catarsis poética. El cuento generado, si bien reproduce fielmente la trama y el mensaje central, carece de la sofisticación literaria y la resonancia emocional del original. Es una versión competente, pero pierde la voz distintiva y la profundidad artística que hacen del original una pieza memorable."
+    }
   },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "¡Con qué fruición clava sus pupilas de gato en su riqueza, en aquellos mil objetos prisioneros que esperan vanamente su rescate!",
+      "justificacion": "La comparación de los ojos del prestamista con los de un gato, junto con la personificación de los objetos como 'prisioneros' que esperan 'rescate', crea una imagen impactante de codicia depredadora y la indefensión trágica de las víctimas."
+    },
+    {
+      "expresion": "De todos esos lúgubres objetos brota un coro de llantos que hiela el alma, pero que en el empedernido corazón del usurero resuena como una alegre música de monedas.",
+      "justificacion": "Esta poderosa yuxtaposición del sufrimiento humano colectivo ('coro de llantos') y el deleite perverso del usurero ('alegre música de monedas') es altamente original y transmite eficazmente su depravación."
+    },
+    {
+      "expresion": "Durante largos años la covacha, con las fauces abiertas como un dragón, devoró hasta los últimos harapos de la miseria y se hartó de dolores.",
+      "justificacion": "La personificación de la 'covacha' como un dragón con 'fauces abiertas' que 'devoró' y 'se hartó de dolores' es una metáfora vívida y original, transformando una simple vivienda en una entidad monstruosa de consumo y sufrimiento."
+    },
+    {
+      "expresion": "El sótano se había convertido en un lago de lágrimas.",
+      "justificacion": "Esta imagen final es un giro brillante, simbólico y sorprendente. Recontextualiza la riqueza acumulada como el sufrimiento mismo que causó, proporcionando una forma de justicia poética y poderosa."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "La covacha de Elías, el prestamista, era un imán para la desesperación.",
+      "justificacion": "Esta línea de apertura es concisa y establece eficazmente el tema y la atmósfera central, utilizando una metáfora fuerte para describir la función de la covacha."
+    },
+    {
+      "expresion": "Su placer era una cosecha perversa que crecía con cada baratija entregada, cada súplica desesperada.",
+      "justificacion": "La metáfora de 'cosecha perversa' para el placer de Elías es original y transmite vívidamente la naturaleza retorcida de su codicia, vinculándola al sufrimiento de los demás."
+    },
+    {
+      "expresion": "Su oscura covacha, una boca de sueños olvidados, engullía las posesiones.",
+      "justificacion": "La personificación de la covacha como una 'boca de sueños olvidados' que 'engullía' es una imagen poderosa y poética, aunque resuena con la del original ('fauces abiertas como un dragón')."
+    },
+    {
+      "expresion": "No cayó sobre oro, sino en un líquido viscoso y helado. Era un lago, oscuro e ilimitado, compuesto por cada lágrima, cada suspiro, cada gota de sudor arrancada a sus víctimas.",
+      "justificacion": "Aunque se basa en el concepto del original, la descripción detallada de la composición del líquido ('cada lágrima, cada suspiro, cada gota de sudor') añade una dimensión visceral y exhaustiva a la justicia simbólica."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "hoy va de puerta en puerta pi diendo socorro",
+      "justificacion": "Este es claramente un error tipográfico o de formato ('pidiendo' dividido), que interrumpe el flujo de lectura y distrae momentáneamente al lector. Afecta la fluidez natural del texto."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "El sótano mismo parecía respirar, un testimonio viviente del dolor acumulado.",
+      "justificacion": "La idea de un 'sótano respirando' es un tanto abstracta y no se asienta completamente como una imagen natural. 'Testimonio viviente' es un cliché que disminuye el impacto."
+    },
+    {
+      "expresion": "El aire en su sótano era denso, pesado con los ecos de gritos silenciosos.",
+      "justificacion": "'Ecos de gritos silenciosos' es un oxímoron que crea una tensión semántica que no se resuelve completamente en una imagen clara e impactante. Se siente ligeramente forzado en su intento de ser poético."
+    },
+    {
+      "expresion": "La marea dorada bajo sus pies ya no era sólida.",
+      "justificacion": "Aunque 'marea dorada' es una buena imagen, la frase 'ya no era sólida' para describir el colapso del suelo se siente un tanto literal y menos evocadora de lo que la situación exige. Podría haberse formulado de manera más dinámica."
+    },
+    {
+      "expresion": "El sufrimiento que tan meticulosamente había recolectado ahora lo reclamaba.",
+      "justificacion": "'Meticulosamente recolectado' suena excesivamente formal y clínico para el contexto de sufrimiento humano y desesperación. Choca ligeramente con la intensidad emocional de la escena."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original de Gagini demuestra una maestría en el lenguaje y una profundidad simbólica que el generado no alcanza. Sus metáforas son más audaces y orgánicas, y la personificación de los objetos y la covacha se siente más integrada y poderosa. El final, en particular, es un golpe de genio poético que el generado imita pero no supera en su impacto visceral y simbólico.",
   "averages": {
-    "promedio_original": 9.17,
-    "promedio_generado": 7.5
+    "promedio_original": 8.67,
+    "promedio_generado": 7.33
   }
 }
