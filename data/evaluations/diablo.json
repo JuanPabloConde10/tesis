@@ -1,0 +1,87 @@
+{
+  "story_id": "diablo",
+  "title": "El diablo y sus añicos",
+  "author": "Hans Christian Andersen",
+  "word_count_original": 442,
+  "word_count_generated": 358,
+  "dimensions": {
+    "novelty": {
+      "original": 8,
+      "generado": 5
+    },
+    "sensicality": {
+      "original": 9,
+      "generado": 7
+    },
+    "pragmaticality": {
+      "original": 9,
+      "generado": 6
+    }
+  },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "Los paisajes más hermosos, al reflejarse en el espejo, parecían espinacas hervidas",
+      "justificacion": "Una comparación inesperada y vívida que transforma lo bello en algo grotesco y mundano, muy efectiva para ilustrar la distorsión del espejo."
+    },
+    {
+      "expresion": "si alguna tenía una peca, ésta crecía hasta cubrirle la boca, la nariz y la frente.",
+      "justificacion": "Un detalle específico y macabramente humorístico que magnifica un pequeño defecto hasta convertirlo en una desfiguración total, muy imaginativo."
+    },
+    {
+      "expresion": "Lo terrible era cuando una partícula se incrustaba en el corazón de una persona, porque se convertía en un pedazo de hielo.",
+      "justificacion": "Una metáfora poderosa que eleva el daño físico a una dimensión emocional y espiritual, con un impacto duradero y simbólico."
+    },
+    {
+      "expresion": "El diablo se desternillaba de risa viendo lo que habían hecho sus discípulos. Se reía tan a gusto que su gordo vientre se agitaba y se cansaba de felicitar a sus alumnos.",
+      "justificacion": "La personificación del diablo con un detalle físico ('gordo vientre') y su risa incontrolable añade un toque de humor negro y lo hace más vívido y memorable."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "Un espejo, no de cristal, sino de pura malicia",
+      "justificacion": "Una descripción concisa y metafórica que establece la naturaleza intrínseca del objeto más allá de su materialidad."
+    },
+    {
+      "expresion": "Con una risa seca que resonó en el abismo",
+      "justificacion": "La 'risa seca' es un buen detalle sensorial para el Diablo, y 'resonó en el abismo' contribuye a la atmósfera oscura del inicio."
+    },
+    {
+      "expresion": "buscando profanar incluso lo divino con su reflejo burlesco.",
+      "justificacion": "Una frase que encapsula la ambición y la insolencia del Diablo y sus secuaces de una manera potente y concisa."
+    },
+    {
+      "expresion": "La humanidad, con su percepción distorsionada y su corazón endurecido, se convirtió en una parodia de sí misma.",
+      "justificacion": "La expresión 'parodia de sí misma' es una metáfora fuerte y resumida del efecto final de los fragmentos en la humanidad."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "pues tenía una porque era profesor",
+      "justificacion": "Aunque gramaticalmente correcta, la construcción 'tenía una porque era profesor' suena un poco redundante y menos fluida que otras frases del texto. Podría haberse formulado de manera más elegante."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "Era el resultado de su astuta labor, una lucha silenciosa contra la armonía del mundo.",
+      "justificacion": "Esta frase interrumpe el flujo narrativo para ofrecer una explicación redundante. El espejo ya es la 'astuta labor', y la 'lucha silenciosa' es una adición que suena forzada y abstracta."
+    },
+    {
+      "expresion": "Los secuaces, con su tarea de transporte concluida, se dispersaron, su papel activo en la propagación del mal aparentemente terminado, como piezas de un juego que han cumplido su función.",
+      "justificacion": "La frase es excesivamente larga y clunky. La explicación entre comas y la comparación final ('como piezas de un juego') se sienten forzadas y didácticas, rompiendo la inmersión narrativa."
+    },
+    {
+      "expresion": "Una prohibición invisible se impuso: la capacidad de ver la verdad y sentir la felicidad fue arrebatada.",
+      "justificacion": "La 'prohibición invisible' es una abstracción que no encaja del todo con la naturaleza física de los fragmentos. Suena más a una declaración conceptual que a una consecuencia directa y tangible de la historia."
+    },
+    {
+      "expresion": "En esta perversa victoria, los secuaces habían cumplido su propósito y se desvanecieron en la irrelevancia, mientras que el Diablo se regocijaba, su risa resonando en el eco de la miseria global. Su plan había vencido, la felicidad de los hombres, desterrada.",
+      "justificacion": "El párrafo final es excesivamente declarativo y expositivo. En lugar de mostrar el triunfo del Diablo, lo narra de forma resumida y abstracta, y la repetición sobre la irrelevancia de los secuaces se siente redundante. Carece de la vivacidad y el impacto del final del cuento original."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original de Andersen sobresale por su vivacidad, sus detalles imaginativos y su tono consistentemente juguetón y oscuro. Las descripciones son concretas y memorables, creando imágenes poderosas que la versión generada, con su lenguaje más abstracto y declarativo, no logra replicar. La coherencia narrativa y la progresión natural de los eventos en el original lo hacen una lectura mucho más inmersiva y efectiva.",
+  "averages": {
+    "promedio_original": 8.67,
+    "promedio_generado": 6.0
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "story_id": "prestamista",
+  "num_candidates": 4,
+  "selection_policies": [
+    "mean",
+    "weighted"
+  ],
+  "candidates": [
+    {
+      "candidate_id": 1,
+      "story": "En una ciudad perpetuamente envuelta en un sudario de niebla y desesperación, donde el sol apenas osaba asomarse, la covacha del viejo Silas se alzaba como un monumento a la miseria ajena. Allí acudían, con rostros demacrados y miradas vacías, las víctimas anónimas: la esposa que empeñaba su última reliquia, el sabio su libro más preciado, la obrera su herramienta de trabajo. Cada objeto, cada prenda, era un pedazo de alma arrancado, un suspiro de dolor que Silas, el usurero de corazón pétreo, recibía con una sonrisa complacida, deleitándose en el sufrimiento que alimentaba su avaricia.\n\nSilas, un hombre consumido por la codicia, no aspiraba a otra cosa que a la acumulación infinita. Su única pasión era ver crecer su fortuna, un oro manchado con las lágrimas y la angustia de aquellos a quienes explotaba sin remordimiento. La covacha, un laberinto de sombras y polvo, engullía estas ofrendas de desesperación. Con el tiempo, aquellos objetos pignorados, cargados de una energía de dolor, se escurrían hacia el sótano, donde, bajo la mirada insaciable de Silas, se transformaban. El luto de una viuda, el hambre de un niño, la enfermedad de un inválido; todo se decantaba, se solidificaba, convirtiéndose en una vasta y brillante fortuna de oro.\n\nLa covacha y el sótano, testigos mudos de la explotación, se habían convertido en un ente devorador, un abismo que consumía la esperanza de los pobres para alimentar la riqueza del usurero. Silas, en su egoísta triunfo, sentía que había dominado el ciclo del dolor y la necesidad.\n\nUna noche, sintiendo el peso de su \"victoria\" sobre el mundo, Silas descendió al sótano. Quería regocijarse en su tesoro, la culminación de su vida de desalmada usura. La luz de su linterna danzaba sobre montículos de oro, monedas y joyas que reflejaban el brillo frío de su corazón. En ese instante de éxtasis, mientras se inclinaba para acariciar su fortuna, la superficie bajo sus pies, húmeda por una condensación antinatural, cedió. Resbaló.\n\nCayó de cabeza en lo que creía era una ilusión, pero era terriblemente real: un lago de lágrimas negras, el sufrimiento acumulado de miles de almas. El oro, antes sólido, se disolvió bajo él, revelando la verdadera esencia de su riqueza. Silas se ahogó, no en agua, sino en la agonía eterna de aquellos a quienes había despojado, su avaricia finalmente consumiéndolo en una justicia poética y horripilante. Su grito se perdió en las profundidades de su propio infierno.",
+      "word_count": 405,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        },
+        "average_score": 8.67,
+        "justification": "El cuento destaca por su original mezcla de realismo social y fantasía oscura, donde el sufrimiento se materializa en oro y, finalmente, en la perdición del usurero. La coherencia interna es sólida, estableciendo sus propias reglas mágicas y siguiéndolas hasta una conclusión impactante. Además, la prosa es rica y evocadora, creando una atmósfera densa y manteniendo al lector cautivado hasta el final.",
+        "metadata": {
+          "story_id": "prestamista",
+          "candidate_id": 1
+        }
+      },
+      "policy_scores": {
+        "mean": 8.6667,
+        "weighted": 8.5
+      }
+    },
+    {
+      "candidate_id": 2,
+      "story": "El pueblo de Velum era un espectro envuelto en niebla perpetua, sus callejuelas empedradas resonando con el lamento del viento y los suspiros ahogados de sus habitantes. Un hedor a humedad, desesperación y algo viejo y metálico impregnaba el aire, concentrándose alrededor de la covacha del viejo Elías. Su morada no era pobre, sino un pozo de miseria ajena, un lugar que no sufría la pobreza, sino que la devoraba y la transformaba en una oscuridad palpable.\n\nCada día, una procesión de almas quebrantadas se arrastraba hasta su puerta. La esposa con el último anillo, el obrero con su herramienta de sustento, el sabio con su libro más preciado. Sus ojos, llenos de una muda aspiración por un mañana menos cruel, imploraban piedad que Elías nunca ofrecía. Él, un usurero de corazón pétreo, sonreía mientras sus manos huesudas recibían los objetos pignorados, cada prenda una punzada de dolor, cada joya un fragmento de esperanza robada. La covacha, un ser silencioso, se deleitaba con el goteo constante de desdicha, su atmósfera cargada con el peso de innumerables tragedias.\n\nCon cada alma despojada, Elías se sentía más grande, su propia esencia se transformaba, no en oro, sino en una oscuridad más densa, más impenetrable. Su riqueza no era solo material; era una acumulación obscena de la pena humana. En el sótano, bajo el peso de su avaricia, los objetos pignorados se transmutaban lentamente. Los pañuelos empapados en lágrimas, los relicarios cargados de recuerdos, las herramientas gastadas por el sudor, todo se fundía en una vasta y brillante fortuna de oro. Las paredes del sótano parecían respirar con el brillo de ese metal maldito, la covacha y el sótano, sus cómplices silenciosos, se regocijaban en su opulencia sombría, en la victoria de la usura sobre la necesidad.\n\nElías solía descender a su santuario dorado, su linterna danzando sobre montones de monedas y lingotes. Era su ritual de triunfo, su regocijo personal. Una noche, mientras se deleitaba con el reflejo de su fortuna, la escalera, empapada no por el rocío, sino por el éter invisible de mil lágrimas derramadas, cedió bajo su pie. Resbaló, su grito se ahogó en el eco del sótano. Cayó.\n\nNo en el duro suelo, sino en un lago oscuro y profundo. Un lago de lágrimas, no de agua, sino de la esencia concentrada de todo el sufrimiento que había cosechado. Se hundió, las manos de las víctimas, invisibles pero innumerables, lo arrastraban. Se ahogó en una agonía infernal, eterna, el oro resbalando de su alcance, inútil ahora. La covacha y el sótano, finalmente, habían reclamado su última y más preciada ofrenda: el alma del usurero, para siempre atrapada en su propio mar de dolor.",
+      "word_count": 445,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        },
+        "average_score": 8.67,
+        "justification": "El cuento ofrece una reinterpretación creativa del arquetipo del usurero, introduciendo un elemento de realismo mágico donde el sufrimiento se materializa en oro y, finalmente, en la perdición del protagonista. La lógica interna del relato es sólida, manteniendo la coherencia de sus elementos fantásticos. La prosa es evocadora y el ritmo efectivo, logrando una narrativa impactante y una justicia poética satisfactoria.",
+        "metadata": {
+          "story_id": "prestamista",
+          "candidate_id": 2
+        }
+      },
+      "policy_scores": {
+        "mean": 8.6667,
+        "weighted": 8.5
+      }
+    },
+    {
+      "candidate_id": 3,
+      "story": "Elías, el viejo prestamista, habitaba una covacha oscura y húmeda, un nido de sombras que exhalaba la desesperación. Cada objeto pignorado –un broche de plata de una esposa desahuciada, un volumen ajado de un sabio arruinado, la herramienta oxidada de un obrero sin esperanza– se depositaba en su sótano. Estos no eran solo bienes materiales; eran fragmentos palpables de miseria humana. La covacha y el sótano, más que espacios, eran voraces entidades que devoraban el alma de los desdichados.\n\nElías era la encarnación de la avaricia. Su corazón, una piedra, solo aspiraba a ver crecer su fortuna, alimentada por lágrimas y sueños rotos. Se deleitaba en el sufrimiento ajeno; cada gemido era música, cada prenda empeñada, un peldaño más en su escalera hacia una riqueza obscena.\n\nCon los años, la transformación fue implacable. Las prendas, impregnadas del dolor de las víctimas anónimas, no se pudrieron. En el sótano, bajo una lámpara de aceite, se metamorfoseaban. Elías creyó que su codicia convertía el infortunio en oro puro. Montañas de monedas y lingotes se amontonaron, un tesoro brillante que reflejaba la luz con un eco de agonía. Era su recompensa, pensó, por su astucia. Había vencido la pobreza de otros, transformándola en su propia abundancia.\n\nUna noche, consumido por su insaciable sed de regocijo, Elías descendió al sótano. Quería sumergir sus manos en su fortuna, sentir el peso de la miseria convertida en poder. La oscuridad era densa, el aire pesado con un hedor a sal y óxido. Al llegar al centro de su cámara acorazada, donde el oro brillaba con fulgor espectral, Elías resbaló. No había suelo firme; en su lugar, un líquido oscuro y viscoso se extendía, un lago de un negro profundo que reflejaba el brillo del oro.\n\nCayó, el impacto de un cuerpo rompiendo una superficie blanda. Era el lago de lágrimas, las lágrimas acumuladas de miles de almas, el sufrimiento que había cosechado. Luchó por salir, pero el líquido era espeso, pegajoso, y manos invisibles lo arrastraban. Las voces de sus víctimas, silenciadas durante años, resonaron en su mente, un coro de reproches y lamentos. Se ahogó, no en agua, sino en la pena ajena, su agonía eterna, un castigo que ni siquiera la muerte podía mitigar.",
+      "word_count": 370,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        },
+        "average_score": 8.67,
+        "justification": "El cuento destaca por su originalidad al literalizar conceptos abstractos como la miseria convertida en oro y el sufrimiento en un lago de lágrimas, ofreciendo una justicia poética impactante. Mantiene una coherencia interna sólida dentro de su realismo mágico, donde cada elemento fantástico se integra lógicamente. Su pragmaticalidad es alta, logrando un fuerte impacto emocional y transmitiendo su mensaje moral de forma efectiva a través de una prosa evocadora y un final memorable.",
+        "metadata": {
+          "story_id": "prestamista",
+          "candidate_id": 3
+        }
+      },
+      "policy_scores": {
+        "mean": 8.6667,
+        "weighted": 8.5
+      }
+    },
+    {
+      "candidate_id": 4,
+      "story": "En un rincón olvidado de un pueblo eternamente sumido en la penumbra, donde el lamento del viento arrastraba susurros de viejos secretos, se alzaba la covacha de Elías. El viejo prestamista, con un rostro que era un mapa de arrugas y un corazón tallado en piedra, encontraba un retorcido placer en la miseria ajena. Su guarida era un santuario de la desesperación, cada objeto pignorado —la sortija de una viuda, el reloj de un obrero, el juguete de un niño— era un fragmento del dolor de sus víctimas anónimas, que representaban el sufrimiento humano en su más pura expresión. Elías no veía solo baratijas; percibía la esencia misma de la pobreza, el desamparo de aquellos a quienes había despojado, y se deleitaba en ello.\n\nSu ambición era tan sombría como su morada. El sótano, una boca abierta bajo la covacha, parecía respirar con una expectación malsana, un cómplice silencioso en su insaciable sed de riqueza. Elías anhelaba que cada lágrima derramada, cada suspiro de angustia, se transformara en algo tangible, en una fortuna que solo él pudiera poseer.\n\nCon el paso de los años, los objetos acumulados en las profundidades de la tierra no se pudrieron; se transmutaron. El dolor de la esposa, la pecadora, el sabio, la obrera, el inválido, el carpintero, se fusionó en una alquimia macabra. Las prendas y enseres, empapados en la angustia de sus dueños, se cristalizaron en una vasta y brillante fortuna de oro. El sufrimiento de las almas quebradas había sido la crisálida de su opulencia, una riqueza nacida de la deshumanización.\n\nFinalmente, el día llegó. Elías descendió al sótano, sus ojos brillando con una avaricia febril. Quería regocijarse en su tesoro, palpar la materialización de la miseria convertida en oro. Pero el aire allí abajo era espeso, cargado con el eco de innumerables lamentos. El suelo, inesperadamente húmedo, resbaladizo. En su éxtasis, el viejo tropezó.\n\nCayó, no sobre el oro, sino en un abismo de líquido oscuro y gélido. Un lago de lágrimas, el sufrimiento acumulado de todos a quienes explotó, se arremolinó a su alrededor. Las víctimas anónimas, a través de su agonía colectiva, habían reclamado su justicia. Elías luchó, pataleó, pero la corriente de dolor lo arrastró sin piedad, un castigo eterno en las profundidades de su propia creación. Sus gritos se ahogaron en el silencio, mientras la oscuridad del sótano cerraba su abrazo final.",
+      "word_count": 395,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 9.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento es una fábula moral oscura que, aunque parte de premisas conocidas, introduce una novedosa y potente forma de justicia poética. La transmutación del sufrimiento en oro y su culminación en un lago de lágrimas demuestran una imaginación creativa. La narrativa es internamente coherente dentro de su marco fantástico y cumple eficazmente su propósito de advertencia sobre la avaricia.",
+        "metadata": {
+          "story_id": "prestamista",
+          "candidate_id": 4
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0,
+        "weighted": 7.75
+      }
+    }
+  ],
+  "rankings": {
+    "mean": [
+      {
+        "candidate_id": 1,
+        "score": 8.6667,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 2,
+        "score": 8.6667,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 3,
+        "score": 8.6667,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 4,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 9.0
+        }
+      }
+    ],
+    "weighted": [
+      {
+        "candidate_id": 1,
+        "score": 8.5,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 2,
+        "score": 8.5,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 3,
+        "score": 8.5,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 4,
+        "score": 7.75,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 9.0
+        }
+      }
+    ]
+  }
+}

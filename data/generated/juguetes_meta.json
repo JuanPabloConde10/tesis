@@ -1,0 +1,13 @@
+{
+  "story_id": "juguetes",
+  "source_title": "Los juguetes",
+  "source_author": "Juan José Morosoli",
+  "aoi_names_used": [
+    "RAGS 2 RICHES",
+    "JOURNEY",
+    "CONFLICT"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 336
+}

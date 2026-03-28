@@ -175,7 +175,9 @@ Salida esperada (ejemplo):
 tenplate_prompt_generar_axis_of_interest = (
     prompt_contexto_axis_of_interest
     + """ 
-Dado el siguiente cuento: {cuento}, devuelve una lista de Axis of Interest que abarquen la historia. 
+Dado las caracteristicas de esta historia {data} y los siguientes axis_of_interest {axis_of_interest}, devuelve una lista de Axis of Interest que abarquen la historia. 
+
+La lista tiene que contener solo los nombres
 
 """
 )

@@ -13,6 +13,8 @@ EXPERIMENTS = [
             "Eloy, farero retirado que guarda el secreto del faro",
             "Nora, niña aprendiz que descifra los códigos de luz",
         ],
+        "aoi_names": ["JOURNEY", "CONFLICT", "DONOR"],
+        "strategy": "sequential",
     },
     {
         "id": "exp-biblioteca",
@@ -29,6 +31,8 @@ EXPERIMENTS = [
             "Tono, buzo aficionado",
             "El bibliotecario que custodia los libros sumergidos",
         ],
+        "aoi_names": ["JOURNEY", "TASK", "CONFLICT"],
+        "strategy": "round_robin",
     },
 ]
 

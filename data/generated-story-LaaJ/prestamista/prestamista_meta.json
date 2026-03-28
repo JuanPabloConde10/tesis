@@ -1,0 +1,27 @@
+{
+  "story_id": "prestamista",
+  "source_title": "La leyenda del prestamista",
+  "source_author": "Carlos Gagini",
+  "aoi_names_used": [
+    "RAGS 2 RICHES",
+    "CONFLICT"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 405,
+  "num_candidates": 4,
+  "selection_policies": [
+    "mean",
+    "weighted"
+  ],
+  "primary_policy": "mean",
+  "weighted_policy_weights_normalized": {
+    "novelty": 0.5,
+    "sensicality": 0.25,
+    "pragmaticality": 0.25
+  },
+  "winner_candidate_ids": {
+    "mean": 1,
+    "weighted": 1
+  }
+}

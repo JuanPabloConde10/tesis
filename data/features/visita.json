@@ -1,0 +1,25 @@
+{
+  "story_id": "visita",
+  "title": "Una visita infernal",
+  "author": "Juana Manuela Gorriti",
+  "genre": "cuento_fantástico",
+  "setting": "La historia comienza en el retrete de una novia en su noche de bodas, en un ambiente festivo y privado. Años después, se traslada a una plaza pública (Plaza de San Francisco) en un entorno urbano.",
+  "characters": [
+    "la hermana (protagonista): una novia que experimenta un evento traumático y misterioso en su noche de bodas, y años después busca una explicación.",
+    "el marido (personaje secundario): el novio que desestima la experiencia de su esposa como una broma, representando la incredulidad ante lo inexplicable.",
+    "el hombre misterioso / el loco (antagonista/catalizador): una figura siniestra que parece secuestrar a la novia y que, años después, se revela como un demente, redefiniendo la naturaleza del evento inicial."
+  ],
+  "themes": [
+    "la percepción de la realidad y la ilusión",
+    "la locura y sus manifestaciones",
+    "la subversión de lo sobrenatural por lo psicológico",
+    "la memoria y su fiabilidad",
+    "el paso del tiempo y sus efectos en la verdad"
+  ],
+  "tone": "Misterioso y ominoso al principio, luego desconcertante y finalmente irónico y perturbador.",
+  "narrative_style": "Narrador en primera persona (narrador testigo) que relata los eventos vividos por su hermana, utilizando un lenguaje formal y descriptivo.",
+  "plot_summary": "En su noche de bodas, una novia es aparentemente secuestrada por una figura demoníaca de su retrete, solo para despertar en el coche con su marido, quien desestima su relato. Años después, la hermana reconoce al mismo hombre en la calle y, al preguntar por él, descubre que es un loco con delirios de ser el demonio y un presidente forzado. Esta revelación recontextualiza el evento inicial, sugiriendo que la experiencia de la novia pudo haber sido una alucinación, un sueño o un encuentro malinterpretado con un enfermo mental.",
+  "aoi_names": [
+    "KIDNAPPING"
+  ]
+}
