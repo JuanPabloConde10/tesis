@@ -1,0 +1,104 @@
+{
+  "before_total_txt": 1339,
+  "deleted_total": 18,
+  "after_total_txt": 1321,
+  "deleted_by_reason": {
+    "A:category_name": 3,
+    "A:disambiguation_content": 2,
+    "A:empty": 3,
+    "A:portal_name": 1,
+    "B:short_lt_200": 9
+  },
+  "deleted_files": [
+    {
+      "file": "books/short-tales/CategoríaCuentos_de_Nasrudin.txt",
+      "reason": "A:empty",
+      "chars": 0
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_escogidos_de_los_Hermanos_Grimm.txt",
+      "reason": "A:category_name",
+      "chars": 69
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_por_autor.txt",
+      "reason": "A:empty",
+      "chars": 0
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_por_género.txt",
+      "reason": "A:empty",
+      "chars": 0
+    },
+    {
+      "file": "books/short-tales/CategoríaLas_mil_y_una_noches.txt",
+      "reason": "A:category_name",
+      "chars": 50
+    },
+    {
+      "file": "books/short-tales/CategoríaPáginas_eslavas.txt",
+      "reason": "A:category_name",
+      "chars": 45
+    },
+    {
+      "file": "books/short-tales/Chamijo.txt",
+      "reason": "B:short_lt_200",
+      "chars": 168
+    },
+    {
+      "file": "books/short-tales/Cuentos.txt",
+      "reason": "A:disambiguation_content",
+      "chars": 687
+    },
+    {
+      "file": "books/short-tales/Cuentos_Clásicos_del_Norte.txt",
+      "reason": "A:disambiguation_content",
+      "chars": 584
+    },
+    {
+      "file": "books/short-tales/De_la_comisión.txt",
+      "reason": "B:short_lt_200",
+      "chars": 171
+    },
+    {
+      "file": "books/short-tales/Doña_Berta.txt",
+      "reason": "B:short_lt_200",
+      "chars": 191
+    },
+    {
+      "file": "books/short-tales/El_doctor_Pértinax.txt",
+      "reason": "B:short_lt_200",
+      "chars": 172
+    },
+    {
+      "file": "books/short-tales/El_fantasma_de_Canterville.txt",
+      "reason": "B:short_lt_200",
+      "chars": 171
+    },
+    {
+      "file": "books/short-tales/Los_alambradores_cuento_Dotti.txt",
+      "reason": "B:short_lt_200",
+      "chars": 176
+    },
+    {
+      "file": "books/short-tales/Pipá.txt",
+      "reason": "B:short_lt_200",
+      "chars": 192
+    },
+    {
+      "file": "books/short-tales/PortalCuento.txt",
+      "reason": "A:portal_name",
+      "chars": 1919
+    },
+    {
+      "file": "books/short-tales/Sub_sole.txt",
+      "reason": "B:short_lt_200",
+      "chars": 198
+    },
+    {
+      "file": "books/short-tales/Superchería.txt",
+      "reason": "B:short_lt_200",
+      "chars": 165
+    }
+  ]
+}
