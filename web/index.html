@@ -93,6 +93,38 @@
 
             <div id="mode-description" class="note">Seleccioná un modo para ver su detalle.</div>
 
+            <div id="mode3-fields" class="mode-fields is-hidden">
+              <div class="field">
+                <label>Axis of Interest</label>
+                <div id="aois-list" class="checkboxes-group">
+                  <p class="hint">Cargando AOIs...</p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="strategy">Estrategia de interleaving</label>
+                <select id="strategy" name="strategy">
+                  <option value="">Elegí una estrategia</option>
+                </select>
+                <p class="hint">Define cómo se combinan los spans de los AOIs seleccionados.</p>
+              </div>
+            </div>
+
+            <div id="mode4-fields" class="mode-fields is-hidden">
+              <div class="field">
+                <label>Axis of Interest</label>
+                <div id="mode4-aois-list" class="checkboxes-group">
+                  <p class="hint">Cargando AOIs...</p>
+                </div>
+              </div>
+              <div class="field">
+                <label for="mode4-strategy">Estrategia de interleaving</label>
+                <select id="mode4-strategy" name="mode4-strategy">
+                  <option value="">Elegí una estrategia</option>
+                </select>
+                <p class="hint">Define cómo se combinan los spans de los AOIs seleccionados.</p>
+              </div>
+            </div>
+
             <div class="field">
               <label for="plot">Descripción de la trama</label>
               <textarea
@@ -111,6 +143,17 @@
               </div>
               <div id="characters-list" class="character-list" aria-live="polite"></div>
               <button type="button" class="ghost" id="add-character">+ Agregar personaje</button>
+            </div>
+
+            <div id="mode4-characters-section" class="is-hidden">
+              <div class="field">
+                <div class="field__label-row">
+                  <label>Personajes con atributos</label>
+                  <span class="hint">Define personajes y sus características (1-5)</span>
+                </div>
+                <div id="mode4-characters-list" class="characters-with-attributes-list"></div>
+                <button type="button" class="ghost" id="add-mode4-character">+ Agregar personaje</button>
+              </div>
             </div>
 
             <div class="field-row">
@@ -154,6 +197,10 @@
                 organiza un concierto secreto que despierta a un ser antiguo que protege el
                 bosque. Los dos hermanos deben decidir entre mantener el secreto o compartir
                 el hallazgo con el pueblo antes de que las flores se marchiten.
+              </div>
+              <div id="plot-schema-panel" class="story-box plot-schema-panel is-hidden">
+                <h3>Plot schema</h3>
+                <pre id="plot-schema-preview" class="plot-schema-preview"></pre>
               </div>
             </div>
 

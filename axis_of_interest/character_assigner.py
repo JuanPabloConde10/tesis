@@ -3,13 +3,21 @@ Sistema de asignación de nombres a personajes en Plot Schemas.
 
 Permite asignar nombres reales a los placeholders de personajes,
 manteniendo consistencia dentro de cada AOI pero permitiendo variación entre AOIs.
+Soporta dos modos: asignación aleatoria o basada en atributos de personalidad.
 """
 
 import random
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Union
 from copy import deepcopy
 from axis_of_interest.schemas import PlotSchema
 from axis_of_interest.registry import list_of_aoi
+from axis_of_interest.character_attributes import (
+    Character, 
+    CharacterAttributes, 
+    get_best_character_for_role,
+    calculate_attribute_distance,
+    ROLE_ATTRIBUTE_PROFILES
+)
 
 
 class CharacterNameAssigner:
@@ -131,6 +139,93 @@ class CharacterNameAssigner:
                         new_characters[role] = role_to_name.get(role, role)
                     atom.characters = new_characters
 
+        return new_schema
+    
+    def assign_names_by_attributes(
+        self,
+        schema: PlotSchema,
+        characters: List[Character],
+        allow_reuse: bool = True
+    ) -> PlotSchema:
+        """
+        Asigna personajes a roles basándose en sus atributos de personalidad.
+        
+        Args:
+            schema: PlotSchema con placeholders
+            characters: Lista de personajes con atributos
+            allow_reuse: Si True, permite que el mismo personaje aparezca en diferentes AOIs
+        
+        Returns:
+            Nuevo PlotSchema con nombres asignados basados en atributos
+        """
+        if not characters:
+            raise ValueError("Debe proporcionar al menos un personaje")
+        
+        # Crear copia profunda del schema
+        new_schema = deepcopy(schema)
+        
+        # Rastrear nombres usados globalmente
+        global_used_names = set()
+        
+        # Crear diccionario de AOIs
+        aoi_dict = {aoi.name: aoi for aoi in list_of_aoi}
+        
+        # Procesar cada span por separado para mantener consistencia intra-span
+        for span in new_schema.plots_span:
+            aoi_name = span.axis_of_interest
+            aoi = aoi_dict.get(aoi_name)
+            if not aoi:
+                raise ValueError(f"No se encontró el AOI: {aoi_name}")
+
+            # Roles presentes en este span (según los atoms)
+            roles_in_span = []
+            for atom in span.plots_atoms:
+                for role in atom.characters.keys():
+                    if role not in roles_in_span:
+                        roles_in_span.append(role)
+
+            # Personajes disponibles para este span
+            available_chars = (
+                [c for c in characters if c.name not in global_used_names]
+                if not allow_reuse
+                else characters
+            )
+
+            if not available_chars:
+                available_chars = characters
+
+            # Asignar el mejor personaje para cada rol basado en atributos (sin repetir dentro del span)
+            role_to_name = {}
+            span_used_names = set()
+
+            print(f"\n  🎯 Asignando personajes para {aoi_name}/{span.name}:")
+
+            for role in roles_in_span:
+                best_char = get_best_character_for_role(role, available_chars, span_used_names)
+                role_to_name[role] = best_char.name
+                span_used_names.add(best_char.name)
+
+                # Mostrar la asignación y la razón
+                role_profile = ROLE_ATTRIBUTE_PROFILES.get(
+                    role.lower(),
+                    CharacterAttributes(valentia=3, bondad=3, astucia=3, maldad=3, carisma=3)
+                )
+                distance = calculate_attribute_distance(best_char.attributes, role_profile)
+
+                print(f"    ✓ {role:20s} → {best_char.name:15s} (distancia: {distance:.2f})")
+                print(f"      Perfil ideal:  V:{role_profile.valentia} B:{role_profile.bondad} A:{role_profile.astucia} M:{role_profile.maldad} C:{role_profile.carisma}")
+                print(f"      Perfil {best_char.name:6s}: V:{best_char.attributes.valentia} B:{best_char.attributes.bondad} A:{best_char.attributes.astucia} M:{best_char.attributes.maldad} C:{best_char.attributes.carisma}")
+
+                if not allow_reuse:
+                    global_used_names.add(best_char.name)
+
+            # Aplicar el mapeo a todos los atoms del span
+            for atom in span.plots_atoms:
+                new_characters = {}
+                for role in atom.characters.keys():
+                    new_characters[role] = role_to_name.get(role, role)
+                atom.characters = new_characters
+        
         return new_schema
 
     def assign_names_with_mapping(
@@ -261,3 +356,44 @@ def assign_character_names(
     """
     assigner = CharacterNameAssigner(seed=seed)
     return assigner.assign_names(schema, names, allow_reuse=allow_reuse)
+
+
+def assign_character_names_by_attributes(
+    schema: PlotSchema,
+    characters: List[Character],
+    allow_reuse: bool = True,
+    seed: Optional[int] = None
+) -> PlotSchema:
+    """
+    Asigna personajes a un schema basándose en sus atributos de personalidad.
+    
+    Args:
+        schema: PlotSchema con placeholders
+        characters: Lista de personajes con atributos (Character objects)
+        allow_reuse: Si True, permite que el mismo personaje aparezca en diferentes AOIs
+        seed: Semilla para reproducibilidad (usado en caso de empates)
+    
+    Returns:
+        PlotSchema con personajes asignados según sus atributos
+    
+    Ejemplo:
+        from axis_of_interest.character_attributes import Character, CharacterAttributes
+        
+        characters = [
+            Character(name="Alice", attributes=CharacterAttributes(
+                valentia=5, bondad=4, astucia=3, maldad=1, carisma=5
+            )),
+            Character(name="Bob", attributes=CharacterAttributes(
+                valentia=3, bondad=1, astucia=4, maldad=5, carisma=4
+            ))
+        ]
+        
+        schema = create_plot_schema("My Story", ["JOURNEY", "CONFLICT"])
+        schema_con_personajes = assign_character_names_by_attributes(
+            schema,
+            characters,
+            allow_reuse=True
+        )
+    """
+    assigner = CharacterNameAssigner(seed=seed)
+    return assigner.assign_names_by_attributes(schema, characters, allow_reuse=allow_reuse)

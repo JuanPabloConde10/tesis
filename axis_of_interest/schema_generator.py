@@ -3,10 +3,14 @@ Generador de Plot Schemas a partir de Axis of Interest.
 Permite combinar e intercalar plot spans de diferentes AOIs para crear narrativas complejas.
 """
 
+import json
 import random
 from typing import List, Optional
 from axis_of_interest.schemas import AxisOfInterest, PlotSchema, PlotSpan
 from axis_of_interest.registry import list_of_aoi
+from axis_of_interest.prompts import template_prompt_interleave_llm
+from axis_of_interest.utils import build_client_by_provider
+from config import Settings
 
 
 class PlotSchemaGenerator:
@@ -43,6 +47,7 @@ class PlotSchemaGenerator:
         schema_name: str,
         aoi_names: List[str],
         interleaving_strategy: str = "sequential",
+        llm_provider: Optional[str] = None,
         schema_description: Optional[str] = None,
         schema_id: Optional[str] = None,
     ) -> PlotSchema:
@@ -57,6 +62,8 @@ class PlotSchemaGenerator:
                 - "round_robin": Intercala spans tomando uno de cada AOI en orden circular
                 - "parallel": Agrupa spans por índice (primer span de cada AOI, luego segundo, etc.)
                 - "random": Elige aleatoriamente entre los AOIs, respetando el orden interno de cada uno
+                - "llm": Consulta a un LLM para decidir el orden completo de los spans
+            llm_provider: Proveedor de LLM (si la estrategia es "llm"). Si es None, usa Settings().default_provider
             schema_description: Descripción opcional del schema
             schema_id: ID opcional del schema (se genera automáticamente si no se proporciona)
 
@@ -85,10 +92,14 @@ class PlotSchemaGenerator:
             interleaved_spans = self._interleave_parallel(selected_aois)
         elif interleaving_strategy == "random":
             interleaved_spans = self._interleave_random(selected_aois)
+        elif interleaving_strategy == "llm":
+            interleaved_spans = self._interleave_llm(
+                selected_aois, provider=llm_provider
+            )
         else:
             raise ValueError(
                 f"Estrategia '{interleaving_strategy}' no reconocida. "
-                f"Usa: 'sequential', 'round_robin', 'parallel', o 'random'"
+                f"Usa: 'sequential', 'round_robin', 'parallel', 'random', o 'llm'"
             )
 
         # Generar ID si no se proporciona
@@ -194,6 +205,83 @@ class PlotSchemaGenerator:
             aoi_positions[chosen_aoi_idx] += 1
 
         return result
+
+    def _interleave_llm(
+        self, aois: List[AxisOfInterest], provider: Optional[str] = None
+    ) -> List[PlotSpan]:
+        """
+        Estrategia LLM: consulta a un LLM para decidir el orden completo de los spans.
+        El resultado siempre cubre todos los spans (si faltan, se completan al final).
+        """
+        if not aois:
+            return []
+
+        span_entries = []
+        id_to_span = {}
+        for aoi in aois:
+            for idx, span in enumerate(aoi.plot_spans):
+                span_id = f"{aoi.name}::{idx}"
+                span_entries.append(
+                    {
+                        "id": span_id,
+                        "axis_of_interest": aoi.name,
+                        "name": span.name,
+                        "description": span.description or "",
+                    }
+                )
+                id_to_span[span_id] = span
+
+        spans_json = json.dumps(span_entries, ensure_ascii=False, indent=2)
+        prompt = template_prompt_interleave_llm.replace("<<SPANS_JSON>>", spans_json)
+
+        settings = Settings()
+        chosen_provider = provider or "google"
+        client = build_client_by_provider(chosen_provider, settings)
+        response = client.generate(prompt, temperature=0.2)
+
+        ids = self._extract_json_array(response)
+
+        valid_ids = [entry["id"] for entry in span_entries]
+        valid_id_set = set(valid_ids)
+        ordered_ids = []
+        seen = set()
+        invalid_ids = []
+
+        for item in ids:
+            if isinstance(item, str) and item in valid_id_set and item not in seen:
+                ordered_ids.append(item)
+                seen.add(item)
+            else:
+                invalid_ids.append(item)
+
+        missing_ids = [span_id for span_id in valid_ids if span_id not in seen]
+
+        if invalid_ids:
+            print(
+                "[WARN] LLM devolvió ids inválidos o duplicados en interleave: "
+                + ", ".join(str(x) for x in invalid_ids)
+            )
+
+        if missing_ids:
+            print(
+                "[WARN] LLM no incluyó todos los spans. Se completan al final: "
+                + ", ".join(missing_ids)
+            )
+            ordered_ids.extend(missing_ids)
+
+        return [id_to_span[span_id] for span_id in ordered_ids]
+
+    def _extract_json_array(self, text: str) -> List[str]:
+        """Extrae y parsea un JSON array desde un texto del LLM."""
+        start = text.find("[")
+        end = text.rfind("]")
+        if start == -1 or end == -1 or end < start:
+            raise ValueError("Respuesta del LLM no contiene un JSON array válido")
+        raw = text[start : end + 1]
+        data = json.loads(raw)
+        if not isinstance(data, list):
+            raise ValueError("Respuesta del LLM no es un JSON array")
+        return data
 
     def generate_custom_schema(
         self,
