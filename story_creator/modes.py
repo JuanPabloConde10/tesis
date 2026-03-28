@@ -60,7 +60,7 @@ def _get_provider_for_model(model_name: str) -> Optional[str]:
     return None
 
 
-def _build_prompts(data: StoryRequest) -> tuple[str, str]:
+def _build_prompts(data: StoryRequest, mode_id: str) -> tuple[str, str]:
     """Construye un prompt simple con los datos del usuario."""
     system_prompt = "Eres un escritor que crea cuentos breves en español, con tono claro y atractivo."
     user_parts = [f"Trama: {data.trama}"]
@@ -70,14 +70,12 @@ def _build_prompts(data: StoryRequest) -> tuple[str, str]:
         user_parts.append("Personajes: " + ", ".join(data.personajes))
     if data.experiment_id:
         user_parts.append(f"Identificador de experimento: {data.experiment_id}")
+    if mode_id == "0":
+       return create_prompt_mode0(data)
+    if mode_id == "1":
+        return create_prompt_mode1(data)
     user_prompt = "\n".join(user_parts)
     return system_prompt, user_prompt
-    """Construye un prompt dependiendo del modo"""
-    if data.mode == "0":
-       return create_prompt_mode0(data)
-    if data.mode == "1":
-        return create_prompt_mode1(data)
-    raise RuntimeError(f"Modo de creación no implementado: {mode_id}")
 
 
 def _build_characters_section(
