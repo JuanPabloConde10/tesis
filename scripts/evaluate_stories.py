@@ -26,6 +26,7 @@ load_dotenv()
 
 from google.genai.errors import ClientError
 from infrastructure.llm_client.factory import resolve_client
+from evaluation.judge_dimensions import DIMENSIONS
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SELECTED_STORIES_FILE = os.path.join(DATA_DIR, "selected_stories.json")
@@ -122,10 +123,9 @@ def _extract_json(text: str):
 
 def _compute_creativity_averages(evaluation: dict) -> dict:
     """Compute averages for the 3 paper dimensions: novelty, sensicality, pragmaticality."""
-    dimensions = ["novelty", "sensicality", "pragmaticality"]
     original_scores = []
     generated_scores = []
-    for dim in dimensions:
+    for dim in DIMENSIONS:
         if dim in evaluation:
             entry = evaluation[dim]
             if isinstance(entry, dict):

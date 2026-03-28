@@ -32,3 +32,16 @@ class StoryRequest(BaseModel):
     aoi_names: Optional[List[str]] = None
     strategy: Optional[str] = None
     generation_method: Optional[str] = Field(default=None, description="Método de generación para Modo 2: 'gramatica' o 'aoi_directo'")
+    num_candidates: int = Field(
+        default=1,
+        ge=1,
+        description="Cantidad de candidatos a generar antes de seleccionar el mejor",
+    )
+    selection_policies: Optional[list[str]] = Field(
+        default=None,
+        description="Políticas de selección habilitadas. Soporta: mean, weighted",
+    )
+    weighted_policy_weights: Optional[Dict[str, float]] = Field(
+        default=None,
+        description="Pesos para policy weighted: novelty, sensicality, pragmaticality",
+    )
