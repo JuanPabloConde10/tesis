@@ -1,0 +1,87 @@
+{
+  "story_id": "visita",
+  "title": "Una visita infernal",
+  "author": "Juana Manuela Gorriti",
+  "word_count_original": 404,
+  "word_count_generated": 396,
+  "dimensions": {
+    "novelty": {
+      "original": 8,
+      "generado": 5
+    },
+    "sensicality": {
+      "original": 9,
+      "generado": 8
+    },
+    "pragmaticality": {
+      "original": 8,
+      "generado": 4
+    }
+  },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "cambiaba el blanco cendal y la corona de azahar con el velo azul de un lindo sombrerito de paja",
+      "justificacion": "Esta frase es rica en imaginería, marcando la transición de la novia de un estado ceremonial a uno de viaje, con detalles específicos y evocadores que pintan una imagen vívida y delicada."
+    },
+    {
+      "expresion": "Una trasparente bujía color de rosa alumbraba el retrete colocada en una palmatoria de plata",
+      "justificacion": "El detalle de la 'bujía color de rosa' y la 'palmatoria de plata' crea una atmósfera íntima y ligeramente irreal, que contrasta poderosamente con el horror inminente, añadiendo una capa de delicadeza a la tensión."
+    },
+    {
+      "expresion": "ojos brillantes de siniestro resplandor",
+      "justificacion": "Una descripción concisa pero potente que evoca una sensación de maldad sobrenatural, muy efectiva en el género gótico al que pertenece el cuento."
+    },
+    {
+      "expresion": "Él me arrancó de mi pacífica morada para llevarme a palacio y hacerme a la fuerza presidente. He aquí los ministros que vienen a buscarme. Eran los empleados del hospital que venían en pos suyo.",
+      "justificacion": "Esta secuencia es magistralmente novedosa. La revelación de la locura del personaje, con su delirio de grandeza política y la subsiguiente desmitificación por la aparición de los 'ministros' (empleados del hospital), es un giro sorprendente y satírico que redefine toda la experiencia."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "Un tentáculo oscuro, húmedo y fétido, surgió de las profundidades del retrete, envolviendo a Valeria en un abrazo helado.",
+      "justificacion": "Aunque es una interpretación literal y quizás burda del 'retrete' del original, la imagen del tentáculo es inusual y sorprendente como elemento de horror en una noche de bodas, creando un impacto inicial fuerte y visceral."
+    },
+    {
+      "expresion": "sus ojos rojos perforando el alma de la novia",
+      "justificacion": "Es una imagen de horror clásica, pero la acción de 'perforar el alma' añade una dimensión de intrusión psicológica que busca ser más profunda que una simple amenaza física."
+    },
+    {
+      "expresion": "La incredulidad de Diego fue una segunda abducción, esta vez de su propia cordura.",
+      "justificacion": "Esta metáfora es un intento de elevar el impacto psicológico de la negación del marido, equiparándola a un secuestro de la estabilidad mental de la protagonista, lo cual es una forma original de expresar su angustia."
+    },
+    {
+      "expresion": "La verdad, despojada de su velo sobrenatural, era aún más grotesca.",
+      "justificacion": "Esta frase, aunque parte de un final didáctico, intenta redefinir la naturaleza del horror, sugiriendo que la realidad cruda puede ser más perturbadora que cualquier fantasía sobrenatural, lo cual es un giro temático interesante."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "Él rió y lo achacó a broma de su misma novia.",
+      "justificacion": "La frase 'de su misma novia' suena ligeramente redundante y menos natural que 'a una broma suya' o 'a una broma de su novia'. Es una pequeña aspereza en la fluidez del diálogo."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "Un tentáculo oscuro, húmedo y fétido, surgió de las profundidades del retrete, envolviendo a Valeria en un abrazo helado.",
+      "justificacion": "Esta imagen es el resultado de una interpretación excesivamente literal del 'retrete' (habitación privada) del cuento original como un inodoro. Esto crea un escenario de horror grotesco y casi cómico que desentona con el tono general y hace que la posterior explicación de la locura sea difícil de aceptar como causa de un evento tan físico y específico."
+    },
+    {
+      "expresion": "Fue un secuestro de pesadilla, una violación de la realidad que la arrastró a un abismo.",
+      "justificacion": "El lenguaje es excesivamente dramático y genérico ('secuestro de pesadilla', 'violación de la realidad', 'arrastró a un abismo'), lo que lo hace sonar forzado y poco auténtico en el contexto de la narrativa, especialmente cuando la explicación final es mucho más mundana."
+    },
+    {
+      "expresion": "La incredulidad de Diego fue una segunda abducción, esta vez de su propia cordura.",
+      "justificacion": "Aunque intenta ser una metáfora poderosa, se siente forzada y demasiado intelectualizada en el momento, interrumpiendo el flujo emocional de la protagonista con una reflexión que parece más propia de un narrador omnisciente analítico que de la experiencia inmediata del personaje."
+    },
+    {
+      "expresion": "La verdad, despojada de su velo sobrenatural, era aún más grotesca. Su aterradora experiencia de la noche de bodas no había sido obra de una entidad infernal, sino el cruce de un momento de vulnerabilidad con la mente trastornada de un hombre. La ironía era cruel. La realidad, a veces, era más extraña y perturbadora que cualquier fantasía.",
+      "justificacion": "Este párrafo final es excesivamente didáctico y explicativo. En lugar de permitir que el lector infiera el significado y la ironía de la situación, el texto lo expone de manera explícita, rompiendo la inmersión narrativa y sonando más a un análisis temático que a una parte orgánica del cuento."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original de Juana Manuela Gorriti es superior en su construcción de la atmósfera, la sutileza de su horror psicológico y la elegancia de su prosa. La versión generada por IA, aunque intenta replicar la estructura, falla en la interpretación de elementos clave (como el 'retrete'), resultando en una narrativa menos coherente y con un tono inconsistente. La IA recurre a tropos de horror genéricos y explicaciones didácticas que restan impacto a la historia.",
+  "averages": {
+    "promedio_original": 8.33,
+    "promedio_generado": 5.67
+  }
+}

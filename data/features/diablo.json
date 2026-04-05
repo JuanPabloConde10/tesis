@@ -1,0 +1,27 @@
+{
+  "story_id": "diablo",
+  "title": "El diablo y sus añicos",
+  "author": "Hans Christian Andersen",
+  "genre": "cuento_moral",
+  "setting": "Un escenario fantástico y universal que abarca la Tierra y el Cielo, sin ubicaciones geográficas específicas. La acción se desarrolla en un plano alegórico donde el mal se propaga por el mundo.",
+  "characters": [
+    "el diablo: Antagonista principal, creador del espejo maligno y personificación de la malicia y la burla.",
+    "diablitos/alumnos: Secuaces del diablo, cómplices en la propagación de la distorsión y el mal.",
+    "los hombres: Víctimas de los fragmentos del espejo, cuya percepción y felicidad son corrompidas."
+  ],
+  "themes": [
+    "La naturaleza y propagación del mal",
+    "La distorsión de la percepción y la realidad",
+    "La corrupción del corazón humano",
+    "La pérdida de la felicidad y la inocencia",
+    "La burla y la malicia"
+  ],
+  "tone": "Ominoso y moralista, con un matiz de burla siniestra por parte del antagonista.",
+  "narrative_style": "Narrador omnisciente en tercera persona, que describe las acciones y motivaciones de los personajes, así como las consecuencias de sus actos.",
+  "plot_summary": "El diablo crea un espejo mágico que distorsiona la realidad, magnificando lo feo y haciendo desaparecer lo bueno. Él y sus alumnos llevan el espejo por el mundo y al cielo para burlarse, pero al acercarse a Dios, el espejo se rompe en millones de pedazos. Los fragmentos se incrustan en los ojos y corazones de las personas, corrompiendo su percepción y volviéndolos infelices, mientras el diablo se regocija ante la miseria causada.",
+  "aoi_names": [
+    "CONFLICT",
+    "INTERDICTION VIOLATED",
+    "JOURNEY"
+  ]
+}

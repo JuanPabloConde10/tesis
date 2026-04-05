@@ -1,0 +1,834 @@
+{
+  "total_files": 1339,
+  "total_candidates": 138,
+  "candidates": [
+    {
+      "file": "books/short-tales/Avecilla.txt",
+      "name": "Avecilla.txt",
+      "chars": 54288,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Aventura_sin_igual_de_un_tal_Hans_Pfaall.txt",
+      "name": "Aventura_sin_igual_de_un_tal_Hans_Pfaall.txt",
+      "chars": 108911,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Aventura_sin_par_de_un_tal_Hans_Pfaall.txt",
+      "name": "Aventura_sin_par_de_un_tal_Hans_Pfaall.txt",
+      "chars": 100393,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Bichito_de_luz_cuento.txt",
+      "name": "Bichito_de_luz_cuento.txt",
+      "chars": 16156,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_de_Nasrudin.txt",
+      "name": "CategoríaCuentos_de_Nasrudin.txt",
+      "chars": 0,
+      "reason": "A:empty"
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_escogidos_de_los_Hermanos_Grimm.txt",
+      "name": "CategoríaCuentos_escogidos_de_los_Hermanos_Grimm.txt",
+      "chars": 69,
+      "reason": "A:index_name"
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_por_autor.txt",
+      "name": "CategoríaCuentos_por_autor.txt",
+      "chars": 0,
+      "reason": "A:empty"
+    },
+    {
+      "file": "books/short-tales/CategoríaCuentos_por_género.txt",
+      "name": "CategoríaCuentos_por_género.txt",
+      "chars": 0,
+      "reason": "A:empty"
+    },
+    {
+      "file": "books/short-tales/CategoríaLas_mil_y_una_noches.txt",
+      "name": "CategoríaLas_mil_y_una_noches.txt",
+      "chars": 50,
+      "reason": "A:index_name"
+    },
+    {
+      "file": "books/short-tales/CategoríaPáginas_eslavas.txt",
+      "name": "CategoríaPáginas_eslavas.txt",
+      "chars": 45,
+      "reason": "A:index_name"
+    },
+    {
+      "file": "books/short-tales/Chamijo.txt",
+      "name": "Chamijo.txt",
+      "chars": 168,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Conde_Lucanor.txt",
+      "name": "Conde_Lucanor.txt",
+      "chars": 1458,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuento_futuro.txt",
+      "name": "Cuento_futuro.txt",
+      "chars": 49066,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos.txt",
+      "name": "Cuentos.txt",
+      "chars": 687,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_adivinanzas_y_refranes_populares.txt",
+      "name": "Cuentos_adivinanzas_y_refranes_populares.txt",
+      "chars": 1882,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_amatorios.txt",
+      "name": "Cuentos_amatorios.txt",
+      "chars": 403,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_Avérchenko.txt",
+      "name": "Cuentos_Avérchenko.txt",
+      "chars": 7677,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_Clásicos_del_Norte.txt",
+      "name": "Cuentos_Clásicos_del_Norte.txt",
+      "chars": 584,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_cortos.txt",
+      "name": "Cuentos_cortos.txt",
+      "chars": 3029,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_amor_de_locura_y_de_muerte.txt",
+      "name": "Cuentos_de_amor_de_locura_y_de_muerte.txt",
+      "chars": 4479,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_Andersen.txt",
+      "name": "Cuentos_de_Andersen.txt",
+      "chars": 5682,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_color_de_rosa.txt",
+      "name": "Cuentos_de_color_de_rosa.txt",
+      "chars": 373,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_hadas_Baró_tr.txt",
+      "name": "Cuentos_de_hadas_Baró_tr.txt",
+      "chars": 3791,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_la_tierra.txt",
+      "name": "Cuentos_de_la_tierra.txt",
+      "chars": 10474,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_Marineda.txt",
+      "name": "Cuentos_de_Marineda.txt",
+      "chars": 2439,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_muerte_y_de_sangre.txt",
+      "name": "Cuentos_de_muerte_y_de_sangre.txt",
+      "chars": 421,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_de_Navidad_y_Reyes.txt",
+      "name": "Cuentos_de_Navidad_y_Reyes.txt",
+      "chars": 4403,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_del_hogar_Antonio_Trueba.txt",
+      "name": "Cuentos_del_hogar_Antonio_Trueba.txt",
+      "chars": 394,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_del_hogar_Teodoro_Baró.txt",
+      "name": "Cuentos_del_hogar_Teodoro_Baró.txt",
+      "chars": 411,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_escogidos_de_los_Hermanos_Grimm.txt",
+      "name": "Cuentos_escogidos_de_los_Hermanos_Grimm.txt",
+      "chars": 11625,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_Estrambóticos.txt",
+      "name": "Cuentos_Estrambóticos.txt",
+      "chars": 125929,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_fatales.txt",
+      "name": "Cuentos_fatales.txt",
+      "chars": 1413,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_grises.txt",
+      "name": "Cuentos_grises.txt",
+      "chars": 2005,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_ingenuos.txt",
+      "name": "Cuentos_ingenuos.txt",
+      "chars": 4578,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_Lugones.txt",
+      "name": "Cuentos_Lugones.txt",
+      "chars": 1171,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_morales.txt",
+      "name": "Cuentos_morales.txt",
+      "chars": 593,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_para_gente_menuda.txt",
+      "name": "Cuentos_para_gente_menuda.txt",
+      "chars": 482,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_para_los_hombres_que_son_todavía_niños.txt",
+      "name": "Cuentos_para_los_hombres_que_son_todavía_niños.txt",
+      "chars": 2146,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_trágicos.txt",
+      "name": "Cuentos_trágicos.txt",
+      "chars": 6704,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_valencianos.txt",
+      "name": "Cuentos_valencianos.txt",
+      "chars": 3284,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_y_chascarrillos_andaluces.txt",
+      "name": "Cuentos_y_chascarrillos_andaluces.txt",
+      "chars": 981,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_y_crónicas.txt",
+      "name": "Cuentos_y_crónicas.txt",
+      "chars": 3124,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_y_diálogos.txt",
+      "name": "Cuentos_y_diálogos.txt",
+      "chars": 1703,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuentos_Ángel_de_Estrada.txt",
+      "name": "Cuentos_Ángel_de_Estrada.txt",
+      "chars": 3143,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Cuesta_abajo_Leopoldo_Alas.txt",
+      "name": "Cuesta_abajo_Leopoldo_Alas.txt",
+      "chars": 1102,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/De_la_comisión.txt",
+      "name": "De_la_comisión.txt",
+      "chars": 171,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Dimitas_Arias.txt",
+      "name": "Dimitas_Arias.txt",
+      "chars": 88013,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Doctor_Angelicus.txt",
+      "name": "Doctor_Angelicus.txt",
+      "chars": 210,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Doña_Berta.txt",
+      "name": "Doña_Berta.txt",
+      "chars": 191,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Dónde_está_mi_cabeza.txt",
+      "name": "Dónde_está_mi_cabeza.txt",
+      "chars": 273,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_almacén_de_los_niños.txt",
+      "name": "El_almacén_de_los_niños.txt",
+      "chars": 330,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_amigo_de_la_muerte.txt",
+      "name": "El_amigo_de_la_muerte.txt",
+      "chars": 869,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_bermejino_prehistórico_o_las_salamandras_azules.txt",
+      "name": "El_bermejino_prehistórico_o_las_salamandras_azules.txt",
+      "chars": 293,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_clavo.txt",
+      "name": "El_clavo.txt",
+      "chars": 644,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_cura_de_vericueto.txt",
+      "name": "El_cura_de_vericueto.txt",
+      "chars": 232,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_desierto_cuentos.txt",
+      "name": "El_desierto_cuentos.txt",
+      "chars": 2674,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_desierto_Quiroga.txt",
+      "name": "El_desierto_Quiroga.txt",
+      "chars": 33317,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_doctor_Brea_y_el_profesor_Pluma.txt",
+      "name": "El_doctor_Brea_y_el_profesor_Pluma.txt",
+      "chars": 40332,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_doctor_Pértinax.txt",
+      "name": "El_doctor_Pértinax.txt",
+      "chars": 172,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_fantasma_de_Canterville.txt",
+      "name": "El_fantasma_de_Canterville.txt",
+      "chars": 171,
+      "reason": "B:short_lt_200"
+    },
+    {
+      "file": "books/short-tales/El_grillo_del_hogar.txt",
+      "name": "El_grillo_del_hogar.txt",
+      "chars": 340,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_hechicero.txt",
+      "name": "El_hechicero.txt",
+      "chars": 52485,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_hipocampo_de_oro.txt",
+      "name": "El_hipocampo_de_oro.txt",
+      "chars": 17639,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_hombre_de_la_multitud.txt",
+      "name": "El_hombre_de_la_multitud.txt",
+      "chars": 27421,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_hombre_del_labio_torcido.txt",
+      "name": "El_hombre_del_labio_torcido.txt",
+      "chars": 53058,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_libro_de_los_cuentos.txt",
+      "name": "El_libro_de_los_cuentos.txt",
+      "chars": 15279,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_lunar.txt",
+      "name": "El_lunar.txt",
+      "chars": 288,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_rizo_del_Nazareno.txt",
+      "name": "El_rizo_del_Nazareno.txt",
+      "chars": 25260,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_sabio.txt",
+      "name": "El_sabio.txt",
+      "chars": 8746,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/El_Señor_y_lo_demás_son_cuentos.txt",
+      "name": "El_Señor_y_lo_demás_son_cuentos.txt",
+      "chars": 3222,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Era_él_solo.txt",
+      "name": "Era_él_solo.txt",
+      "chars": 27654,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Escalas_melografiadas.txt",
+      "name": "Escalas_melografiadas.txt",
+      "chars": 380,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Esmeraldas_Cuentos_mundanos.txt",
+      "name": "Esmeraldas_Cuentos_mundanos.txt",
+      "chars": 589,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Fabla_salvaje.txt",
+      "name": "Fabla_salvaje.txt",
+      "chars": 261,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Hans_Pfaall.txt",
+      "name": "Hans_Pfaall.txt",
+      "chars": 109250,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Hebaristo_el_sauce_que_murió_de_amor.txt",
+      "name": "Hebaristo_el_sauce_que_murió_de_amor.txt",
+      "chars": 10745,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Historia_del_señor_Jefries_y_Nassin_el_egipcio.txt",
+      "name": "Historia_del_señor_Jefries_y_Nassin_el_egipcio.txt",
+      "chars": 12668,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Historias_extraordinarias_1871.txt",
+      "name": "Historias_extraordinarias_1871.txt",
+      "chars": 6631,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Historias_extraordinarias_1887.txt",
+      "name": "Historias_extraordinarias_1887.txt",
+      "chars": 3483,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Historias_y_cuentos_de_Galicia.txt",
+      "name": "Historias_y_cuentos_de_Galicia.txt",
+      "chars": 586,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Instinto.txt",
+      "name": "Instinto.txt",
+      "chars": 8653,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Interiores.txt",
+      "name": "Interiores.txt",
+      "chars": 172477,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/John.txt",
+      "name": "John.txt",
+      "chars": 9359,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Jugar_con_fuego.txt",
+      "name": "Jugar_con_fuego.txt",
+      "chars": 10068,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/La_bruja_del_ideal.txt",
+      "name": "La_bruja_del_ideal.txt",
+      "chars": 335,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/La_condenada_cuentos.txt",
+      "name": "La_condenada_cuentos.txt",
+      "chars": 4162,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/La_Edad_de_Oro.txt",
+      "name": "La_Edad_de_Oro.txt",
+      "chars": 1179,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/La_guerra_gaucha.txt",
+      "name": "La_guerra_gaucha.txt",
+      "chars": 5344,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/La_Miraflores.txt",
+      "name": "La_Miraflores.txt",
+      "chars": 204,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Las_cinco_pepitas_de_naranja.txt",
+      "name": "Las_cinco_pepitas_de_naranja.txt",
+      "chars": 41185,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Las_Estaciones.txt",
+      "name": "Las_Estaciones.txt",
+      "chars": 518,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Las_Fuerzas_Extrañas.txt",
+      "name": "Las_Fuerzas_Extrañas.txt",
+      "chars": 1297,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Lecturas_infantiles.txt",
+      "name": "Lecturas_infantiles.txt",
+      "chars": 507,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Liliana.txt",
+      "name": "Liliana.txt",
+      "chars": 2115,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_alambradores_cuento_Dotti.txt",
+      "name": "Los_alambradores_cuento_Dotti.txt",
+      "chars": 176,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_asadores_en_sopa.txt",
+      "name": "Los_asadores_en_sopa.txt",
+      "chars": 1611,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_desterrados.txt",
+      "name": "Los_desterrados.txt",
+      "chars": 2592,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_guiños_del_pasado.txt",
+      "name": "Los_guiños_del_pasado.txt",
+      "chars": 89956,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_hermanos_gemelos.txt",
+      "name": "Los_hermanos_gemelos.txt",
+      "chars": 3782,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_seis_velos.txt",
+      "name": "Los_seis_velos.txt",
+      "chars": 252,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_tres_sorianitos.txt",
+      "name": "Los_tres_sorianitos.txt",
+      "chars": 621,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Los_zapatos_colorados.txt",
+      "name": "Los_zapatos_colorados.txt",
+      "chars": 2558,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Lydia_y_Francisco_Columna.txt",
+      "name": "Lydia_y_Francisco_Columna.txt",
+      "chars": 977,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Mal_de_ojo.txt",
+      "name": "Mal_de_ojo.txt",
+      "chars": 7768,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Matar_el_tiempo_Cuento.txt",
+      "name": "Matar_el_tiempo_Cuento.txt",
+      "chars": 7703,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Micromegas_historia_filosófica.txt",
+      "name": "Micromegas_historia_filosófica.txt",
+      "chars": 2492,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Mis_montañas.txt",
+      "name": "Mis_montañas.txt",
+      "chars": 233,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Morrión_y_boina.txt",
+      "name": "Morrión_y_boina.txt",
+      "chars": 54217,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Narraciones_inverosímiles.txt",
+      "name": "Narraciones_inverosímiles.txt",
+      "chars": 2761,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Niñas_el_carbonero.txt",
+      "name": "Niñas_el_carbonero.txt",
+      "chars": 9167,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/No_lo_invento.txt",
+      "name": "No_lo_invento.txt",
+      "chars": 17989,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Novelas_y_cuentos_Poe.txt",
+      "name": "Novelas_y_cuentos_Poe.txt",
+      "chars": 4262,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Nuevos_cuentos_de_Pago_Chico.txt",
+      "name": "Nuevos_cuentos_de_Pago_Chico.txt",
+      "chars": 244,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Padre_e_hijo.txt",
+      "name": "Padre_e_hijo.txt",
+      "chars": 6306,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Para_vicios.txt",
+      "name": "Para_vicios.txt",
+      "chars": 10289,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Perico.txt",
+      "name": "Perico.txt",
+      "chars": 363,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Pipá.txt",
+      "name": "Pipá.txt",
+      "chars": 192,
+      "reason": "B:short_lt_200"
+    },
+    {
+      "file": "books/short-tales/Pipá_Cuentos.txt",
+      "name": "Pipá_Cuentos.txt",
+      "chars": 229,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Por_el_arte.txt",
+      "name": "Por_el_arte.txt",
+      "chars": 56028,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Por_ver_qué_grande_es_el_mundo_del_amor.txt",
+      "name": "Por_ver_qué_grande_es_el_mundo_del_amor.txt",
+      "chars": 168796,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Porqué_era_rubia.txt",
+      "name": "Porqué_era_rubia.txt",
+      "chars": 15256,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/PortalCuento.txt",
+      "name": "PortalCuento.txt",
+      "chars": 1919,
+      "reason": "A:index_name"
+    },
+    {
+      "file": "books/short-tales/Páginas_eslavas.txt",
+      "name": "Páginas_eslavas.txt",
+      "chars": 3325,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Quien_escucha_su_mal_oye.txt",
+      "name": "Quien_escucha_su_mal_oye.txt",
+      "chars": 19014,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Sabiduría_cuento.txt",
+      "name": "Sabiduría_cuento.txt",
+      "chars": 13688,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Sub_sole.txt",
+      "name": "Sub_sole.txt",
+      "chars": 198,
+      "reason": "B:short_lt_200"
+    },
+    {
+      "file": "books/short-tales/Sub_sole_1907.txt",
+      "name": "Sub_sole_1907.txt",
+      "chars": 3317,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Sub_terra_1904.txt",
+      "name": "Sub_terra_1904.txt",
+      "chars": 2200,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Superchería.txt",
+      "name": "Superchería.txt",
+      "chars": 165,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Tradiciones_peruanas.txt",
+      "name": "Tradiciones_peruanas.txt",
+      "chars": 80563,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Tres_cuentos.txt",
+      "name": "Tres_cuentos.txt",
+      "chars": 1165,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Un_caso_de_identidad.txt",
+      "name": "Un_caso_de_identidad.txt",
+      "chars": 41765,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Un_diagnóstico_de_muerte.txt",
+      "name": "Un_diagnóstico_de_muerte.txt",
+      "chars": 7632,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Un_escándalo_en_Bohemia.txt",
+      "name": "Un_escándalo_en_Bohemia.txt",
+      "chars": 50343,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Un_tesoro.txt",
+      "name": "Un_tesoro.txt",
+      "chars": 8509,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Una_apuesta.txt",
+      "name": "Una_apuesta.txt",
+      "chars": 9033,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Vivientes.txt",
+      "name": "Vivientes.txt",
+      "chars": 360,
+      "reason": "A:index_content"
+    },
+    {
+      "file": "books/short-tales/Volanterías.txt",
+      "name": "Volanterías.txt",
+      "chars": 133695,
+      "reason": "A:index_content"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "story_id": "visita",
+  "source_title": "Una visita infernal",
+  "source_author": "Juana Manuela Gorriti",
+  "aoi_names_used": [
+    "KIDNAPPING"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 396
+}

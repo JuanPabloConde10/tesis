@@ -1,0 +1,13 @@
+{
+  "story_id": "pericote",
+  "source_title": "Breve historia veraz de un pericote",
+  "source_author": "Abraham Valdelomar",
+  "aoi_names_used": [
+    "CONFLICT",
+    "REPENTANCE",
+    "RELENTING GUARDIAN"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 328
+}

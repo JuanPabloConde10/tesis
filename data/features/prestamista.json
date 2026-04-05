@@ -1,0 +1,26 @@
+{
+  "story_id": "prestamista",
+  "title": "La leyenda del prestamista",
+  "author": "Carlos Gagini",
+  "genre": "cuento_moral",
+  "setting": "La historia se desarrolla en una mísera y oscura covacha de un prestamista, y posteriormente en su sótano, un espacio atemporal que simboliza la acumulación de la miseria humana.",
+  "characters": [
+    "protagonista/antagonista: el viejo prestamista, un usurero desalmado y codicioso que se deleita con el sufrimiento ajeno.",
+    "personajes secundarios: las víctimas anónimas (esposa, pecadora, sabio, obrera, inválido, carpintero), que representan la miseria humana y el dolor causado por la usura.",
+    "elemento simbólico: la covacha y el sótano, que actúan como entidades devoradoras y, finalmente, como instrumento de castigo."
+  ],
+  "themes": [
+    "La codicia y la usura como vicios destructivos",
+    "El sufrimiento y la miseria humana",
+    "La justicia poética y el castigo por la avaricia",
+    "La deshumanización y la empatía ausente",
+    "La acumulación de dolor y su transformación simbólica"
+  ],
+  "tone": "Oscuro, sombrío, moralista y trágico, con un matiz de horror existencial y fatalidad en el desenlace.",
+  "narrative_style": "Narrador omnisciente en tercera persona, con un estilo descriptivo y evocador que enfatiza el simbolismo, la carga emocional de los objetos y la condena moral del protagonista.",
+  "plot_summary": "Un viejo prestamista se deleita con la miseria ajena, acumulando objetos pignorados que representan el dolor de sus víctimas en su oscura covacha. Con el tiempo, estas prendas se transforman en una vasta fortuna de oro en su sótano. Sin embargo, al descender para regocijarse en su riqueza, resbala y cae, ahogándose en un lago de lágrimas, el sufrimiento acumulado de aquellos a quienes explotó, en una agonía infernal y eterna.",
+  "aoi_names": [
+    "RAGS 2 RICHES",
+    "CONFLICT"
+  ]
+}

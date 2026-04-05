@@ -1,0 +1,82 @@
+{
+  "story_id": "juguetes",
+  "title": "Los juguetes",
+  "author": "Juan José Morosoli",
+  "word_count_original": 410,
+  "word_count_generated": 336,
+  "dimensions": {
+    "novelty": {
+      "original": 8,
+      "generado": 5
+    },
+    "sensicality": {
+      "original": 9,
+      "generado": 8
+    },
+    "pragmaticality": {
+      "original": 9,
+      "generado": 6
+    }
+  },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "Los criados eran serios y tristes. Hablaban como en secreto y se deslizaban por las piezas enormes como sombras.",
+      "justificacion": "La comparación de los criados con 'sombras' y su forma de hablar 'como en secreto' crea una atmósfera inquietante y opresiva, muy visual y sensorial."
+    },
+    {
+      "expresion": "Los juguetes estaban alineados cada uno en su lugar, como los frascos en las boticas.",
+      "justificacion": "Esta metáfora es muy original y potente. Transmite la idea de que los juguetes no eran para jugar, sino para exhibir o guardar, despojándolos de su propósito lúdico y asociándolos con algo estéril y ordenado."
+    },
+    {
+      "expresion": "La cocina era grande como un barco. En el centro tenía un picadero de leña enterrado en el suelo. Cerca de la chimenea una llanta de carreta reunía pavas, parrillas y hombres.",
+      "justificacion": "La imagen de la cocina como un barco es sorprendente y grandiosa. Los detalles del 'picadero de leña enterrado' y la 'llanta de carreta' son muy específicos y evocadores, pintando un cuadro de vida rústica y comunitaria."
+    },
+    {
+      "expresion": "La casa era una cosa viva y trepidante.",
+      "justificacion": "Una personificación concisa y poderosa que encapsula la esencia del hogar del padrino, contrastando fuertemente con la casa silenciosa y muerta anterior."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "Leo, de ocho años, se sentía como una estatua más, envuelto en un lujo que le ahogaba el alma.",
+      "justificacion": "La comparación con una 'estatua' es efectiva para transmitir la inmovilidad y la falta de vida del niño en ese entorno, y la idea de que el lujo 'ahoga el alma' es una buena síntesis del conflicto interno."
+    },
+    {
+      "expresion": "Soñaba con el viento en el pelo, con el ladrido de un perro, con cualquier cosa que rompiera la rigidez que lo aprisionaba.",
+      "justificacion": "Esta frase es una buena manera de mostrar los anhelos del niño, utilizando elementos sensoriales simples que contrastan con la opulencia estática de la mansión."
+    },
+    {
+      "expresion": "la calidez de Don Bernardo era como un sol irrumpiendo en una habitación oscura.",
+      "justificacion": "Aunque es una metáfora común, está bien aplicada aquí para ilustrar el impacto transformador de Don Bernardo en el ambiente opresivo."
+    },
+    {
+      "expresion": "Cada día, el niño rígido se desdibujaba, dando paso a uno con mejillas sonrosadas y ojos chispeantes.",
+      "justificacion": "Esta frase describe de manera concisa y visual la transformación física y emocional del niño, mostrando el efecto de la libertad y la alegría."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "La enfermedad de su madre llevó a Leo a la mansión de la Señora Alba, un lugar de mármol frío y silencio sepulcral.",
+      "justificacion": "El uso de nombres propios ('Leo', 'Señora Alba') desde el inicio, en lugar de la perspectiva en primera persona del original, rompe con la intimidad y el tono, haciendo que la narración se sienta más genérica y menos personal."
+    },
+    {
+      "expresion": "Había una tensión tácita, un choque entre el silencio impuesto y la alegría innata.",
+      "justificacion": "Esta frase es demasiado explicativa y analítica. En lugar de mostrar la tensión a través de acciones o diálogos, la narra directamente, lo que la hace sentir forzada y menos inmersiva."
+    },
+    {
+      "expresion": "Los juguetes eran ramas y piedras, los juegos eran carreras por el campo, construyendo fuertes de mantas.",
+      "justificacion": "Aunque la idea es buena, la formulación 'los juguetes eran ramas y piedras, los juegos eran carreras...' suena un poco telegráfica y menos fluida que la prosa del original, que describe las actividades de forma más integrada."
+    },
+    {
+      "expresion": "La victoria era suya: había escapado de la prisión de oro, eligiendo la alegría simple y ruidosa sobre el silencio opulento. La Señora Alba y su mundo de cristal habían perdido su poder. Leo, finalmente, era libre.",
+      "justificacion": "El final es excesivamente didáctico y explícito. En lugar de permitir que el lector infiera el mensaje, lo declara abiertamente, lo que le resta sutileza y fuerza poética, a diferencia del final más sugerente del original."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original destaca por su riqueza sensorial y la sutileza de su mensaje. Utiliza detalles concretos y metáforas potentes para construir atmósferas vívidas y contrastantes, permitiendo al lector experimentar la transformación del niño. El cuento generado, aunque coherente, tiende a ser más abstracto y explícito, narrando las ideas en lugar de mostrarlas, lo que le resta profundidad y originalidad.",
+  "averages": {
+    "promedio_original": 8.67,
+    "promedio_generado": 6.33
+  }
+}

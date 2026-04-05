@@ -1,0 +1,13 @@
+{
+  "story_id": "diablo",
+  "source_title": "El diablo y sus añicos",
+  "source_author": "Hans Christian Andersen",
+  "aoi_names_used": [
+    "CONFLICT",
+    "INTERDICTION VIOLATED",
+    "JOURNEY"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 358
+}

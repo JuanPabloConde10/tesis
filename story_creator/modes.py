@@ -10,6 +10,9 @@ from axis_of_interest.character_attributes import Character, CharacterAttributes
 from axis_of_interest.utils import render_plot_schema_md
 from axis_of_interest.prompts import template_prompt_generate_cuento
 from axis_of_interest.text_gen import generate_text
+from story_creator.mode0 import create_prompt_mode0
+from story_creator.mode1 import create_prompt_mode1
+from story_creator.mode2 import generate_story_mode2
 
 AVAILABLE_MODELS = get_models()
 DEFAULT_MODEL = AVAILABLE_MODELS[0]
@@ -57,7 +60,7 @@ def _get_provider_for_model(model_name: str) -> Optional[str]:
     return None
 
 
-def _build_prompts(data: StoryRequest) -> tuple[str, str]:
+def _build_prompts(data: StoryRequest, mode_id: str) -> tuple[str, str]:
     """Construye un prompt simple con los datos del usuario."""
     system_prompt = "Eres un escritor que crea cuentos breves en español, con tono claro y atractivo."
     user_parts = [f"Trama: {data.trama}"]
@@ -67,6 +70,10 @@ def _build_prompts(data: StoryRequest) -> tuple[str, str]:
         user_parts.append("Personajes: " + ", ".join(data.personajes))
     if data.experiment_id:
         user_parts.append(f"Identificador de experimento: {data.experiment_id}")
+    if mode_id == "0":
+       return create_prompt_mode0(data)
+    if mode_id == "1":
+        return create_prompt_mode1(data)
     user_prompt = "\n".join(user_parts)
     return system_prompt, user_prompt
 
@@ -93,15 +100,31 @@ def _build_characters_section(
     return "No especificado"
 
 
-def _generate_mode_0(data: StoryRequest) -> str:
+def _generate_mode_0(
+    data: StoryRequest,
+    mode_id: str = "0",
+    *,
+    candidate_seed: int = 42,
+) -> str:
     """Modo 0: Generación directa sin Plot Schema."""
     model_name = _resolve_model(data.model)
     client = get_client(model_name)
-    system_prompt, user_prompt = _build_prompts(data)
+    temperature = data.temperature if data.temperature is not None else 0.7
+
+    if mode_id == "2":
+        return generate_story_mode2(
+            data,
+            client,
+            temperature=temperature,
+            max_tokens=data.max_tokens,
+            seed=candidate_seed,
+        )
+
+    system_prompt, user_prompt = _build_prompts(data, mode_id)
     return client.generate(
         user_prompt,
         system_prompt=system_prompt,
-        temperature=data.temperature if data.temperature is not None else 0.7,
+        temperature=temperature,
         max_tokens=data.max_tokens,
     )
 
@@ -254,22 +277,50 @@ def _generate_mode_4(data: StoryRequest) -> tuple[str, dict]:
     return story, schema_with_names.model_dump()
 
 
-def generate_the_story(data: StoryRequest) -> str | tuple[str, dict]:
-    """Genera un cuento según el modo seleccionado."""
-    mode_id = data.mode or "0"
-    
+def _generate_single_story(
+    data: StoryRequest,
+    mode_id: str,
+    *,
+    candidate_idx: int = 0,
+) -> dict:
     if mode_id == "0":
-        return _generate_mode_0(data)
-    elif mode_id == "1":
-        # TODO: Implementar modo 1
-        return _generate_mode_0(data)
-    elif mode_id == "2":
-        # TODO: Implementar modo 2
-        return _generate_mode_0(data)
-    elif mode_id == "3":
-        return _generate_mode_3(data)
-    elif mode_id == "4":
-        return _generate_mode_4(data)
-    else:
-        # Fallback a modo 0
-        return _generate_mode_0(data)
+        return {"story": _generate_mode_0(data, mode_id="0", candidate_seed=42 + candidate_idx)}
+    if mode_id == "1":
+        return {"story": _generate_mode_0(data, mode_id="1", candidate_seed=42 + candidate_idx)}
+    if mode_id == "2":
+        return {"story": _generate_mode_0(data, mode_id="2", candidate_seed=42 + candidate_idx)}
+    if mode_id == "3":
+        story, plot_schema = _generate_mode_3(data)
+        return {"story": story, "plot_schema": plot_schema}
+    if mode_id == "4":
+        story, plot_schema = _generate_mode_4(data)
+        return {"story": story, "plot_schema": plot_schema}
+    return {"story": _generate_mode_0(data, mode_id="0", candidate_seed=42 + candidate_idx)}
+
+
+def generate_story_candidates(
+    data: StoryRequest,
+    *,
+    mode_id: Optional[str] = None,
+    num_candidates: int = 1,
+) -> list[dict]:
+    selected_mode = mode_id or data.mode or "0"
+    total_candidates = max(1, int(num_candidates))
+    candidates: list[dict] = []
+    for idx in range(total_candidates):
+        generated = _generate_single_story(data, selected_mode, candidate_idx=idx)
+        generated["candidate_id"] = idx + 1
+        candidates.append(generated)
+    return candidates
+
+
+def generate_the_story(
+    data: StoryRequest,
+    mode_id: Optional[str] = None,
+) -> str | tuple[str, dict]:
+    """Genera un cuento según el modo seleccionado."""
+    selected_mode = mode_id or data.mode or "0"
+    generated = _generate_single_story(data, selected_mode, candidate_idx=0)
+    if "plot_schema" in generated:
+        return generated["story"], generated["plot_schema"]
+    return generated["story"]
