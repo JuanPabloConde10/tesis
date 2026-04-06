@@ -1,0 +1,103 @@
+{
+  "story_id": "diablo",
+  "num_candidates": 3,
+  "selection_policies": [
+    "mean"
+  ],
+  "candidates": [
+    {
+      "candidate_id": 1,
+      "story": "En un mundo sombrío donde la luz apenas lograba asomarse entre las nubes de oscuridad, un diablo astuto y burlón había creado un espejo mágico. Este artefacto distorsionaba la realidad, amplificando lo feo y ocultando lo bello. Con sus secuaces, se aventuró por la tierra, llevando el espejo a cada rincón, incluso hasta el cielo, donde se reían de la creación divina. Pero al acercarse al Creador, el espejo se hizo añicos, fragmentándose en millones de pedazos que se dispersaron por toda la humanidad.\n\nLos trozos del espejo se incrustaron en los corazones y ojos de las personas, transformando su percepción. Lo que antes era hermoso se tornó grotesco, y la felicidad fue reemplazada por la infelicidad. A medida que el diablo y sus cómplices contemplaban su obra, se regocijaban en la miseria que habían desatado, alimentando su burla con cada lágrima derramada.\n\nEn este mundo distorsionado, los seres humanos, ahora víctimas de la fragmentación, luchaban por recordar la alegría que una vez conocieron. La distorsión de su percepción creó un conflicto interno, donde la lucha no era solo contra el diablo, sino contra la propia desesperanza. Los secuaces del diablo celebraban cada nueva tristeza, cada nuevo grito de desconsuelo. Se alimentaban de la angustia y la desesperación de aquellos que habían perdido su felicidad.\n\nSin embargo, en medio de la oscuridad, surgieron destellos de resistencia. Algunos hombres y mujeres, aunque atormentados por la visión distorsionada del mundo, comenzaron a unir sus fuerzas. Se dieron cuenta de que la verdadera lucha no era solo contra los secuaces del diablo, sino contra la distorsión que había invadido sus corazones. Se propusieron recuperar la belleza que les había sido robada.\n\nComo un rayo de luz en la penumbra, se levantaron y decidieron enfrentarse a la maldad que había corrompido su esencia. Enfrentaron a los secuaces del diablo, quienes, confiados en su poder, no esperaban tal resistencia. La lucha que se desató fue feroz. Los hombres y mujeres, con la determinación de restaurar lo que había sido perdido, se enfrentaron a sus opresores.\n\nA medida que la batalla avanzaba, algo extraordinario sucedió. Los fragmentos del espejo comenzaron a desvanecerse, y con cada acto de valentía y amor, la percepción de las personas se iba purificando. La burla del diablo se tornó en sorpresa y desesperación a medida que sus cómplices caían ante la fuerza de la esperanza y la unión.\n\nFinalmente, los guerreros de la luz lograron vencer a los secuaces del diablo, quienes, impotentes, se vieron obligados a huir. La victoria no solo trajo consigo la derrota del mal, sino la restauración del mundo. Los corazones que habían estado corrompidos comenzaron a sanar, y la belleza y la felicidad regresaron. \n\nAsí, el diablo, que un día se había burlado de la creación, aprendió que el verdadero poder reside en la luz del amor y la unidad. La historia de la lucha contra la distorsión se convirtió en una lección moral que resonaría a través de las generaciones, recordando a todos que la belleza nunca se pierde del todo, solo espera ser recuperada.",
+      "word_count": 510,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 9.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una premisa interesante y creativa sobre la lucha entre el bien y el mal a través de un espejo mágico, lo que le otorga un nivel de novedad. La narrativa es coherente y sigue una lógica interna, aunque algunos elementos pueden parecer un poco exagerados. La historia tiene un mensaje claro y relevante, lo que la hace pragmática y aplicable a la vida real, especialmente en su reflexión sobre la percepción y la esperanza.",
+        "metadata": {
+          "story_id": "diablo",
+          "candidate_id": 1
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    },
+    {
+      "candidate_id": 2,
+      "story": "En un rincón sombrío del universo, donde la luz apenas lograba atravesar la densa neblina, un diablo astuto había tejido un plan malévolo. Había creado un espejo mágico, cuyas superficies reflejaban no la realidad, sino una distorsión grotesca de la misma, magnificando lo feo y ocultando lo hermoso. Con su inseparable grupo de secuaces, el diablo se dispuso a llevar su creación por el mundo, burlándose de la humanidad y del mismo cielo.\n\nLos hombres y mujeres que se cruzaban en su camino no sabían que al mirar en el espejo, sus corazones serian tocados por la corrupción. La alegría se desvanecía, la esperanza se tornaba en desesperación y la inocencia se desdibujaba. Con cada fragmento del espejo que se rompía y se incrustaba en los corazones de las personas, una nueva sombra se apoderaba de sus vidas.\n\nLas víctimas, ahora sumidas en la tristeza, se enfrentaron a los secuaces del diablo, quienes reían y disfrutaban de la miseria que habían sembrado. La lucha era desigual: un puñado de almas atormentadas frente a un ejército de burladores que se alimentaban de su sufrimiento. Cada intento de resistencia se convertía en una nueva derrota, con el diablo regocijándose en la calamidad que había desatado.\n\nEn lo profundo de su corazón, cada víctima deseaba recuperar la felicidad perdida, pero el espejo había distorsionado no solo su percepción, sino también su voluntad. El diablo, con una sonrisa burlona, observaba cómo sus secuaces se deleitaban en el sufrimiento ajeno, creando un ciclo interminable de tristeza. La lucha se intensificó, pero la victoria del antagonista se hacía evidente. Con cada nuevo fragmento del espejo que se incrustaba en los corazones de los hombres, su poder crecía.\n\nSin embargo, el diablo no solo se limitaba a causar sufrimiento; su risa resonaba en los cielos mientras se acercaba a Dios, burlándose de la creación divina. Era un viaje triunfal a la par que siniestro, donde cada paso parecía acercarlo a una victoria definitiva. Pero al llegar a las puertas celestiales, el espejo se quebró en millones de pedazos, liberando un torrente de distorsiones que se esparcieron por todo el mundo.\n\nLas almas, ahora perdidas en la confusión y la tristeza, se dieron cuenta de que el tiempo para recuperar su felicidad se desvanecía. La lucha, aunque heroica, parecía condenada a la derrota. El diablo, satisfecho, había logrado su propósito: corromper la percepción de la humanidad y despojarla de su esencia más pura. La burla resonaba en cada rincón, mientras las almas, atrapadas en un laberinto de sombras, anhelaban la luz que una vez había iluminado sus vidas.\n\nAsí, el ciclo de miseria se perpetuó, y el diablo, triunfante, continuó su viaje, dejando tras de sí un mundo lleno de fragmentos de espejos, donde lo feo reinaba y la felicidad se volvía un recuerdo lejano.",
+      "word_count": 467,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 6.0
+        },
+        "average_score": 7.0,
+        "justification": "El cuento presenta una premisa interesante y creativa sobre un espejo mágico que distorsiona la realidad, lo que le otorga un buen nivel de novedad. La narrativa es coherente y sigue una lógica interna, aunque algunos elementos pueden parecer un poco exagerados. Sin embargo, la idea de un diablo burlándose de la humanidad y la representación de la lucha entre el bien y el mal son temas recurrentes en la literatura, lo que reduce un poco su originalidad. La pragmaticalidad se ve afectada por la falta de resolución clara y el tono sombrío que puede dificultar la conexión emocional con los personajes.",
+        "metadata": {
+          "story_id": "diablo",
+          "candidate_id": 2
+        }
+      },
+      "policy_scores": {
+        "mean": 7.0
+      }
+    },
+    {
+      "candidate_id": 3,
+      "story": "En un oscuro rincón del mundo, donde la luz del sol apenas lograba abrirse paso entre las nubes grises, el diablo había forjado un espejo mágico. Este artefacto no solo distorsionaba la realidad, sino que convertía lo bello en fealdad, y lo bueno en nada. Con un aire de burla, el diablo y sus secuaces se disponían a llevar el espejo a cada rincón, incluso al cielo, en un intento de ridiculizar la pureza divina. Pero, al aproximarse a la gloria de Dios, el espejo se fracturó en un sinfín de fragmentos que se esparcieron como polvo en el viento, incrustándose en los corazones y ojos de los hombres.\n\nPronto, las personas comenzaron a ver el mundo a través de la opaca lente del espejo. La risa se transformó en llanto, la alegría se tornó en tristeza, y así, la felicidad se desvaneció en un susurro ahogado. Aquellos que antes eran plenos se convirtieron en sombras de sí mismos, luchando por encontrar una chispa de luz en un entorno que parecía devorar todo lo que amaban.\n\nEntre las víctimas de esta distorsión se encontraba una joven llamada Clara, cuyo corazón había sido tocado por los fragmentos del espejo. Cada día, la belleza de la naturaleza se convertía en un recordatorio de su tristeza, y las risas de los niños resonaban en su mente como ecos de lo que había perdido. Clara, entonces, decidió enfrentarse a aquellos que habían causado su sufrimiento, los secuaces del diablo, quienes se regocijaban en la miseria que habían sembrado. \n\nLa lucha fue feroz. Clara, junto a otros que también habían sido afectados, se levantó contra la burla de sus opresores. Con cada grito de dolor que resonaba en su pecho, la valentía crecía dentro de ella. Las sombras que una vez dominaron su corazón comenzaban a ceder ante la luz de su determinación. Sin embargo, los secuaces del diablo, como un mar de malicia, continuaban su ataque, alimentando la desesperación en cada rincón que tocaban.\n\nA pesar de sus esfuerzos, Clara y sus compañeros no lograron romper el ciclo de sufrimiento. La victoria de los cómplices del diablo se hizo evidente; su risa resonaba en el aire, burlándose de aquellos que habían intentado resistir. Con cada intento fallido, la desesperanza se arraigaba más profundamente en el corazón de Clara.\n\nPero había una verdad que el diablo había olvidado: la luz, aunque oculta, nunca se extinguía por completo. Clara, en su momento más oscuro, recordó las historias de aquellos que habían enfrentado la adversidad y, con un último esfuerzo, se alzó una vez más. En su interior, comenzó a fraguar una resistencia, una chispa de esperanza que podría desafiar incluso al más oscuro de los poderes.\n\nAsí, mientras el mundo seguía girando en su vorágine de tristeza, Clara se embarcó en un viaje hacia la redención, decidida a enfrentar la oscuridad y reclamar de vuelta la felicidad que una vez le perteneció. La batalla aún no había terminado, pero un nuevo capítulo comenzaba, donde la lucha contra la distorsión de la realidad se tornaría en su propósito. El espejo, aunque quebrado, había revelado algo que el diablo no había previsto: el poder de la esperanza y la resiliencia humana.",
+      "word_count": 533,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 6.0
+        },
+        "average_score": 7.0,
+        "justification": "El cuento presenta una premisa interesante y creativa sobre un espejo mágico que distorsiona la realidad, lo que le otorga un buen nivel de novedad. La narrativa es coherente y sigue una lógica interna, aunque algunos elementos pueden parecer un tanto arquetípicos. En términos de pragmaticalidad, el mensaje sobre la esperanza y la resiliencia es valioso, pero la resolución puede parecer un tanto idealista en el contexto del sufrimiento descrito.",
+        "metadata": {
+          "story_id": "diablo",
+          "candidate_id": 3
+        }
+      },
+      "policy_scores": {
+        "mean": 7.0
+      }
+    }
+  ],
+  "rankings": {
+    "mean": [
+      {
+        "candidate_id": 1,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 9.0
+        }
+      },
+      {
+        "candidate_id": 2,
+        "score": 7.0,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 6.0
+        }
+      },
+      {
+        "candidate_id": 3,
+        "score": 7.0,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 8.0,
+          "pragmaticality": 6.0
+        }
+      }
+    ]
+  }
+}
