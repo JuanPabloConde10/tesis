@@ -2,22 +2,24 @@
   "story_id": "juguetes",
   "title": "Los juguetes",
   "author": "Juan José Morosoli",
-  "genre": "cuento_moral",
-  "setting": "El cuento transcurre en dos escenarios contrastantes en un pueblo rural: una lujosa pero opresiva casa y la vibrante y ruidosa casa-granja del padrino del narrador. La época es indeterminada, pero sugiere un pasado tradicional.",
+  "genre": "memoria_autobiografica",
+  "setting": "El cuento transcurre en un pueblo donde el narrador se desplaza entre dos casas: una lujosa y silenciosa, y la otra, la de su padrino, llena de vida y actividad. La narrativa se sitúa en un tiempo indeterminado, centrado en la infancia del protagonista.",
   "characters": [
-    "protagonista: un niño que experimenta y compara dos mundos, buscando su lugar y la verdadera felicidad",
-    "madre del compañero: figura autoritaria que impone silencio y rigidez en la casa lujosa",
-    "Don Bernardo (padrino): figura protectora que encarna la vitalidad, la libertad y la alegría de la vida sencilla"
+    "protagonista: niño que narra su experiencia",
+    "antagonista: la casa lujosa y su ambiente opresivo",
+    "padrino: Don Bernardo, figura paternal y generosa",
+    "madre: figura ausente debido a su enfermedad",
+    "abuela: cuidadora de los hermanos menores"
   ],
   "themes": [
-    "la verdadera naturaleza de la felicidad y el juego infantil",
-    "el contraste entre la opresión del lujo y la liberación de la vida sencilla y natural",
-    "la búsqueda de un verdadero hogar y sentido de pertenencia",
-    "la importancia de la libertad y la vitalidad sobre la riqueza material"
+    "contraste entre la riqueza y la pobreza",
+    "la búsqueda de la felicidad en la simplicidad",
+    "la infancia y el juego",
+    "la familia y el hogar"
   ],
-  "tone": "Reflexivo y contrastante, pasando de un ambiente opresivo y melancólico a uno vibrante, cálido y lleno de vida, con un matiz didáctico al final.",
-  "narrative_style": "Narrador en primera persona (yo), con una voz que relata sus experiencias y observaciones de la infancia, adoptando un tono descriptivo y evocador.",
-  "plot_summary": "Debido a la enfermedad de su madre, un niño es enviado a vivir en una lujosa pero opresiva casa donde el silencio y la rigidez lo incomodan profundamente. Rescatado por su padrino, Don Bernardo, el niño se traslada a un hogar vibrante y ruidoso, lleno de animales y actividad. Allí, descubre la verdadera alegría del juego y la vida, aprendiendo que la felicidad no reside en los juguetes o el lujo, sino en la libertad y la vitalidad de las experiencias cotidianas.",
+  "tone": "nostálgico y reflexivo",
+  "narrative_style": "narrador en primera persona",
+  "plot_summary": "El narrador recuerda su infancia cuando su madre estaba enferma y fue enviado a vivir a la casa lujosa de su compañero de escuela, donde se sintió incómodo y atrapado en un ambiente silencioso y opresivo. Posteriormente, su padrino lo lleva a su hogar, un lugar vibrante y lleno de vida, donde el niño descubre la verdadera alegría y el valor de los juegos simples. Al final, el protagonista reflexiona sobre la felicidad que se encuentra en la conexión con la naturaleza y la familia, en contraste con la frialdad de la riqueza material.",
   "aoi_names": [
     "RAGS 2 RICHES",
     "JOURNEY",

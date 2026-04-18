@@ -10,6 +10,7 @@ Para cada cuento en data/selected_stories.json:
 
 Uso:
     python scripts/extract_features.py [--provider openai|gemini|local] [--model MODEL]
+    python scripts/extract_features.py --force   # volver a extraer aunque exista el JSON
 """
 
 import argparse
@@ -216,6 +217,11 @@ def parse_args():
         default=5.0,
         help="Seconds to wait between API calls to respect rate limits (default: 5)",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-extract even when data/features/<story_id>.json already exists",
+    )
     return parser.parse_args()
 
 
@@ -238,19 +244,27 @@ def main() -> None:
 
     os.makedirs(FEATURES_DIR, exist_ok=True)
 
+    skipped = 0
+    processed = 0
     for story_id, story in stories.items():
+        out_path = os.path.join(FEATURES_DIR, f"{story_id}.json")
+        if os.path.isfile(out_path) and not args.force:
+            print(f"\nSKIP: '{story['title']}' — already exists {out_path}")
+            skipped += 1
+            continue
+
         print(f"\nProcessing: '{story['title']}' by {story['author']}")
         features = extract_features_for_story(story, client, delay=args.delay)
 
-        out_path = os.path.join(FEATURES_DIR, f"{story_id}.json")
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(features, f, ensure_ascii=False, indent=2)
 
         print(f"  Saved features to {out_path}")
         print(f"  AOIs detected: {features['aoi_names']}")
         print(f"  Genre: {features['genre']} | Tone: {features['tone']}")
+        processed += 1
 
-    print(f"\nDone. Features saved to {FEATURES_DIR}/")
+    print(f"\nDone. Processed: {processed}, skipped (already had features): {skipped}. Dir: {FEATURES_DIR}/")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,22 @@
+{
+  "story_id": "deriva",
+  "source_title": "A la deriva",
+  "source_author": "Horacio Quiroga",
+  "aoi_names_used": [
+    "CONFLICT",
+    "JOURNEY",
+    "REPENTANCE"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 530,
+  "num_candidates": 3,
+  "selection_policies": [
+    "mean"
+  ],
+  "primary_policy": "mean",
+  "weighted_policy_weights_normalized": null,
+  "winner_candidate_ids": {
+    "mean": 1
+  }
+}

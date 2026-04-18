@@ -1,0 +1,103 @@
+{
+  "story_id": "test2",
+  "num_candidates": 3,
+  "selection_policies": [
+    "mean"
+  ],
+  "candidates": [
+    {
+      "candidate_id": 1,
+      "story": "En Brumalia, la fría bruma que cubría las calles era un recordatorio constante del pacto que los ciudadanos debían cumplir al alcanzar la mayoría de edad: entregar su sombra al gobierno. La idea de que esa ofrenda garantizaba orden y prosperidad había sido grabada a fuego en la mente colectiva de sus habitantes. Sin embargo, para Inés, una joven archivista, este sacrificio comenzaba a parecerle un oscuro secreto. Su trabajo en el registro civil la había llevado a descubrir documentos antiguos que advertían sobre las consecuencias de la entrega: la pérdida de la sombra significaba también la erosión de los recuerdos y la empatía.\n\nInés, intrigada y alarmada, se unió a Tomás, un barrendero que había dedicado su vida a proteger las sombras robadas, guardándolas en frascos de vidrio en un depósito clandestino. Cuando Inés vio la suya, en un frasco que latía con vida propia, supo que debía actuar. Decidió que devolver las sombras a sus dueños era la única forma de restaurar lo que se había perdido. Pero el director Varga, dueño de la fábrica de luz y ferviente defensor del régimen, no se lo permitiría. Para él, las emociones humanas eran un obstáculo para el progreso.\n\nLa tensión estalló en un enfrentamiento en el corazón de la ciudad. Tomás se interpuso entre Varga y el archivo, defendiendo lo que quedaba de la humanidad de los ciudadanos. La lucha era feroz, un juego de sombras y luces donde cada palabra y cada gesto parecían pesar más que el mismo aire. Inés, sintiendo el peso de su propia sombra perdida, supo que el momento había llegado. Mientras el director amenazaba con activar el protocolo de quema del archivo, ella tomó una decisión desesperada: liberar las sombras en frascos.\n\nCon un movimiento decidido, Inés rompió miles de frascos sobre la plaza central. Las sombras, negras como el azabache, se elevaron en el aire y comenzaron a regresar a sus dueños, como aves que regresan a su nido. En ese instante, un caos emocional se desató en Brumalia. Los habitantes, una vez despojados de sus recuerdos y emociones, se encontraron cara a cara con sus culpas, sus amores y sus temores. Las lágrimas brotaron, las historias olvidadas resurgieron, y por primera vez, se miraron como personas.\n\nSin embargo, en medio del torbellino, Inés sintió una punzada en su corazón. Las sombras que regresaban traían consigo no solo recuerdos, sino también el peso de la deshumanización que habían soportado durante años. Aunque la ciudad había comenzado a vibrar con una nueva vida, el dolor de las memorias no podía ser ignorado.\n\nAl final, mientras la plaza se llenaba de gritos de alegría y de lamento, Inés comprendió que la victoria no era solo recuperar las sombras, sino también aceptar la complejidad de la condición humana. Brumalia había despertado, y aunque el camino hacia la verdad era agridulce, había un atisbo de esperanza en el aire. Las sombras volvían a ser parte de su historia, y con ellas, la promesa de un futuro donde el progreso no aplastara la esencia de lo que significaba ser humano.",
+      "word_count": 513,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 9.0,
+          "sensicality": 8.0,
+          "pragmaticality": 7.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una idea original y creativa sobre la entrega de sombras como metáfora de la pérdida de identidad y emociones, lo que le otorga un alto nivel de novedad. La trama es coherente y sigue una lógica interna, aunque algunos elementos pueden parecer abstractos. La pragmaticalidad es buena, pero la complejidad de las emociones y la metáfora puede dificultar la conexión inmediata con el lector promedio.",
+        "metadata": {
+          "story_id": "test2",
+          "candidate_id": 1
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    },
+    {
+      "candidate_id": 2,
+      "story": "En Brumalia, un lugar donde la luz artificial dominaba los cielos y los ciudadanos entregaban sus sombras al cumplir dieciocho años, la vida transcurría como un engranaje bien aceitado. Todos se movían en una danza monótona, creyendo que la pérdida de sus sombras era un sacrificio necesario para alcanzar la prosperidad y el orden promovidos por el gobierno. Sin embargo, Inés, una archivista de registros civiles, sentía un vacío en su interior que no podía ignorar. Mientras revisaba antiguos documentos, descubrió advertencias sobre el oscuro precio de esta entrega: la erosión de la memoria y la empatía.\n\nInés no podía aceptar esta realidad. En su búsqueda de la verdad, se cruzó con Tomás, un barrendero que había mantenido en secreto un depósito clandestino de sombras embotelladas. Al ver una de ellas latir como tinta viva, comprendió que era la suya, la que había perdido al convertirse en una mera autómata del sistema. Tomás, con su espíritu rebelde, le mostró que las sombras eran más que simples recuerdos; eran la esencia de lo que los hacía humanos.\n\nAmbos decidieron actuar. En una noche oscura, se infiltraron en la sede del gobierno con la intención de devolver las sombras a sus propietarios. Sin embargo, el director Varga, un hombre frío y calculador que regía la fábrica de luz, se enteró de sus planes. Convencido de que la emoción humana era un obstáculo para el progreso, activó un protocolo para destruir el archivo donde se guardaban los recuerdos de la ciudad. En un instante, la situación se tornó crítica: Inés y Tomás se enfrentaron a las sombras en frascos, un símbolo de la memoria colectiva, que luchaban por regresar a su esencia.\n\nEl enfrentamiento fue intenso. Tomás, como un guerrero de la humanidad, intentaba romper las filas de frascos, mientras que las sombras, atrapadas, se defendían con la fuerza de los recuerdos y las emociones que representaban. El caos se desató cuando Inés, en un acto de desesperación, derramó miles de frascos sobre la plaza central. Las sombras, liberadas, comenzaron a volar como aves negras, regresando a sus dueños y trayendo consigo un torrente de culpas, afectos y dolores largamente olvidados.\n\nLa plaza se llenó de gritos y llantos, pero también de risas y reencuentros. Los habitantes de Brumalia, hasta ese momento deshumanizados, comenzaron a mirarse de nuevo, reconociendo en los rostros ajenos la fragilidad de su propia existencia. Sin embargo, el triunfo de la verdad tenía un costo. El director Varga, furioso por la pérdida del control, había logrado una victoria agridulce: la memoria colectiva había regresado, pero a un alto precio.\n\nInés, mientras observaba el caos emocional, comprendió que la lucha por la dignidad y la verdad nunca sería fácil. Aunque el camino adelante era incierto y lleno de desafíos, por primera vez, Brumalia respiraba autenticidad. La esperanza, aunque frágil, había brotado entre las sombras.",
+      "word_count": 474,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una premisa original sobre la entrega de sombras y su relación con la humanidad, lo que le otorga un alto grado de novedad. La trama es coherente y las acciones de los personajes tienen sentido dentro del contexto creado, lo que contribuye a su sensicalidad. Sin embargo, la idea de las sombras embotelladas y su lucha puede parecer un tanto abstracta, lo que afecta ligeramente su pragmaticalidad en términos de aplicación en la vida real.",
+        "metadata": {
+          "story_id": "test2",
+          "candidate_id": 2
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    },
+    {
+      "candidate_id": 3,
+      "story": "En la helada ciudad de Brumalia, donde las luces artificiales luchaban por ahogar la oscuridad, cada ciudadano entregaba su sombra al cumplir dieciocho años. El gobierno lo proclamaba como un acto de civilidad, un sacrificio que aseguraba orden y prosperidad. Sin embargo, Inés, una archivista de registros civiles, había comenzado a notar la falta de matices en las vidas de sus vecinos. Sus miradas eran vacías, como si la esencia de su humanidad se hubiera desvanecido junto con sus sombras.\n\nUn día, mientras revisaba antiguos documentos en la penumbra de la biblioteca, Inés tropezó con un informe olvidado. Las advertencias sobre la pérdida de memoria y empatía la golpearon como un rayo. La idea de que la entrega de las sombras erosionara no solo la identidad, sino la capacidad de sentir, la llenó de inquietud. Decidió investigar más, y fue entonces cuando conoció a Tomás, un barrendero que se movía entre las sombras de la ciudad, guardando secretos en frascos de vidrio.\n\nTomás, con su voz rasposa y mirada profunda, le habló de un depósito clandestino donde se almacenaban las sombras robadas. Juntos, se adentraron en un mundo oculto, donde la vida latía en cada frasco como tinta viva. Inés reconoció su propia sombra, una forma oscura que palpitaba entre las demás. El deseo de devolver las sombras crecía dentro de ella, pero el director Varga, un hombre que consideraba la emoción un obstáculo para el progreso, se interponía en su camino.\n\nUna mañana, mientras el sol apenas iluminaba las calles, Varga activó un protocolo para destruir el archivo que contenía la evidencia del sacrificio. En ese instante, Inés supo que no podía permitir que la verdad se extinguiera. Con el corazón latiendo como un tambor, liberó los frascos sobre la plaza central. Las sombras se elevaron en un torbellino oscuro, como aves que regresaban a sus dueños.\n\nEl caos se desató. Las sombras, al tocar sus dueños, trajeron consigo recuerdos de amor y pérdida, de culpas y alegrías. La plaza se llenó de gritos, pero también de risas y lágrimas. Por primera vez, los habitantes de Brumalia se miraron como personas, no como engranajes de una máquina deshumanizada. La emoción que había sido suprimida por tanto tiempo brotaba como un manantial.\n\nEn medio de este tumulto, Tomás se erguía como un faro de esperanza. Él, el barrendero que había recogido sombras, ahora observaba cómo la humanidad renacía en cada rostro. Las sombras, antes prisioneras, se convirtieron en un símbolo de resistencia, de una lucha contra el control colectivo que había oprimido a la ciudad.\n\nA pesar del caos y la incertidumbre, Inés sintió por primera vez el peso de su memoria y la calidez de su humanidad. La victoria de Tomás y de todos los que se atrevían a recordar no era solo sobre el director Varga, sino sobre la recuperación de su dignidad. Brumalia no volvería a ser la misma; el precio del progreso había sido alto, pero el regreso de las sombras prometía un futuro donde recordar era un acto de valentía.",
+      "word_count": 505,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 9.0,
+          "sensicality": 8.0,
+          "pragmaticality": 7.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una idea original y creativa sobre la entrega de sombras como un sacrificio social, lo que le otorga un alto nivel de novedad. La trama es coherente y tiene sentido dentro de su propio universo, aunque algunos elementos pueden parecer abstractos. La pragmaticalidad es buena, ya que la historia aborda temas universales como la identidad y la memoria, pero la implementación de ciertos conceptos puede resultar un poco compleja para algunos lectores.",
+        "metadata": {
+          "story_id": "test2",
+          "candidate_id": 3
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    }
+  ],
+  "rankings": {
+    "mean": [
+      {
+        "candidate_id": 1,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 9.0,
+          "sensicality": 8.0,
+          "pragmaticality": 7.0
+        }
+      },
+      {
+        "candidate_id": 2,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        }
+      },
+      {
+        "candidate_id": 3,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 9.0,
+          "sensicality": 8.0,
+          "pragmaticality": 7.0
+        }
+      }
+    ]
+  }
+}

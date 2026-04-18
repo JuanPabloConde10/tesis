@@ -1,5 +1,5 @@
 """
-Phase 1: Selección y limpieza de los 5 cuentos seleccionados.
+Phase 1: Selección y limpieza de los cuentos seleccionados.
 
 Lee los archivos originales de books/short-tales/, limpia artefactos de
 navegación y metadata de Wikisource, y exporta data/selected_stories.json
@@ -18,7 +18,7 @@ BOOKS_DIR = os.path.join(os.path.dirname(__file__), "..", "books", "short-tales"
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 OUTPUT_FILE = os.path.join(DATA_DIR, "selected_stories.json")
 
-# The 5 selected stories with their first substantive line of body text.
+# Selected stories with their first substantive line of body text.
 # story_start_hint is used to locate the exact start of the narrative and
 # skip the Wikisource header block (navigation + repeated title/author lines).
 SELECTED_STORIES = [
@@ -56,6 +56,20 @@ SELECTED_STORIES = [
         "author": "Juana Manuela Gorriti",
         "filename": "Una_visita_infernal.txt",
         "story_start_hint": "Mi hermana a la edad",
+    },
+    {
+        "id": "deriva",
+        "title": "A la deriva",
+        "author": "Horacio Quiroga",
+        "filename": "A_la_deriva.txt",
+        "story_start_hint": "El hombre pisó algo blanduzco",
+    },
+    {
+        "id": "lucho_eco",
+        "title": "Eco de espesura",
+        "author": "Anónimo",
+        "filename": "Lucho-Eco-De-Espesura.txt",
+        "story_start_hint": "En lo profundo de la selva",
     },
 ]
 

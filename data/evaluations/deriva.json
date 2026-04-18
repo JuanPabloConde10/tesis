@@ -1,0 +1,87 @@
+{
+  "story_id": "deriva",
+  "title": "A la deriva",
+  "author": "Horacio Quiroga",
+  "word_count_original": 1057,
+  "word_count_generated": 530,
+  "dimensions": {
+    "novelty": {
+      "original": 9,
+      "generado": 3
+    },
+    "sensicality": {
+      "original": 10,
+      "generado": 6
+    },
+    "pragmaticality": {
+      "original": 9,
+      "generado": 2
+    }
+  },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "dos gotitas de sangre engrosaban dificultosamente",
+      "justificacion": "La imagen de la sangre espesándose lentamente es muy vívida y premonitoria del efecto del veneno, transmitiendo una sensación de fatalidad inminente."
+    },
+    {
+      "expresion": "una metálica sequedad de garganta, seguida de sed quemante",
+      "justificacion": "Una sinestesia poderosa que combina sensaciones táctiles y gustativas con una intensidad que transmite el sufrimiento físico de manera muy efectiva."
+    },
+    {
+      "expresion": "la carne desbordaba como una monstruosa morcilla",
+      "justificacion": "Una comparación grotesca y visceral que ilustra de forma impactante la hinchazón y el horror de la gangrena, creando una imagen inolvidable."
+    },
+    {
+      "expresion": "inmensa hoya, cuyas paredes, altas de cien metros, encajonan fúnebremente el río",
+      "justificacion": "Una descripción del paisaje que personifica la naturaleza como una fuerza opresiva y fatal, envolviendo al protagonista en un destino ineludible."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "el silencio de la naturaleza se tornaba opresivo, como si la selva misma se regocijara en su sufrimiento.",
+      "justificacion": "Intenta personificar la selva y su indiferencia o malevolencia, buscando añadir una capa de profundidad emocional al entorno, aunque la expresión 'regocijara' es un poco fuerte."
+    },
+    {
+      "expresion": "Su orgullo se desvaneció en la inmensidad de la selva",
+      "justificacion": "Una metáfora decente que describe el abandono de un sentimiento personal (el orgullo) ante la magnitud de una situación de vida o muerte, situándolo en el contexto del paisaje."
+    },
+    {
+      "expresion": "la luz del sol parecía burlarse de él.",
+      "justificacion": "Un intento de personificación del sol que, aunque es un cliché, busca añadir una capa emocional a la escena, contrastando la belleza natural con el sufrimiento del personaje."
+    },
+    {
+      "expresion": "la muerte se cernía sobre Paulino, como una sombra que no podía evitar.",
+      "justificacion": "Una metáfora común para describir la inminencia de la muerte, que cumple su función de transmitir la sensación de un destino inevitable."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "El hombre pensó que no podría jamás llegar él solo a Tacurú-Pucú, y se decidió a pedir ayuda a su compadre Alves, aunque hacía mucho tiempo que estaban disgustados.",
+      "justificacion": "La frase 'aunque hacía mucho tiempo que estaban disgustados' se siente como una interjección del narrador para añadir un detalle de trasfondo, rompiendo ligeramente la inmediatez del pensamiento desesperado del protagonista en ese momento crítico de urgencia."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "La angustia la llevó a enfrentarse a la serpiente que le había arrebatado a su marido, un silencio amenazador que parecía burlarse de su esfuerzo.",
+      "justificacion": "La frase es confusa y carece de coherencia. No queda claro si Dorotea se enfrenta literalmente a la serpiente o si es una metáfora, y la conexión con 'un silencio amenazador' es incoherente y desorientadora."
+    },
+    {
+      "expresion": "La yararacusú, como un espectro, se deslizó a su lado, y en un instante de lucidez, Paulino comprendió que debía luchar.",
+      "justificacion": "Esta descripción es ilógica. La serpiente ya había mordido a Paulino y, en el contexto del cuento original, fue matada. Que se deslice 'a su lado' y que Paulino 'debía luchar' contra ella en su estado moribundo es inconsistente con la progresión de la historia y la realidad de la situación."
+    },
+    {
+      "expresion": "La serpiente, el símbolo de su conflicto, se desvaneció entre la bruma de la selva, dejando solo un eco de su existencia.",
+      "justificacion": "La serpiente es un animal físico, no un 'símbolo de su conflicto' que pueda desvanecerse de forma literal. La frase es un intento forzado de simbolismo que carece de coherencia narrativa y resulta en una imagen absurda."
+    },
+    {
+      "expresion": "La soledad y el abandono se convirtieron en su legado, mientras la yararacusú se deslizaba silenciosamente en las sombras, transformándose en un símbolo de arrepentimiento que nunca se borraría de la selva.",
+      "justificacion": "La idea de una serpiente 'transformándose en un símbolo de arrepentimiento' es una abstracción que no tiene sentido en el contexto físico de la narrativa. Es un final muy forzado, poco claro y que rompe completamente la verosimilitud del relato."
+    }
+  ],
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original de Quiroga es una obra maestra de la tensión y la descripción sensorial, con una narrativa coherente, vívida y profundamente inmersiva. El cuento generado por IA, en contraste, es fragmentado, carece de detalles concretos, y sufre de incoherencias lógicas y un uso forzado del simbolismo, resultando en una experiencia de lectura superficial y confusa.",
+  "averages": {
+    "promedio_original": 9.33,
+    "promedio_generado": 3.67
+  }
+}

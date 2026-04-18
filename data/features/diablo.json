@@ -2,26 +2,25 @@
   "story_id": "diablo",
   "title": "El diablo y sus añicos",
   "author": "Hans Christian Andersen",
-  "genre": "cuento_moral",
-  "setting": "Un escenario fantástico y universal que abarca la Tierra y el Cielo, sin ubicaciones geográficas específicas. La acción se desarrolla en un plano alegórico donde el mal se propaga por el mundo.",
+  "genre": "cuento_de_hadas",
+  "setting": "El cuento se desarrolla en un mundo mágico donde un duende maligno crea un espejo con propiedades distorsionadoras. La historia se mueve entre diferentes países y culmina en el Cielo, donde el espejo es llevado para burlarse de los ángeles.",
   "characters": [
-    "el diablo: Antagonista principal, creador del espejo maligno y personificación de la malicia y la burla.",
-    "diablitos/alumnos: Secuaces del diablo, cómplices en la propagación de la distorsión y el mal.",
-    "los hombres: Víctimas de los fragmentos del espejo, cuya percepción y felicidad son corrompidas."
+    "protagonista: duende malo (el diablo)",
+    "antagonistas: los alumnos del duende",
+    "personajes secundarios: hombres afectados por el espejo, ángeles"
   ],
   "themes": [
-    "La naturaleza y propagación del mal",
-    "La distorsión de la percepción y la realidad",
-    "La corrupción del corazón humano",
-    "La pérdida de la felicidad y la inocencia",
-    "La burla y la malicia"
+    "la percepción de la realidad",
+    "la maldad y sus consecuencias",
+    "la transformación del bien en mal",
+    "la crítica a la superficialidad"
   ],
-  "tone": "Ominoso y moralista, con un matiz de burla siniestra por parte del antagonista.",
-  "narrative_style": "Narrador omnisciente en tercera persona, que describe las acciones y motivaciones de los personajes, así como las consecuencias de sus actos.",
-  "plot_summary": "El diablo crea un espejo mágico que distorsiona la realidad, magnificando lo feo y haciendo desaparecer lo bueno. Él y sus alumnos llevan el espejo por el mundo y al cielo para burlarse, pero al acercarse a Dios, el espejo se rompe en millones de pedazos. Los fragmentos se incrustan en los ojos y corazones de las personas, corrompiendo su percepción y volviéndolos infelices, mientras el diablo se regocija ante la miseria causada.",
+  "tone": "oscuro y moralista",
+  "narrative_style": "narrador omnisciente en tercera persona",
+  "plot_summary": "Un duende maligno crea un espejo que distorsiona la realidad, haciendo que lo bueno se vea feo y lo malo se resalte. Atraídos por su poder, sus alumnos llevan el espejo al Cielo, donde se rompe y sus fragmentos se esparcen por el mundo, causando que las personas vean solo lo negativo. La historia culmina en la tristeza y la desdicha de aquellos que son afectados por los fragmentos del espejo, mientras el duende se ríe de su maldad.",
   "aoi_names": [
     "CONFLICT",
-    "INTERDICTION VIOLATED",
-    "JOURNEY"
+    "DONOR",
+    "INTERDICTION VIOLATED"
   ]
 }

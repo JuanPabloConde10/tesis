@@ -1,116 +1,32 @@
 {
-  "total_stories_evaluated": 5,
-  "global_avg_original": 8.67,
-  "global_avg_generated": 6.6,
-  "global_diferencia": -2.07,
+  "total_stories_evaluated": 1,
+  "global_avg_original": 7.67,
+  "global_avg_generated": 4.0,
+  "global_diferencia": -3.67,
   "preferencia_conteo": {
-    "original": 5,
+    "original": 1,
     "generado": 0
   },
   "per_story": [
     {
-      "story_id": "diablo",
-      "title": "El diablo y sus añicos",
-      "author": "Hans Christian Andersen",
+      "story_id": "lucho_eco",
+      "title": "Eco de espesura",
+      "author": "Anónimo",
       "novelty": {
-        "original": 8,
+        "original": 7,
         "generado": 5
       },
       "sensicality": {
         "original": 9,
-        "generado": 7
-      },
-      "pragmaticality": {
-        "original": 9,
-        "generado": 6
-      },
-      "promedio_original": 8.67,
-      "promedio_generado": 6.0,
-      "diferencia": -2.67,
-      "preferencia": "original"
-    },
-    {
-      "story_id": "juguetes",
-      "title": "Los juguetes",
-      "author": "Juan José Morosoli",
-      "novelty": {
-        "original": 8,
-        "generado": 5
-      },
-      "sensicality": {
-        "original": 9,
-        "generado": 8
-      },
-      "pragmaticality": {
-        "original": 9,
-        "generado": 6
-      },
-      "promedio_original": 8.67,
-      "promedio_generado": 6.33,
-      "diferencia": -2.34,
-      "preferencia": "original"
-    },
-    {
-      "story_id": "pericote",
-      "title": "Breve historia veraz de un pericote",
-      "author": "Abraham Valdelomar",
-      "novelty": {
-        "original": 9,
-        "generado": 6
-      },
-      "sensicality": {
-        "original": 9,
-        "generado": 9
-      },
-      "pragmaticality": {
-        "original": 9,
-        "generado": 8
-      },
-      "promedio_original": 9.0,
-      "promedio_generado": 7.67,
-      "diferencia": -1.33,
-      "preferencia": "original"
-    },
-    {
-      "story_id": "prestamista",
-      "title": "La leyenda del prestamista",
-      "author": "Carlos Gagini",
-      "novelty": {
-        "original": 8,
-        "generado": 6
-      },
-      "sensicality": {
-        "original": 9,
-        "generado": 9
-      },
-      "pragmaticality": {
-        "original": 9,
-        "generado": 7
-      },
-      "promedio_original": 8.67,
-      "promedio_generado": 7.33,
-      "diferencia": -1.34,
-      "preferencia": "original"
-    },
-    {
-      "story_id": "visita",
-      "title": "Una visita infernal",
-      "author": "Juana Manuela Gorriti",
-      "novelty": {
-        "original": 8,
-        "generado": 5
-      },
-      "sensicality": {
-        "original": 9,
-        "generado": 8
-      },
-      "pragmaticality": {
-        "original": 8,
         "generado": 4
       },
-      "promedio_original": 8.33,
-      "promedio_generado": 5.67,
-      "diferencia": -2.66,
+      "pragmaticality": {
+        "original": 7,
+        "generado": 3
+      },
+      "promedio_original": 7.67,
+      "promedio_generado": 4.0,
+      "diferencia": -3.67,
       "preferencia": "original"
     }
   ]

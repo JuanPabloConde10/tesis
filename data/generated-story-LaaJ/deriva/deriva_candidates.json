@@ -1,0 +1,103 @@
+{
+  "story_id": "deriva",
+  "num_candidates": 3,
+  "selection_policies": [
+    "mean"
+  ],
+  "candidates": [
+    {
+      "candidate_id": 1,
+      "story": "En lo profundo de la selva, donde el sol apenas lograba atravesar el espeso dosel de hojas, Paulino se encontraba atrapado en una lucha desesperada. Había sido mordido por una yararacusú, una serpiente cuya picadura era sinónimo de muerte inminente. El veneno ardía en sus venas, y el dolor se expandía como un fuego voraz, consumiéndolo poco a poco. La soledad lo envolvía, y el silencio de la naturaleza se tornaba opresivo, como si la selva misma se regocijara en su sufrimiento.\n\nMientras tanto, su esposa, Dorotea, corría entre los árboles, tratando de encontrarlo. La desesperación la guiaba, su corazón palpitante resonando con cada paso. Sabía que el veneno actuaba rápidamente, y no había tiempo que perder. Sin embargo, el eco de su voz se perdía entre los murmullos del viento y los susurros de la selva. ¿Dónde estaba Paulino? La angustia la llevó a enfrentarse a la serpiente que le había arrebatado a su marido, un silencio amenazador que parecía burlarse de su esfuerzo.\n\nAl mismo tiempo, Alves, el compadre de Paulino, sintió el llamado de la urgencia. A pesar de la disputa que mantenían, sabía que debía partir a su encuentro. Su orgullo se desvaneció en la inmensidad de la selva mientras se adentraba en su espesura. El camino era arduo, lleno de peligros ocultos, pero la imagen de Paulino luchando por su vida lo impulsaba a seguir adelante. Cada paso lo acercaba a su amigo, pero también lo enfrentaba a sus propios demonios.\n\nFinalmente, Paulino, debilitado y tambaleándose, se encontró en un claro, donde la luz del sol parecía burlarse de él. La yararacusú, como un espectro, se deslizó a su lado, y en un instante de lucidez, Paulino comprendió que debía luchar. Sin embargo, la lucha no solo era contra el veneno, sino contra sus propios recuerdos, las decisiones que lo habían llevado hasta allí. Y mientras la agonía se apoderaba de él, un momento de claridad lo envolvió: el amor por Dorotea, la amistad con Alves.\n\nAlves llegó justo a tiempo para ver a su amigo caer. La muerte se cernía sobre Paulino, como una sombra que no podía evitar. En su desesperación, Alves luchó contra el dolor que sentía por la pérdida inminente de su compadre y, por primera vez, la rabia y la tristeza se entrelazaron en su pecho. ¿Qué había hecho para merecer esta realidad? La serpiente, el símbolo de su conflicto, se desvaneció entre la bruma de la selva, dejando solo un eco de su existencia.\n\nEn su agonía, Paulino encontró un último aliento de vida, un susurro para Dorotea. Pero antes de que pudiera pronunciar su nombre, la oscuridad lo reclamó. Alves, con lágrimas en los ojos, sintió el peso de la culpa, un sentimiento que lo acompañaría por el resto de sus días. La selva, implacable, continuó su ciclo, pero en ese rincón olvidado, la vida de Paulino quedó grabada en el aire, un recordatorio de la fragilidad de la existencia y la lucha por la supervivencia. La soledad y el abandono se convirtieron en su legado, mientras la yararacusú se deslizaba silenciosamente en las sombras, transformándose en un símbolo de arrepentimiento que nunca se borraría de la selva.",
+      "word_count": 530,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 9.0,
+          "pragmaticality": 8.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una trama interesante y un conflicto emocional que, aunque no es completamente original, se desarrolla de manera efectiva. La narrativa es coherente y los eventos son lógicos dentro del contexto, lo que refuerza su sensatez. Además, la representación de la selva y los personajes es pragmática, aunque podría beneficiarse de un mayor desarrollo en algunos aspectos para profundizar en la conexión emocional entre ellos.",
+        "metadata": {
+          "story_id": "deriva",
+          "candidate_id": 1
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    },
+    {
+      "candidate_id": 2,
+      "story": "En la espesura de la selva, donde la luz apenas se filtraba a través de las hojas, Paulino se debatía entre la vida y la muerte. Había sido mordido por una yararacusú, una serpiente cuya picadura era tan temida como la oscuridad que la rodeaba. Cada pulso de dolor lo hacía tambalear, pero el impulso de regresar a su rancho era más fuerte que cualquier tormenta que azotara su cuerpo. La selva, con su silencio abrumador, parecía devorar sus gritos de ayuda.\n\nSu esposa, Dorotea, había salido en busca de socorro. En su corazón, la esperanza ardía como una llama tenuemente iluminada. Sabía que su compadre Alves podría ayudar, pero las distancias en la jungla eran engañosas. Mientras avanzaba, sus pasos resonaban en su mente, mezclándose con el eco de la angustia de Paulino. La selva no era solo un entorno; era un personaje en sí misma, un adversario que jugaba con las emociones humanas.\n\nAlves, sin embargo, no estaba en el rancho. Dorotea se encontró sola nuevamente, enfrentando el silencio que se cernía como un manto pesado. En ese momento, la angustia de Paulino se convirtió en su propia carga; cada latido del corazón de su esposo resonaba en su pecho. La serpiente había ganado la primera batalla.\n\nMientras tanto, Paulino se dejaba llevar por la oscuridad de su dolor. Su mente vagaba entre recuerdos, visiones de días soleados y risas compartidas, pero todo se desvanecía rápidamente. La serpiente había marcado su destino, y la soledad lo abrazaba en un último intento por mantenerlo en este mundo. Era un hombre en lucha, pero la victoria ya no estaba de su lado. La yararacusú le había enseñado que la naturaleza no perdona.\n\nCuando finalmente Dorotea regresó, el aire estaba impregnado de un olor a humedad y muerte. Paulino la vio acercarse, su figura difusa en medio de su agonía. En sus ojos, ella reflejaba su desesperación. \"¡Paulino!\", gritó, pero la selva engulló su voz. El hombre al que amaba yacía en el suelo, un prisionero del veneno que lentamente se apoderaba de él.\n\nEn su último aliento, Paulino recordó la risa de su esposa, la calidez de su abrazo, y en su mente, el eco de su vida resonaba como un canto de despedida. La yararacusú había ganado, y en ese instante de transformación, él se convirtió en parte del ciclo eterno de la naturaleza. Su lucha había sido fútil, pero su amor por Dorotea perduraría más allá de la muerte.\n\nLa serpiente, desde su escondite, parecía observar la escena con una frialdad distante, como si supiera que su papel había sido cumplido. Dorotea, desgarrada por la pérdida, sintió una tristeza inmensa, pero en su dolor también había un destello de claridad. Ella había perdido a su esposo, pero no a su memoria. Con el eco de su vida resonando en su corazón, avanzó hacia la selva, dispuesta a enfrentar las sombras que la aguardaban. \n\nLa selva había ganado en una batalla, pero el amor de Dorotea era un fuego que nunca se apagaría.",
+      "word_count": 504,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una narrativa original que explora la lucha entre el ser humano y la naturaleza, lo que le otorga un alto grado de novedad. La trama es coherente y los eventos se desarrollan de manera lógica, aunque algunas descripciones pueden parecer un tanto poéticas y menos prácticas. La conexión emocional entre los personajes es efectiva, pero la resolución puede parecer un poco idealizada en el contexto de la lucha por la vida.",
+        "metadata": {
+          "story_id": "deriva",
+          "candidate_id": 2
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    },
+    {
+      "candidate_id": 3,
+      "story": "En la oscuridad densa de la selva, donde los ecos de la vida silvestre se mezclaban con el silencio abrumador, Paulino avanzaba con dificultad, sintiendo la creciente punzada del veneno en su sangre. La yararacusú, ágil y silenciosa, había dejado su marca en su tobillo, y cada paso que daba era un recordatorio de su inminente destino. La espesura de la vegetación se cerraba a su alrededor, como si la misma selva lo retuviera, burlándose de su lucha por escapar.\n\nLa soledad lo envolvía, y el sonido de su respiración entrecortada era la única compañía que le quedaba. Mientras se adentraba más en la jungla, la agonía se apoderaba de su cuerpo. Recordaba las palabras de su esposa, Dorotea, que siempre le advertía sobre los peligros del bosque. Ahora, en su dolor, deseaba tenerla a su lado, pero la distancia entre ellos parecía insalvable.\n\nEn un momento de desesperación, decidió buscar a su compadre Alves, quien vivía no muy lejos, esperando que pudiera ayudarlo. Sin embargo, el camino se tornaba cada vez más confuso, y el eco de su propia voz se perdía en la inmensidad verde que lo rodeaba. La selva, en su opresión, parecía reírse de él mientras sus fuerzas se desvanecían. \n\nFinalmente, al borde de la inconsciencia, su mente se aferró a un último recuerdo: la imagen de Dorotea, con su risa y su calidez. Su corazón, debilitado, anhelaba ese refugio. Justo en ese instante, como si la selva lo escuchara, un destello de luz atravesó el espesor de la maleza. Era Dorotea, su figura se recortaba contra el fondo sombrío, y su voz, suave y firme, llamó a Paulino.\n\nElla había sentido su dolor a través de la distancia y se había adentrado en el bosque en su búsqueda. Con manos temblorosas y ojos llenos de determinación, tomó su rostro, y en ese contacto, Paulino sintió un rayo de esperanza. Sin embargo, el veneno ya había comenzado a hacer su trabajo. Mientras Dorotea intentaba arrastrarlo hacia la seguridad, el compadre Alves apareció, pero su llegada no trajo consuelo; en cambio, fue un nuevo conflicto. Alves, con su egoísmo y falta de preparación, era una sombra más en esta lucha por sobrevivir.\n\nLa selva se volvió un campo de batalla, donde no solo se disputaba la vida de Paulino, sino también la relación entre los hombres. Alves, al darse cuenta de su error, se sintió abrumado por la culpa y, en un acto de arrepentimiento, intentó ayudar, pero el tiempo se le escapaba. \n\nMientras el veneno devoraba su ser, Paulino miró al cielo, buscando respuestas. En su mente, la yararacusú se había transformado en un símbolo de su propia lucha, una representación de la muerte inminente que lo acechaba. En un último aliento, dejó escapar un susurro: \"No hay victoria en este conflicto, solo la aceptación de lo inevitable.\" \n\nAsí, en la penumbra de la selva, la vida de Paulino se extinguió, dejando un eco de dolor y recuerdos. La selva, testigo mudo, guardó su historia, mientras Dorotea y Alves se enfrentaban a la soledad que quedaba tras su partida. La relación entre ellos, marcada por el arrepentimiento y la lucha, se convirtió en un recordatorio de los peligros que acechan en la unión del hombre con la naturaleza.",
+      "word_count": 542,
+      "evaluation": {
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        },
+        "average_score": 8.0,
+        "justification": "El cuento presenta una narrativa original que combina elementos de la naturaleza con conflictos humanos, lo que le otorga un alto grado de novedad. La trama es coherente y sigue una lógica interna que permite al lector seguir la historia sin confusiones. Sin embargo, algunos elementos, como la transformación de la yararacusú en un símbolo, pueden resultar un poco abstractos, lo que afecta ligeramente su pragmaticalidad en términos de conexión con la realidad cotidiana.",
+        "metadata": {
+          "story_id": "deriva",
+          "candidate_id": 3
+        }
+      },
+      "policy_scores": {
+        "mean": 8.0
+      }
+    }
+  ],
+  "rankings": {
+    "mean": [
+      {
+        "candidate_id": 1,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 7.0,
+          "sensicality": 9.0,
+          "pragmaticality": 8.0
+        }
+      },
+      {
+        "candidate_id": 2,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        }
+      },
+      {
+        "candidate_id": 3,
+        "score": 8.0,
+        "dimensions": {
+          "novelty": 8.0,
+          "sensicality": 9.0,
+          "pragmaticality": 7.0
+        }
+      }
+    ]
+  }
+}

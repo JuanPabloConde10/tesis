@@ -5,8 +5,12 @@ Operacionaliza creatividad como novelty + appropriateness (sensicality + pragmat
 según Runco & Jaeger. Para cada par (original, generado):
   1. Métricas a nivel pasaje: novelty, sensicality, pragmaticality (1-10).
   2. Extracción de expresiones: noveles y no-pragmáticas en cada pasaje (con justificación).
-  3. Preferencia del juez entre original y generado.
-  4. Guarda en data/evaluations/{story_id}.json y summary.json.
+  3. Por cada dimensión y cada versión: por qué no se otorga 10 (qué resta puntos).
+  4. Preferencia del juez entre original y generado.
+  5. Guarda en data/evaluations/{story_id}.json y summary.json.
+
+Lee el cuento generado desde data/generated-story-LaaJ/{id}/{id}.txt
+(salida de generate_stories.py) o, si no existe, data/generated/{id}.txt.
 
 Basado en: "Death of the Novel(ty): Beyond n-Gram Novelty as a Metric for Textual Creativity"
 """
@@ -30,8 +34,49 @@ from evaluation.judge_dimensions import DIMENSIONS
 
 DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 SELECTED_STORIES_FILE = os.path.join(DATA_DIR, "selected_stories.json")
-GENERATED_DIR = os.path.join(DATA_DIR, "generated")
+# generate_stories.py writes to generated-story-LaaJ/{id}/{id}.txt; older runs used generated/{id}.txt
+GENERATED_LAAJ_DIR = os.path.join(DATA_DIR, "generated-story-LaaJ")
+GENERATED_LEGACY_DIR = os.path.join(DATA_DIR, "generated")
 EVALUATIONS_DIR = os.path.join(DATA_DIR, "evaluations")
+
+
+def _generated_story_path_laaj(story_id: str) -> str:
+    return os.path.join(GENERATED_LAAJ_DIR, story_id, f"{story_id}.txt")
+
+
+def _generated_story_path_legacy(story_id: str) -> str:
+    return os.path.join(GENERATED_LEGACY_DIR, f"{story_id}.txt")
+
+
+def resolve_generated_story_path(story_id: str) -> str | None:
+    """Prefer LaaJ layout from generate_stories.py; fall back to flat data/generated/."""
+    p_laaj = _generated_story_path_laaj(story_id)
+    if os.path.isfile(p_laaj):
+        return p_laaj
+    p_legacy = _generated_story_path_legacy(story_id)
+    if os.path.isfile(p_legacy):
+        return p_legacy
+    return None
+
+
+def discover_evaluable_story_ids() -> list[str]:
+    """Story IDs that have a generated .txt in either output layout."""
+    ids: set[str] = set()
+    if os.path.isdir(GENERATED_LAAJ_DIR):
+        for name in os.listdir(GENERATED_LAAJ_DIR):
+            sub = os.path.join(GENERATED_LAAJ_DIR, name)
+            if os.path.isdir(sub) and os.path.isfile(os.path.join(sub, f"{name}.txt")):
+                ids.add(name)
+    if os.path.isdir(GENERATED_LEGACY_DIR):
+        for f in os.listdir(GENERATED_LEGACY_DIR):
+            if f.endswith(".txt"):
+                ids.add(f.replace(".txt", ""))
+    return sorted(ids)
+
+
+# Respuesta JSON grande (puntuaciones, listas de expresiones, motivos_restas_puntos).
+# Sin max_output_tokens explícito, Gemini suele truncar a mitad del JSON.
+JUDGE_MAX_OUTPUT_TOKENS = 8192
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Judge prompt (paper-inspired: novelty, sensicality, pragmaticality + close reading)
@@ -51,7 +96,8 @@ Tu tarea:
 1. Evaluar cada cuento en las 3 dimensiones (escala 1-10).
 2. Identificar 2-4 expresiones NOVELES en cada cuento (frases o fragmentos que aporten valor creativo: originales, sorprendentes, bien logradas). Incluir justificación breve.
 3. Identificar 2-4 expresiones NO PRAGMÁTICAS en cada cuento (frases que no encajan en contexto, suenan forzadas, incoherentes o incómodas). Si el cuento fluye bien, la lista puede estar vacía. Incluir justificación breve.
-4. Indicar cuál prefieres (original o generado) y por qué.
+4. Para novelty, sensicality y pragmaticality, explicar por separado para el ORIGINAL y para el GENERADO qué aspectos concretos restan puntos respecto de un 10 ideal (defectos, clichés, fallos de coherencia, tono plano, etc.). Si la puntuación es 10, indicar brevemente que no aplican restas relevantes.
+5. Indicar cuál prefieres (original o generado) y por qué.
 
 CUENTO ORIGINAL:
 Título: {original_title}
@@ -84,6 +130,20 @@ Formato esperado:
     ...
   ],
   "expresiones_no_pragmaticas_generado": [...],
+  "motivos_restas_puntos": {{
+    "novelty": {{
+      "original": "2-4 frases: por qué no es 10 en novelty",
+      "generado": "2-4 frases: por qué no es 10 en novelty"
+    }},
+    "sensicality": {{
+      "original": "…",
+      "generado": "…"
+    }},
+    "pragmaticality": {{
+      "original": "…",
+      "generado": "…"
+    }}
+  }},
   "preferencia": "original" | "generado",
   "justificacion_preferencia": "explicación breve (2-4 oraciones)"
 }}
@@ -145,6 +205,13 @@ def _normalize_evaluation(eval_raw: dict) -> dict:
     for dim in ["novelty", "sensicality", "pragmaticality"]:
         if dim not in out or not isinstance(out[dim], dict):
             out[dim] = {"original": None, "generado": None}
+        else:
+            # Solo conservar puntuaciones; el LLM no debe mezclar texto aquí
+            d = out[dim]
+            out[dim] = {
+                "original": d.get("original"),
+                "generado": d.get("generado"),
+            }
     for key in [
         "expresiones_novelas_original", "expresiones_novelas_generado",
         "expresiones_no_pragmaticas_original", "expresiones_no_pragmaticas_generado",
@@ -155,6 +222,17 @@ def _normalize_evaluation(eval_raw: dict) -> dict:
         out["preferencia"] = None
     if "justificacion_preferencia" not in out:
         out["justificacion_preferencia"] = ""
+
+    restas: dict[str, dict[str, str]] = {}
+    raw_restas = out.get("motivos_restas_puntos")
+    for dim in DIMENSIONS:
+        blank = {"original": "", "generado": ""}
+        if isinstance(raw_restas, dict) and isinstance(raw_restas.get(dim), dict):
+            block = raw_restas[dim]
+            blank["original"] = str(block.get("original", "") or "").strip()
+            blank["generado"] = str(block.get("generado", "") or "").strip()
+        restas[dim] = blank
+    out["motivos_restas_puntos"] = restas
     return out
 
 
@@ -176,6 +254,7 @@ def evaluate_pair(
         prompt,
         system_prompt=None,
         temperature=0.2,
+        max_tokens=JUDGE_MAX_OUTPUT_TOKENS,
     )
 
     evaluation = _extract_json(response)
@@ -197,6 +276,7 @@ def evaluate_pair(
         "expresiones_novelas_generado": evaluation.get("expresiones_novelas_generado", []),
         "expresiones_no_pragmaticas_original": evaluation.get("expresiones_no_pragmaticas_original", []),
         "expresiones_no_pragmaticas_generado": evaluation.get("expresiones_no_pragmaticas_generado", []),
+        "motivos_restas_puntos": evaluation.get("motivos_restas_puntos", {}),
         "preferencia": evaluation.get("preferencia"),
         "justificacion_preferencia": evaluation.get("justificacion_preferencia", ""),
         "averages": averages,
@@ -214,9 +294,12 @@ def process_story(
         print(f"  SKIP: '{story_id}' not found in selected_stories.json")
         return None
 
-    generated_path = os.path.join(GENERATED_DIR, f"{story_id}.txt")
-    if not os.path.exists(generated_path):
-        print(f"  SKIP: generated story not found at {generated_path}")
+    generated_path = resolve_generated_story_path(story_id)
+    if not generated_path:
+        print(
+            f"  SKIP: generated story not found (tried "
+            f"{_generated_story_path_laaj(story_id)} and {_generated_story_path_legacy(story_id)})"
+        )
         return None
 
     with open(generated_path, "r", encoding="utf-8") as f:
@@ -225,6 +308,7 @@ def process_story(
     original = stories[story_id]
     print(f"  Evaluating '{original['title']}' by {original['author']}...")
 
+    result = None
     for attempt in range(3):
         try:
             result = evaluate_pair(story_id, original, generated_text, client)
@@ -239,6 +323,15 @@ def process_story(
                     raise
             else:
                 raise
+        except ValueError as e:
+            if "Could not extract valid JSON" in str(e) and attempt < 2:
+                print(f"  JSON inválido o truncado, reintento {attempt + 2}/3 en 5s...")
+                time.sleep(5.0)
+            else:
+                raise
+
+    if result is None:
+        raise RuntimeError("evaluate_pair failed after retries")
 
     avg = result["averages"]
     pref = result["preferencia"] or "—"
@@ -368,12 +461,7 @@ def main() -> None:
     if args.story_id:
         story_ids = [args.story_id]
     else:
-        story_ids = [
-            f.replace(".txt", "")
-            for f in os.listdir(GENERATED_DIR)
-            if f.endswith(".txt") and not f.endswith("_meta.json")
-        ]
-        story_ids.sort()
+        story_ids = discover_evaluable_story_ids()
 
     if not story_ids:
         print("No generated stories found. Run generate_stories.py first.")

@@ -1,0 +1,16 @@
+{
+  "story_id": "lucho_eco",
+  "source_title": "Eco de espesura",
+  "source_author": "Anónimo",
+  "aoi_names_used": [
+    "CONFLICT",
+    "RIVALRY",
+    "REPENTANCE"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 398,
+  "num_candidates": 1,
+  "selection_policies": [],
+  "primary_policy": null
+}

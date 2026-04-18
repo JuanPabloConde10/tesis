@@ -1,0 +1,109 @@
+{
+  "story_id": "lucho_eco",
+  "title": "Eco de espesura",
+  "author": "Anónimo",
+  "word_count_original": 528,
+  "word_count_generated": 398,
+  "dimensions": {
+    "novelty": {
+      "original": 7,
+      "generado": 5
+    },
+    "sensicality": {
+      "original": 9,
+      "generado": 4
+    },
+    "pragmaticality": {
+      "original": 7,
+      "generado": 3
+    }
+  },
+  "expresiones_novelas_original": [
+    {
+      "expresion": "el dolor se expandía como un fuego voraz, consumiéndolo poco a poco.",
+      "justificacion": "La combinación de 'fuego voraz' con la acción lenta de 'consumiéndolo poco a poco' crea una imagen vívida y potente de destrucción interna."
+    },
+    {
+      "expresion": "el silencio de la naturaleza se tornaba opresivo, como si la vegetación misma se regocijara en su sufrimiento.",
+      "justificacion": "La personificación de la naturaleza como una entidad que se 'regocija' en el sufrimiento humano es una imagen poderosa y perturbadora."
+    },
+    {
+      "expresion": "la angustia la llevó a enfrentarse al rastro del reptil que le había arrebatado a su marido, un silencio amenazador que parecía burlarse de su esfuerzo.",
+      "justificacion": "La idea de un 'silencio amenazador que parecía burlarse' es una sinestesia efectiva que transmite la desesperación y la impotencia de Elena."
+    },
+    {
+      "expresion": "El reptil, como un espectro, se deslizó a su lado",
+      "justificacion": "La comparación de la serpiente con un 'espectro' es una metáfora acertada que subraya su naturaleza elusiva, letal y casi sobrenatural en los momentos finales de Elías."
+    }
+  ],
+  "expresiones_novelas_generado": [
+    {
+      "expresion": "El sol apenas se atrevía a perforar el denso dosel de la selva, sumiendo el ambiente en una penumbra perpetua y húmeda, llena de sonidos extraños y una sensación constante de amenaza.",
+      "justificacion": "La frase inicial establece una atmósfera inmersiva y ominosa, con 'el sol apenas se atrevía a perforar' como una imagen poética y efectiva."
+    },
+    {
+      "expresion": "Su mente, una tormenta de recuerdos, navegaba entre el arrepentimiento y la melancolía, aferrándose a la imagen de Elena, su esposa.",
+      "justificacion": "Aunque 'tormenta de recuerdos' es común, el verbo 'navegaba' le da un matiz de movimiento y exploración interna que enriquece la metáfora."
+    },
+    {
+      "expresion": "Cada rama que apartaba era un eco de las palabras no dichas, de la amistad traicionada, una declaración silenciosa de su deseo de enmendar el pasado.",
+      "justificacion": "Esta frase conecta la acción física de Marcos con su profundo conflicto interno y su deseo de redención de manera evocadora."
+    },
+    {
+      "expresion": "La selva, con su indiferencia majestuosa, la acorralaba",
+      "justificacion": "La personificación de la selva como una entidad con 'indiferencia majestuosa' es una imagen potente que resalta su poder y la insignificancia humana ante ella."
+    }
+  ],
+  "expresiones_no_pragmaticas_original": [
+    {
+      "expresion": "El reptil, como un espectro, se deslizó a su lado, y en un instante de lucidez, Elias comprendió que debía luchar.",
+      "justificacion": "La reaparición de la serpiente en este punto, solo para 'deslizarse a su lado' sin una acción directa, se siente forzada, como un recurso narrativo para catalizar la lucha interna de Elías, más que un evento natural."
+    },
+    {
+      "expresion": "La serpiente, el símbolo de su conflicto, se desvaneció entre la bruma, dejando solo un eco de su existencia.",
+      "justificacion": "La declaración explícita de la serpiente como 'el símbolo de su conflicto' es un ejemplo de 'telling, not showing', que interrumpe la inmersión y la fluidez narrativa al explicar el significado en lugar de dejar que emerja orgánicamente."
+    },
+    {
+      "expresion": "La soledad y el abandono se convirtieron en su legado, mientras el animal se deslizaba silenciosamente en las sombras, transformándose en un símbolo de arrepentimiento que nunca se borraría del lugar.",
+      "justificacion": "La transformación del animal en un 'símbolo de arrepentimiento' es confusa y semánticamente ambigua. ¿De quién es el arrepentimiento? ¿Elías, Marcos, la selva? Se siente como un intento de añadir un simbolismo complejo de forma abrupta y poco clara al final."
+    }
+  ],
+  "expresiones_no_pragmaticas_generado": [
+    {
+      "expresion": "un \"atacante\" impulsado por la necesidad de redención.",
+      "justificacion": "El uso de comillas alrededor de 'atacante' es inexplicable y disruptivo. Además, Marcos no es un 'atacante' en el sentido literal, y la palabra no encaja con su búsqueda de redención, haciendo la frase incoherente."
+    },
+    {
+      "expresion": "obligándola a una \"cooperación\" tácita con su brutalidad.",
+      "justificacion": "La idea de 'cooperación' con la 'brutalidad' de la selva es semánticamente contradictoria y no tiene sentido en el contexto de la desesperación de Elena. Las comillas refuerzan la artificialidad."
+    },
+    {
+      "expresion": "una \"defensora\" de una vida que se le escapaba entre los dedos.",
+      "justificacion": "Ser 'defensora' de una vida que se 'escapa' es una contradicción. Elena lucha por mantener la vida, no por defender su pérdida. Las comillas son nuevamente un elemento extraño y sin justificación."
+    },
+    {
+      "expresion": "el \"premio\" de su arrepentimiento.",
+      "justificacion": "El arrepentimiento es típicamente una carga o un castigo emocional, no un 'premio'. Esta frase es semánticamente incorrecta y suena forzada, con las comillas añadiendo a la extrañeza."
+    }
+  ],
+  "motivos_restas_puntos": {
+    "novelty": {
+      "original": "La premisa narrativa (hombre mordido, esposa y amigo buscando) es un tropo común. Aunque hay imágenes potentes, la trama no introduce elementos sorprendentes o giros innovadores que la distingan significativamente de otras historias de supervivencia y redención.",
+      "generado": "El texto abusa de un lenguaje florido y abstracto que a menudo cae en clichés ('tormenta de recuerdos', 'gélido abrazo de la derrota'). El uso repetitivo e injustificado de comillas alrededor de palabras sueltas ('atacante', 'cooperación', 'defensora', 'premio') es una elección estilística que resta originalidad y hace que el texto se sienta artificial y poco auténtico."
+    },
+    "sensicality": {
+      "original": "No aplican restas relevantes; el texto es semánticamente correcto y bien formado en su totalidad.",
+      "generado": "Presenta varias frases semánticamente contradictorias o sin sentido, especialmente aquellas que utilizan las palabras entre comillas. Por ejemplo, 'cooperación' con la brutalidad o un 'premio' por el arrepentimiento son conceptos que carecen de lógica interna y socavan la coherencia del significado."
+    },
+    "pragmaticality": {
+      "original": "La inclusión de declaraciones simbólicas explícitas ('la serpiente, el símbolo de su conflicto') interrumpe la inmersión al 'explicar' el significado en lugar de permitir que el lector lo infiera. La reaparición de la serpiente al final se siente un tanto forzada para servir a un propósito simbólico, en lugar de ser un evento orgánico en la narrativa.",
+      "generado": "El uso constante y arbitrario de comillas en palabras clave es extremadamente disruptivo, haciendo que el texto suene forzado, incómodo y artificial. La narrativa tiende a ser excesivamente abstracta y explicativa, en lugar de mostrar las acciones y emociones de los personajes, lo que dificulta la conexión y el flujo natural de la historia."
+    }
+  },
+  "preferencia": "original",
+  "justificacion_preferencia": "El cuento original, a pesar de algunas debilidades en su simbolismo, ofrece una narrativa coherente y un tono consistente que permite la inmersión del lector. Su lenguaje es más natural y evocador. El cuento generado, en contraste, se ve gravemente afectado por un lenguaje artificial, contradicciones semánticas y el uso inexplicable de comillas, lo que lo hace confuso y difícil de apreciar.",
+  "averages": {
+    "promedio_original": 7.67,
+    "promedio_generado": 4.0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "story_id": "lucho_eco",
+  "title": "Eco de espesura",
+  "author": "Anónimo",
+  "genre": "tragedia",
+  "setting": "La historia se desarrolla en lo profundo de una selva densa y opresiva, donde la naturaleza es un personaje implacable y el sol apenas penetra el dosel.",
+  "characters": [
+    "Elias: Protagonista, un hombre mordido por una víbora, luchando por su vida y reflexionando sobre sus decisiones pasadas.",
+    "Elena: Esposa de Elias, desesperada y en búsqueda activa de su marido.",
+    "Marcos: Antiguo compañero de Elias, impulsado por la culpa y la amistad a buscarlo, llegando justo antes de su muerte.",
+    "La víbora de fosa: Antagonista directo y catalizador del conflicto, que se transforma en un símbolo de arrepentimiento y conflicto."
+  ],
+  "themes": [
+    "La fragilidad de la existencia",
+    "La lucha por la supervivencia",
+    "El arrepentimiento y la culpa",
+    "La importancia de las relaciones humanas (amor y amistad)",
+    "La implacabilidad de la naturaleza",
+    "La soledad y el abandono"
+  ],
+  "tone": "Ominoso, desesperado, melancólico y trágico.",
+  "narrative_style": "Narrador omnisciente en tercera persona, que sigue los pensamientos y acciones de múltiples personajes, ofreciendo una perspectiva amplia y profunda de la situación.",
+  "plot_summary": "Elias es mordido por una víbora en la selva, enfrentando una muerte inminente mientras su esposa Elena lo busca desesperadamente y su antiguo amigo Marcos se apresura a su encuentro, superando su orgullo. En sus últimos momentos, Elias reflexiona sobre su vida y el valor de sus relaciones. Marcos llega justo a tiempo para presenciar la muerte de Elias, quedando con un profundo sentimiento de culpa y arrepentimiento, mientras la selva y la serpiente se convierten en símbolos de esta tragedia.",
+  "aoi_names": [
+    "CONFLICT",
+    "RIVALRY",
+    "REPENTANCE"
+  ]
+}

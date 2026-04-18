@@ -1,0 +1,27 @@
+{
+  "story_id": "deriva",
+  "title": "A la deriva",
+  "author": "Horacio Quiroga",
+  "genre": "horror_gotico",
+  "setting": "El cuento transcurre en un entorno selvático y fluvial, específicamente a orillas del río Paraná, en un ambiente denso y oscuro que evoca una sensación de peligro inminente. La acción se desarrolla en un contexto rural, donde el protagonista se enfrenta a la naturaleza y a su propia mortalidad.",
+  "characters": [
+    "protagonista: Paulino, un hombre que sufre las consecuencias de la mordedura de una serpiente",
+    "antagonista: la yararacusú, la serpiente que lo muerde",
+    "secundaria: Dorotea, la esposa de Paulino que intenta ayudarlo",
+    "secundario: Alves, el compadre de Paulino, con quien tiene un conflicto"
+  ],
+  "themes": [
+    "la lucha por la supervivencia",
+    "la relación del hombre con la naturaleza",
+    "la soledad y el abandono",
+    "la muerte inminente"
+  ],
+  "tone": "oscuro y opresivo",
+  "narrative_style": "narrador omnisciente en tercera persona",
+  "plot_summary": "El cuento comienza con Paulino siendo mordido por una serpiente y sufriendo un dolor creciente mientras intenta regresar a su rancho. A medida que su condición empeora, busca ayuda de su compadre Alves, pero se enfrenta a la soledad y el silencio de la selva. Finalmente, tras una lucha interna y física, Paulino experimenta un momento de alivio antes de sucumbir a la muerte, dejando un eco de su vida y recuerdos.",
+  "aoi_names": [
+    "CONFLICT",
+    "JOURNEY",
+    "REPENTANCE"
+  ]
+}

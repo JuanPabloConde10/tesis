@@ -1,0 +1,26 @@
+{
+    "story_id": "la_ciudad_sin_sombra",
+    "title": "La ciudad sin sombra",
+    "author": "Autor inventado",
+    "genre": "cuento_distopico_moral",
+    "setting": "La historia ocurre en Brumalia, una ciudad donde una fábrica central captura las sombras de los habitantes para convertirlas en energía, dejando calles limpias, blancas y extrañamente silenciosas.",
+    "characters": [
+      "protagonista: Inés, una joven archivista que empieza a olvidar sus recuerdos desde que perdió su sombra.",
+      "antagonista: director Varga, dueño de la fábrica de luz, convencido de que la emoción humana es un obstáculo para el progreso.",
+      "personaje secundario: Tomás, un barrendero que guarda sombras robadas en frascos de vidrio.",
+      "elemento simbólico: las sombras en frascos, que representan memoria, culpa y humanidad."
+    ],
+    "themes": [
+      "El precio del progreso deshumanizado",
+      "La memoria como núcleo de la identidad",
+      "La resistencia individual frente al control colectivo",
+      "La pérdida de emociones en sociedades utilitaristas",
+      "La recuperación de la dignidad mediante la verdad"
+    ],
+    "tone": "Frío, inquietante y reflexivo, con un cierre esperanzador pero agridulce.",
+    "narrative_style": "Narrador en tercera persona, prosa visual y simbólica, con descripciones contrastantes entre la luz artificial de la ciudad y la oscuridad íntima de los personajes.",
+    "plot_summary": "En Brumalia, cada ciudadano entrega su sombra al cumplir dieciocho años, pues el gobierno afirma que así se garantiza orden y prosperidad. Inés, archivista de registros civiles, descubre documentos antiguos donde se advierte que al perder la sombra también se erosionan los recuerdos y la empatía. Con ayuda de Tomás, encuentra un depósito clandestino de sombras embotelladas y reconoce la suya en una que late como tinta viva. Cuando intenta devolverlas, el director Varga activa un protocolo para quemar el archivo y eliminar toda prueba. Inés libera miles de frascos sobre la plaza central: las sombras regresan a sus dueños como aves negras, y con ellas vuelven culpas, afectos y dolores largamente dormidos. La ciudad entra en caos emocional, pero por primera vez sus habitantes se miran como personas y no como engranajes.",
+    "aoi_names": [
+      "CONFLICT"
+    ]
+  }

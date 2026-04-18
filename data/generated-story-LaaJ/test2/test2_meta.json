@@ -1,0 +1,20 @@
+{
+  "story_id": "test2",
+  "source_title": "La ciudad sin sombra",
+  "source_author": "Autor inventado",
+  "aoi_names_used": [
+    "CONFLICT"
+  ],
+  "generation_method": "aoi_directo",
+  "strategy": "sequential",
+  "word_count": 513,
+  "num_candidates": 3,
+  "selection_policies": [
+    "mean"
+  ],
+  "primary_policy": "mean",
+  "weighted_policy_weights_normalized": null,
+  "winner_candidate_ids": {
+    "mean": 1
+  }
+}
