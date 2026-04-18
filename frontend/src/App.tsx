@@ -1,26 +1,19 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Navigation } from "./components";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Playground from "./pages/Playground";
-import Chat from "./pages/Chat";
-import About from "./pages/About";
+import Requerimiento from "./pages/Requerimiento";
+import Evaluacion from "./pages/Evaluacion";
+import Documentacion from "./pages/Documentacion";
 import "./index.css";
 
-function App() {
+export default function App() {
   return (
-    <Router>
-        <div className="min-h-screen w-full bg-white">
-        <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/playground" element={<Playground />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/requerimiento" element={<Requerimiento />} />
+        <Route path="/evaluacion" element={<Evaluacion />} />
+        <Route path="/documentacion" element={<Documentacion />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;

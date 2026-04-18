@@ -1,5 +1,5 @@
 /// <reference types="vitest/config" />
-import { defineConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
@@ -7,15 +7,30 @@ import { fileURLToPath } from 'node:url';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(fileURLToPath(import.meta.url));
 
+/** Evita que el navegador reutilice HTML/JS de un `npm run dev` anterior. */
+const logProjectRoot = (): Plugin => ({
+  name: 'log-project-root',
+  configureServer(server) {
+    server.httpServer?.once('listening', () => {
+      console.info(`\n  [vite] carpeta del proyecto: ${dirname}\n`);
+    });
+  },
+});
+
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [logProjectRoot(), react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
     }
   },
   server: {
+    port: 5173,
+    strictPort: true,
+    headers: {
+      'Cache-Control': 'no-store',
+    },
     proxy: {
       '/api': {
         target: 'http://127.0.0.1:8000',
